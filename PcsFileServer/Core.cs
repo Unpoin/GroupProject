@@ -8,10 +8,10 @@ namespace PcsFileServer
 {
     sealed class Core
     {
-        private static PcsFileServerEntities context;
-        public static PcsFileServerEntities Context
+        private static PcsFileServerEntities1 context;
+        public static PcsFileServerEntities1 Context
         {
-            get => context ?? (context = new PcsFileServerEntities());
+            get => context ?? (context = new PcsFileServerEntities1());
         }
         static string server = @"LAPTOP-G1BKDD1R\\SQLEXPRESS";
         static string database = "PcsFileServer";

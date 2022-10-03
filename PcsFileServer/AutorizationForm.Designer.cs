@@ -28,144 +28,159 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LoginLabel = new System.Windows.Forms.Label();
-            this.PasswordLabel = new System.Windows.Forms.Label();
-            this.LoginTextBox = new System.Windows.Forms.TextBox();
-            this.PasswordTextBox = new System.Windows.Forms.TextBox();
-            this.RememberCheckBox = new System.Windows.Forms.CheckBox();
-            this.OfflineCheckBox = new System.Windows.Forms.CheckBox();
-            this.LoginButton = new System.Windows.Forms.Button();
-            this.RegistrationButton = new System.Windows.Forms.Button();
-            this.RecoverPasswordButton = new System.Windows.Forms.Button();
+            this.LoginMailLabel = new MetroFramework.Controls.MetroLabel();
+            this.LoginTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.PasswordTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.LoginButton = new MetroFramework.Controls.MetroButton();
+            this.RegistrationButton = new MetroFramework.Controls.MetroButton();
+            this.PasswordLabel = new MetroFramework.Controls.MetroLabel();
+            this.RecoverPasswordButton = new MetroFramework.Controls.MetroButton();
+            this.RememberCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.OfflineCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.ThemeToggle = new MetroFramework.Controls.MetroToggle();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
-            // LoginLabel
+            // LoginMailLabel
             // 
-            this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(32, 22);
-            this.LoginLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(84, 16);
-            this.LoginLabel.TabIndex = 0;
-            this.LoginLabel.Text = "Логин/Email";
+            this.LoginMailLabel.AutoSize = true;
+            this.LoginMailLabel.Location = new System.Drawing.Point(31, 103);
+            this.LoginMailLabel.Name = "LoginMailLabel";
+            this.LoginMailLabel.Size = new System.Drawing.Size(84, 19);
+            this.LoginMailLabel.TabIndex = 9;
+            this.LoginMailLabel.Text = "Логин/Email";
+            // 
+            // LoginTextBox
+            // 
+            this.LoginTextBox.Location = new System.Drawing.Point(34, 127);
+            this.LoginTextBox.Name = "LoginTextBox";
+            this.LoginTextBox.Size = new System.Drawing.Size(153, 23);
+            this.LoginTextBox.TabIndex = 10;
+            // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.Location = new System.Drawing.Point(34, 172);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
+            this.PasswordTextBox.Size = new System.Drawing.Size(153, 23);
+            this.PasswordTextBox.TabIndex = 11;
+            // 
+            // LoginButton
+            // 
+            this.LoginButton.Location = new System.Drawing.Point(31, 220);
+            this.LoginButton.Name = "LoginButton";
+            this.LoginButton.Size = new System.Drawing.Size(156, 23);
+            this.LoginButton.TabIndex = 13;
+            this.LoginButton.Text = "Авторизоваться";
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
+            // 
+            // RegistrationButton
+            // 
+            this.RegistrationButton.Location = new System.Drawing.Point(31, 259);
+            this.RegistrationButton.Name = "RegistrationButton";
+            this.RegistrationButton.Size = new System.Drawing.Size(156, 23);
+            this.RegistrationButton.TabIndex = 14;
+            this.RegistrationButton.Text = "Зарегистрироваться";
+            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(32, 97);
-            this.PasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PasswordLabel.Location = new System.Drawing.Point(34, 153);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(56, 16);
-            this.PasswordLabel.TabIndex = 1;
+            this.PasswordLabel.Size = new System.Drawing.Size(54, 19);
+            this.PasswordLabel.TabIndex = 15;
             this.PasswordLabel.Text = "Пароль";
             // 
-            // LoginTextBox
+            // RecoverPasswordButton
             // 
-            this.LoginTextBox.Location = new System.Drawing.Point(36, 53);
-            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.Size = new System.Drawing.Size(152, 23);
-            this.LoginTextBox.TabIndex = 2;
-            // 
-            // PasswordTextBox
-            // 
-            this.PasswordTextBox.Location = new System.Drawing.Point(36, 128);
-            this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.PasswordChar = '*';
-            this.PasswordTextBox.Size = new System.Drawing.Size(152, 23);
-            this.PasswordTextBox.TabIndex = 3;
+            this.RecoverPasswordButton.Location = new System.Drawing.Point(34, 302);
+            this.RecoverPasswordButton.Name = "RecoverPasswordButton";
+            this.RecoverPasswordButton.Size = new System.Drawing.Size(153, 38);
+            this.RecoverPasswordButton.TabIndex = 16;
+            this.RecoverPasswordButton.Text = "Забыли пароль? ";
+            this.RecoverPasswordButton.Click += new System.EventHandler(this.RecoverPasswordButton_Click);
             // 
             // RememberCheckBox
             // 
             this.RememberCheckBox.AutoSize = true;
-            this.RememberCheckBox.Location = new System.Drawing.Point(36, 340);
-            this.RememberCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.RememberCheckBox.Location = new System.Drawing.Point(34, 362);
             this.RememberCheckBox.Name = "RememberCheckBox";
-            this.RememberCheckBox.Size = new System.Drawing.Size(133, 20);
-            this.RememberCheckBox.TabIndex = 4;
+            this.RememberCheckBox.Size = new System.Drawing.Size(115, 15);
+            this.RememberCheckBox.TabIndex = 17;
             this.RememberCheckBox.Text = "Запомнить меня";
             this.RememberCheckBox.UseVisualStyleBackColor = true;
             // 
             // OfflineCheckBox
             // 
             this.OfflineCheckBox.AutoSize = true;
-            this.OfflineCheckBox.Location = new System.Drawing.Point(36, 380);
-            this.OfflineCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.OfflineCheckBox.Location = new System.Drawing.Point(34, 393);
             this.OfflineCheckBox.Name = "OfflineCheckBox";
-            this.OfflineCheckBox.Size = new System.Drawing.Size(163, 20);
-            this.OfflineCheckBox.TabIndex = 5;
+            this.OfflineCheckBox.Size = new System.Drawing.Size(136, 15);
+            this.OfflineCheckBox.TabIndex = 18;
             this.OfflineCheckBox.Text = "Работать автономно";
             this.OfflineCheckBox.UseVisualStyleBackColor = true;
             // 
-            // LoginButton
+            // ThemeToggle
             // 
-            this.LoginButton.Location = new System.Drawing.Point(36, 171);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(4);
-            this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(153, 28);
-            this.LoginButton.TabIndex = 6;
-            this.LoginButton.Text = "Авторизоваться";
-            this.LoginButton.UseVisualStyleBackColor = true;
-            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
+            this.ThemeToggle.AutoSize = true;
+            this.ThemeToggle.Location = new System.Drawing.Point(115, 64);
+            this.ThemeToggle.Name = "ThemeToggle";
+            this.ThemeToggle.Size = new System.Drawing.Size(80, 20);
+            this.ThemeToggle.TabIndex = 19;
+            this.ThemeToggle.Text = "Off";
+            this.ThemeToggle.UseVisualStyleBackColor = true;
+            this.ThemeToggle.Click += new System.EventHandler(this.ThemeToggle_Click);
             // 
-            // RegistrationButton
+            // metroLabel1
             // 
-            this.RegistrationButton.Location = new System.Drawing.Point(35, 221);
-            this.RegistrationButton.Margin = new System.Windows.Forms.Padding(4);
-            this.RegistrationButton.Name = "RegistrationButton";
-            this.RegistrationButton.Size = new System.Drawing.Size(153, 28);
-            this.RegistrationButton.TabIndex = 7;
-            this.RegistrationButton.Text = "Зарегистрироваться";
-            this.RegistrationButton.UseVisualStyleBackColor = true;
-            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
-            // 
-            // RecoverPasswordButton
-            // 
-            this.RecoverPasswordButton.Location = new System.Drawing.Point(36, 270);
-            this.RecoverPasswordButton.Margin = new System.Windows.Forms.Padding(4);
-            this.RecoverPasswordButton.Name = "RecoverPasswordButton";
-            this.RecoverPasswordButton.Size = new System.Drawing.Size(153, 42);
-            this.RecoverPasswordButton.TabIndex = 8;
-            this.RecoverPasswordButton.Text = "Забыли пароль? ";
-            this.RecoverPasswordButton.UseVisualStyleBackColor = true;
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(23, 64);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(86, 19);
+            this.metroLabel1.TabIndex = 20;
+            this.metroLabel1.Text = "Темная тема";
             // 
             // AutorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(232, 426);
-            this.Controls.Add(this.RecoverPasswordButton);
-            this.Controls.Add(this.RegistrationButton);
-            this.Controls.Add(this.LoginButton);
+            this.ClientSize = new System.Drawing.Size(220, 419);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.ThemeToggle);
             this.Controls.Add(this.OfflineCheckBox);
             this.Controls.Add(this.RememberCheckBox);
+            this.Controls.Add(this.RecoverPasswordButton);
+            this.Controls.Add(this.PasswordLabel);
+            this.Controls.Add(this.RegistrationButton);
+            this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.LoginTextBox);
-            this.Controls.Add(this.PasswordLabel);
-            this.Controls.Add(this.LoginLabel);
+            this.Controls.Add(this.LoginMailLabel);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(220, 400);
             this.Name = "AutorizationForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.Load += new System.EventHandler(this.AutorizationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.Label PasswordLabel;
-        private System.Windows.Forms.TextBox LoginTextBox;
-        private System.Windows.Forms.TextBox PasswordTextBox;
-        private System.Windows.Forms.CheckBox RememberCheckBox;
-        private System.Windows.Forms.CheckBox OfflineCheckBox;
-        private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.Button RegistrationButton;
-        private System.Windows.Forms.Button RecoverPasswordButton;
+        private MetroFramework.Controls.MetroLabel LoginMailLabel;
+        private MetroFramework.Controls.MetroTextBox LoginTextBox;
+        private MetroFramework.Controls.MetroTextBox PasswordTextBox;
+        private MetroFramework.Controls.MetroButton LoginButton;
+        private MetroFramework.Controls.MetroButton RegistrationButton;
+        private MetroFramework.Controls.MetroLabel PasswordLabel;
+        private MetroFramework.Controls.MetroButton RecoverPasswordButton;
+        private MetroFramework.Controls.MetroCheckBox RememberCheckBox;
+        private MetroFramework.Controls.MetroCheckBox OfflineCheckBox;
+        private MetroFramework.Controls.MetroToggle ThemeToggle;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

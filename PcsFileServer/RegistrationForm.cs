@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PcsFileServer
 {
-    public partial class RegistrationForm : Form
+    public partial class RegistrationForm : MetroForm
     {
         
         public RegistrationForm()
@@ -37,13 +38,24 @@ namespace PcsFileServer
             {
                 try
                 {
+                    string regMail = @"(\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)";
+                    string regPassword = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
                     var user = Core.Context.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTextBox.Text || u.Email == LoginTextBox.Text);
                     if (user != null)
                     {
                         MessageBox.Show("Логин занят, введите другой");
                         return;
                     }
-                    if (!String.IsNullOrEmpty(LoginTextBox.Text) && !String.IsNullOrEmpty(PasswordTextBox.Text) && PasswordTextBox.Text == ConfirmPasswordTextBox.Text)
+
+                    if (!String.IsNullOrEmpty(LoginTextBox.Text) 
+                        && !String.IsNullOrEmpty(PasswordTextBox.Text) 
+                        && !String.IsNullOrEmpty(MailTextBox.Text)
+                        && PasswordTextBox.Text == ConfirmPasswordTextBox.Text
+                        && (LoginTextBox.Text.Length > 5)
+                        && (LoginTextBox.Text.Length < 50)
+                        && Regex.IsMatch(MailTextBox.Text, regMail)
+                        && Regex.IsMatch(PasswordTextBox.Text, regPassword)
+                        )
                     {
                         User newUser = new User
                         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,17 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace PcsFileServer
 {
-    public partial class AutorizationForm : Form
+    public partial class AutorizationForm : MetroForm
     {
         public AutorizationForm()
         {
             InitializeComponent();
         }
 
-
+        private void SignUpButton_Click(object sender, EventArgs e)
+        {
+            RegistrationForm form = new RegistrationForm();
+            form.ShowDialog();
+        }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
@@ -32,7 +38,7 @@ namespace PcsFileServer
                 //    this.Close();
                 //}
                 var user = Core.Context.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTextBox.Text || u.Email == LoginTextBox.Text);
-                if (user == null || user.Password != PasswordTextBox.Text )
+                if (user == null || user.Password != PasswordTextBox.Text)
                 {
 
                     user = null;
@@ -41,7 +47,7 @@ namespace PcsFileServer
                 }
                 MessageBox.Show("Добро пожаловать!");
                 PcsUser.CurrentUser = user;
-                MainForm main= new MainForm();
+                MainForm main = new MainForm();
                 this.Hide();
                 main.ShowDialog();
                 this.Close();
@@ -68,16 +74,35 @@ namespace PcsFileServer
             }
 
         }
-        private void SignUpButton_Click(object sender, EventArgs e)
+
+        private void RecoverPasswordButton_Click(object sender, EventArgs e)
         {
-            RegistrationForm form = new RegistrationForm();
-            form.ShowDialog();
+            RecoverForm recoverForm = new RecoverForm();
+            recoverForm.ShowDialog();   
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
             RegistrationForm registrationForm = new RegistrationForm();
             registrationForm.ShowDialog();
+        }
+
+        private void AutorizationForm_Load(object sender, EventArgs e)
+        {
+            //this.components.SetStyle(this);
+            
+        }
+
+        private void ThemeToggle_Click(object sender, EventArgs e)
+        {
+            if (ThemeToggle.Checked)
+            {
+                this.components.SetStyleDark(this);
+            }
+            else
+            {
+                this.components.SetStyleLight(this);
+            }
         }
     }
 }

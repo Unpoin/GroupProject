@@ -13,10 +13,10 @@ namespace PcsFileServer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PcsFileServerEntities : DbContext
+    public partial class PcsFileServerEntities1 : DbContext
     {
-        public PcsFileServerEntities()
-            : base("name=PcsFileServerEntities")
+        public PcsFileServerEntities1()
+            : base("name=PcsFileServerEntities1")
         {
         }
     

@@ -53,8 +53,8 @@
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Location = new System.Drawing.Point(13, 119);
-            this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PasswordTextBox.Location = new System.Drawing.Point(12, 135);
+            this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(220, 23);
@@ -63,8 +63,8 @@
             // 
             // LoginTextBox
             // 
-            this.LoginTextBox.Location = new System.Drawing.Point(13, 57);
-            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoginTextBox.Location = new System.Drawing.Point(12, 73);
+            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(220, 23);
             this.LoginTextBox.TabIndex = 6;
@@ -74,27 +74,27 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(15, 99);
+            this.PasswordLabel.Location = new System.Drawing.Point(14, 115);
             this.PasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(56, 16);
+            this.PasswordLabel.Size = new System.Drawing.Size(63, 16);
             this.PasswordLabel.TabIndex = 5;
-            this.PasswordLabel.Text = "Пароль";
+            this.PasswordLabel.Text = "Пароль*";
             // 
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(15, 37);
+            this.LoginLabel.Location = new System.Drawing.Point(14, 53);
             this.LoginLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(46, 16);
+            this.LoginLabel.Size = new System.Drawing.Size(53, 16);
             this.LoginLabel.TabIndex = 4;
-            this.LoginLabel.Text = "Логин";
+            this.LoginLabel.Text = "Логин*";
             // 
             // ConfirmPasswordTextBox
             // 
-            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(13, 191);
-            this.ConfirmPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(12, 207);
+            this.ConfirmPasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
             this.ConfirmPasswordTextBox.PasswordChar = '*';
             this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(219, 23);
@@ -103,19 +103,19 @@
             // ConfirmPwdLabel
             // 
             this.ConfirmPwdLabel.AutoSize = true;
-            this.ConfirmPwdLabel.Location = new System.Drawing.Point(10, 171);
+            this.ConfirmPwdLabel.Location = new System.Drawing.Point(9, 187);
             this.ConfirmPwdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ConfirmPwdLabel.Name = "ConfirmPwdLabel";
-            this.ConfirmPwdLabel.Size = new System.Drawing.Size(163, 16);
+            this.ConfirmPwdLabel.Size = new System.Drawing.Size(170, 16);
             this.ConfirmPwdLabel.TabIndex = 9;
-            this.ConfirmPwdLabel.Text = "Подтверждение пароля";
+            this.ConfirmPwdLabel.Text = "Подтверждение пароля*";
             // 
             // RegistrationButton
             // 
-            this.RegistrationButton.Location = new System.Drawing.Point(105, 431);
-            this.RegistrationButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RegistrationButton.Location = new System.Drawing.Point(225, 344);
+            this.RegistrationButton.Margin = new System.Windows.Forms.Padding(4);
             this.RegistrationButton.Name = "RegistrationButton";
-            this.RegistrationButton.Size = new System.Drawing.Size(327, 48);
+            this.RegistrationButton.Size = new System.Drawing.Size(270, 48);
             this.RegistrationButton.TabIndex = 10;
             this.RegistrationButton.Text = "Зарегистрироваться";
             this.RegistrationButton.UseVisualStyleBackColor = true;
@@ -123,8 +123,8 @@
             // 
             // UserNameTextBox
             // 
-            this.UserNameTextBox.Location = new System.Drawing.Point(276, 191);
-            this.UserNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UserNameTextBox.Location = new System.Drawing.Point(275, 207);
+            this.UserNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(219, 23);
             this.UserNameTextBox.TabIndex = 12;
@@ -132,7 +132,7 @@
             // UserNameLabel
             // 
             this.UserNameLabel.AutoSize = true;
-            this.UserNameLabel.Location = new System.Drawing.Point(273, 171);
+            this.UserNameLabel.Location = new System.Drawing.Point(272, 187);
             this.UserNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UserNameLabel.Name = "UserNameLabel";
             this.UserNameLabel.Size = new System.Drawing.Size(129, 16);
@@ -142,7 +142,7 @@
             // PhoneLabel
             // 
             this.PhoneLabel.AutoSize = true;
-            this.PhoneLabel.Location = new System.Drawing.Point(273, 99);
+            this.PhoneLabel.Location = new System.Drawing.Point(272, 115);
             this.PhoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PhoneLabel.Name = "PhoneLabel";
             this.PhoneLabel.Size = new System.Drawing.Size(119, 16);
@@ -151,8 +151,8 @@
             // 
             // MailTextBox
             // 
-            this.MailTextBox.Location = new System.Drawing.Point(276, 57);
-            this.MailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MailTextBox.Location = new System.Drawing.Point(275, 73);
+            this.MailTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.Size = new System.Drawing.Size(220, 23);
             this.MailTextBox.TabIndex = 16;
@@ -161,17 +161,17 @@
             // MailLabel
             // 
             this.MailLabel.AutoSize = true;
-            this.MailLabel.Location = new System.Drawing.Point(278, 37);
+            this.MailLabel.Location = new System.Drawing.Point(277, 53);
             this.MailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MailLabel.Name = "MailLabel";
-            this.MailLabel.Size = new System.Drawing.Size(39, 16);
+            this.MailLabel.Size = new System.Drawing.Size(46, 16);
             this.MailLabel.TabIndex = 15;
-            this.MailLabel.Text = "Email";
+            this.MailLabel.Text = "Email*";
             // 
             // CaptchaPictureBox
             // 
-            this.CaptchaPictureBox.Location = new System.Drawing.Point(117, 246);
-            this.CaptchaPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CaptchaPictureBox.Location = new System.Drawing.Point(17, 253);
+            this.CaptchaPictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.CaptchaPictureBox.Name = "CaptchaPictureBox";
             this.CaptchaPictureBox.Size = new System.Drawing.Size(200, 70);
             this.CaptchaPictureBox.TabIndex = 17;
@@ -179,8 +179,8 @@
             // 
             // UpdateCapthcaButton
             // 
-            this.UpdateCapthcaButton.Location = new System.Drawing.Point(325, 246);
-            this.UpdateCapthcaButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UpdateCapthcaButton.Location = new System.Drawing.Point(225, 253);
+            this.UpdateCapthcaButton.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateCapthcaButton.Name = "UpdateCapthcaButton";
             this.UpdateCapthcaButton.Size = new System.Drawing.Size(86, 70);
             this.UpdateCapthcaButton.TabIndex = 19;
@@ -190,8 +190,8 @@
             // 
             // CapthaTextBox
             // 
-            this.CapthaTextBox.Location = new System.Drawing.Point(215, 363);
-            this.CapthaTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CapthaTextBox.Location = new System.Drawing.Point(12, 369);
+            this.CapthaTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.CapthaTextBox.Name = "CapthaTextBox";
             this.CapthaTextBox.Size = new System.Drawing.Size(115, 23);
             this.CapthaTextBox.TabIndex = 21;
@@ -199,12 +199,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(224, 343);
+            this.label1.Location = new System.Drawing.Point(9, 349);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 16);
+            this.label1.Size = new System.Drawing.Size(54, 16);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Ввод каптча";
+            this.label1.Text = "Каптча";
             // 
             // errorProvider1
             // 
@@ -212,7 +212,7 @@
             // 
             // PhoneMaskedTextBox
             // 
-            this.PhoneMaskedTextBox.Location = new System.Drawing.Point(275, 119);
+            this.PhoneMaskedTextBox.Location = new System.Drawing.Point(274, 135);
             this.PhoneMaskedTextBox.Mask = "+7-(999) 000-00-00";
             this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
             this.PhoneMaskedTextBox.Size = new System.Drawing.Size(220, 23);
@@ -223,8 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(519, 514);
+            this.ClientSize = new System.Drawing.Size(519, 425);
             this.Controls.Add(this.PhoneMaskedTextBox);
             this.Controls.Add(this.CapthaTextBox);
             this.Controls.Add(this.label1);
@@ -243,10 +242,10 @@
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.LoginLabel);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RegistrationForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Регистрация";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CaptchaPictureBox)).EndInit();
