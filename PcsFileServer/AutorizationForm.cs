@@ -89,20 +89,8 @@ namespace PcsFileServer
 
         private void AutorizationForm_Load(object sender, EventArgs e)
         {
-            //this.components.SetStyle(this);
+            this.components.SetStyleDark(this);
             
-        }
-
-        private void ThemeToggle_Click(object sender, EventArgs e)
-        {
-            if (ThemeToggle.Checked)
-            {
-                this.components.SetStyleDark(this);
-            }
-            else
-            {
-                this.components.SetStyleLight(this);
-            }
         }
     }
 }
