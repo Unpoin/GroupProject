@@ -17,6 +17,8 @@ namespace PcsFileServer
         public AutorizationForm()
         {
             InitializeComponent();
+            LoginTextBox.Text = Properties.Settings.Default.Login;
+            PasswordTextBox.Text = Properties.Settings.Default.Password;
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)
@@ -29,14 +31,6 @@ namespace PcsFileServer
         {
             try
             {
-                //if (passwordTextBox.Text == "Admin" && loginTextBox.Text == "Admin")
-                //{
-                //    MessageBox.Show($"Здраствуйте, администратор, {loginTextBox.Text}");
-                //    AdministrationForm administration = new AdministrationForm();
-                //    this.Hide();
-                //    administration.ShowDialog();
-                //    this.Close();
-                //}
                 var user = Core.Context.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTextBox.Text || u.Email == LoginTextBox.Text);
                 if (user == null || user.Password != PasswordTextBox.Text)
                 {
@@ -47,27 +41,23 @@ namespace PcsFileServer
                 }
                 MessageBox.Show("Добро пожаловать!");
                 PcsUser.CurrentUser = user;
+                if (Properties.Settings.Default.IsRemember == true)
+                {
+                    Properties.Settings.Default.Login = LoginTextBox.Text;
+                    Properties.Settings.Default.Password = PasswordTextBox.Text;
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Properties.Settings.Default.Login = "";
+                    Properties.Settings.Default.Password = "";
+                    Properties.Settings.Default.Save();
+                }
                 MainForm main = new MainForm();
                 this.Hide();
                 main.ShowDialog();
                 this.Close();
-                //if (user.Role == "Manager")
-                //{
-                //    MessageBox.Show($"Здраствуйте, менеджер, {loginTextBox.Text}");
-                //    ManagerForm manager = new ManagerForm();
-                //    this.Hide();
-                //    manager.ShowDialog();
-                //    this.Close();
-                //}
-                //if (user.Role == "User")
-                //{
-                //    MessageBox.Show($"Здраствуйте, {loginTextBox.Text}");
-                //    MarketForm market = new MarketForm();
-                //    this.Hide();
-                //    market.ShowDialog();
-                //    this.Close();
-                //}
-            }
+                            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -90,7 +80,13 @@ namespace PcsFileServer
         private void AutorizationForm_Load(object sender, EventArgs e)
         {
             this.components.SetStyleDark(this);
-            
+            RememberToggle.Checked = Properties.Settings.Default.IsRemember;
+        }
+
+        private void RememberToggle_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IsRemember = RememberToggle.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UploadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,30 @@
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.FileToolStripMenuItem.Text = "Файл";
             // 
+            // SaveFileToolStripMenuItem
+            // 
+            this.SaveFileToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.SaveFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveFileToolStripMenuItem.Text = "Сохранить";
+            this.SaveFileToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // UploadFileToolStripMenuItem
+            // 
+            this.UploadFileToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.UploadFileToolStripMenuItem.Text = "Выгрузить";
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Text = "Выход";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // SettingsToolStripMenuItem
             // 
             this.SettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -75,24 +99,6 @@
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
             this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
-            // 
-            // SaveFileToolStripMenuItem
-            // 
-            this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
-            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.SaveFileToolStripMenuItem.Text = "Сохранить";
-            // 
-            // UploadFileToolStripMenuItem
-            // 
-            this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.UploadFileToolStripMenuItem.Text = "Выгрузить";
-            // 
-            // ExitToolStripMenuItem
-            // 
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ExitToolStripMenuItem.Text = "Выход";
             // 
             // MainForm
             // 

@@ -35,8 +35,10 @@
             this.RegistrationButton = new MetroFramework.Controls.MetroButton();
             this.PasswordLabel = new MetroFramework.Controls.MetroLabel();
             this.RecoverPasswordButton = new MetroFramework.Controls.MetroButton();
-            this.RememberCheckBox = new MetroFramework.Controls.MetroCheckBox();
-            this.OfflineCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.RememberToggle = new MetroFramework.Controls.MetroToggle();
+            this.RememberLabel = new MetroFramework.Controls.MetroLabel();
+            this.OfflineLabel = new MetroFramework.Controls.MetroLabel();
+            this.OfflineToggle = new MetroFramework.Controls.MetroToggle();
             this.SuspendLayout();
             // 
             // LoginMailLabel
@@ -54,7 +56,6 @@
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(153, 23);
             this.LoginTextBox.TabIndex = 10;
-            this.LoginTextBox.Text = "Unpoin";
             // 
             // PasswordTextBox
             // 
@@ -63,7 +64,6 @@
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(153, 23);
             this.PasswordTextBox.TabIndex = 11;
-            this.PasswordTextBox.Text = "Kolyanich123";
             // 
             // LoginButton
             // 
@@ -101,33 +101,54 @@
             this.RecoverPasswordButton.Text = "Забыли пароль? ";
             this.RecoverPasswordButton.Click += new System.EventHandler(this.RecoverPasswordButton_Click);
             // 
-            // RememberCheckBox
+            // RememberToggle
             // 
-            this.RememberCheckBox.AutoSize = true;
-            this.RememberCheckBox.Location = new System.Drawing.Point(26, 333);
-            this.RememberCheckBox.Name = "RememberCheckBox";
-            this.RememberCheckBox.Size = new System.Drawing.Size(115, 15);
-            this.RememberCheckBox.TabIndex = 17;
-            this.RememberCheckBox.Text = "Запомнить меня";
-            this.RememberCheckBox.UseVisualStyleBackColor = true;
+            this.RememberToggle.AutoSize = true;
+            this.RememberToggle.Location = new System.Drawing.Point(23, 336);
+            this.RememberToggle.Name = "RememberToggle";
+            this.RememberToggle.Size = new System.Drawing.Size(80, 20);
+            this.RememberToggle.TabIndex = 19;
+            this.RememberToggle.Text = "Off";
+            this.RememberToggle.UseVisualStyleBackColor = true;
+            this.RememberToggle.CheckedChanged += new System.EventHandler(this.RememberToggle_CheckedChanged);
             // 
-            // OfflineCheckBox
+            // RememberLabel
             // 
-            this.OfflineCheckBox.AutoSize = true;
-            this.OfflineCheckBox.Location = new System.Drawing.Point(26, 364);
-            this.OfflineCheckBox.Name = "OfflineCheckBox";
-            this.OfflineCheckBox.Size = new System.Drawing.Size(136, 15);
-            this.OfflineCheckBox.TabIndex = 18;
-            this.OfflineCheckBox.Text = "Работать автономно";
-            this.OfflineCheckBox.UseVisualStyleBackColor = true;
+            this.RememberLabel.AutoSize = true;
+            this.RememberLabel.Location = new System.Drawing.Point(26, 314);
+            this.RememberLabel.Name = "RememberLabel";
+            this.RememberLabel.Size = new System.Drawing.Size(111, 19);
+            this.RememberLabel.TabIndex = 20;
+            this.RememberLabel.Text = "Запомнить меня";
+            // 
+            // OfflineLabel
+            // 
+            this.OfflineLabel.AutoSize = true;
+            this.OfflineLabel.Location = new System.Drawing.Point(23, 362);
+            this.OfflineLabel.Name = "OfflineLabel";
+            this.OfflineLabel.Size = new System.Drawing.Size(135, 19);
+            this.OfflineLabel.TabIndex = 21;
+            this.OfflineLabel.Text = "Работать автономно";
+            // 
+            // OfflineToggle
+            // 
+            this.OfflineToggle.AutoSize = true;
+            this.OfflineToggle.Location = new System.Drawing.Point(23, 384);
+            this.OfflineToggle.Name = "OfflineToggle";
+            this.OfflineToggle.Size = new System.Drawing.Size(80, 20);
+            this.OfflineToggle.TabIndex = 22;
+            this.OfflineToggle.Text = "Off";
+            this.OfflineToggle.UseVisualStyleBackColor = true;
             // 
             // AutorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(220, 419);
-            this.Controls.Add(this.OfflineCheckBox);
-            this.Controls.Add(this.RememberCheckBox);
+            this.Controls.Add(this.OfflineToggle);
+            this.Controls.Add(this.OfflineLabel);
+            this.Controls.Add(this.RememberLabel);
+            this.Controls.Add(this.RememberToggle);
             this.Controls.Add(this.RecoverPasswordButton);
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.RegistrationButton);
@@ -156,7 +177,9 @@
         private MetroFramework.Controls.MetroButton RegistrationButton;
         private MetroFramework.Controls.MetroLabel PasswordLabel;
         private MetroFramework.Controls.MetroButton RecoverPasswordButton;
-        private MetroFramework.Controls.MetroCheckBox RememberCheckBox;
-        private MetroFramework.Controls.MetroCheckBox OfflineCheckBox;
+        private MetroFramework.Controls.MetroToggle RememberToggle;
+        private MetroFramework.Controls.MetroLabel RememberLabel;
+        private MetroFramework.Controls.MetroLabel OfflineLabel;
+        private MetroFramework.Controls.MetroToggle OfflineToggle;
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,6 @@ namespace PcsFileServer
             {
                 get { return mainColor; }
             }
-
 
             public override Color MenuItemBorder
             {
@@ -77,8 +77,20 @@ namespace PcsFileServer
             {
                 get { return mainColor; }
             }
+            public override Color ToolStripContentPanelGradientEnd
+            {
+                get { return mainColor; }
+            }
 
+            public override Color ToolStripPanelGradientBegin
+            {
+                get { return mainColor; }
+            }
 
+            public override Color ToolStripPanelGradientEnd
+            {
+                get { return mainColor; }
+            }
         }
         public MainForm()
         {
@@ -98,6 +110,15 @@ namespace PcsFileServer
         {
             this.components.SetStyleDark(this);
             menuStrip1.Renderer = new ToolStripProfessionalRenderer(new TestColorTable());
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PcsUser.CurrentUser = null;
+            AutorizationForm autorization = new AutorizationForm();
+            this.Hide();
+            autorization.ShowDialog();
+            this.Close();
         }
     }
 }
