@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,14 +14,50 @@ namespace PcsFileServer
         {
             get => context ?? (context = new PcsFileServerEntities1());
         }
-        static string server = @"LAPTOP-G1BKDD1R\\SQLEXPRESS";
-        static string database = "PcsFileServer";
-        static string login = "sa";
-        static string password= "1";
-        public static string Server { get => server; set => server = value; }
-        public static string Database { get => database; set => database = value; }
-        public static string Login { get => login; set => login = value; }
-        public static string Password { get => password; set => password = value; }
-
+        public static string Server
+        {
+            get => Properties.Settings.Default.server;
+            set
+            {
+                Properties.Settings.Default.server = value;
+                Properties.Settings.Default.Save();
+            }
+        }
+        public static string Database
+        {
+            get => Properties.Settings.Default.database;
+            set
+            {
+                Properties.Settings.Default.database = value;
+                Properties.Settings.Default.Save();
+            }
+        }
+        public static string Login
+        {
+            get => Properties.Settings.Default.loginDB;
+            set
+            {
+                Properties.Settings.Default.loginDB = value;
+                Properties.Settings.Default.Save();
+            }
+        }
+        public static string Password
+        {
+            get => Properties.Settings.Default.passwordDB;
+            set
+            {
+                Properties.Settings.Default.passwordDB = value;
+                Properties.Settings.Default.Save();
+            }
+        }
+        public static void ResetConnection()
+        {
+            SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
+            sqlConnection.DataSource = Server;
+            sqlConnection.InitialCatalog = Database;
+            sqlConnection.UserID = Login;
+            sqlConnection.Password = Password;
+            Context.Database.Connection.ConnectionString = sqlConnection.ConnectionString;
+        }
     }
 }

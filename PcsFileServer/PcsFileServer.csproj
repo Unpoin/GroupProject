@@ -76,6 +76,7 @@
     <Compile Include="CapthaHandler.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="IonicZipHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,7 @@
       <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="PcsUser.cs" />
+    <Compile Include="Profiler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecoverForm.cs">

@@ -36,6 +36,7 @@
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateArchiveButton = new MetroFramework.Controls.MetroButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,14 +98,24 @@
             // InfoToolStripMenuItem
             // 
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
+            // 
+            // CreateArchiveButton
+            // 
+            this.CreateArchiveButton.Location = new System.Drawing.Point(23, 87);
+            this.CreateArchiveButton.Name = "CreateArchiveButton";
+            this.CreateArchiveButton.Size = new System.Drawing.Size(90, 31);
+            this.CreateArchiveButton.TabIndex = 1;
+            this.CreateArchiveButton.Text = "Create archive";
+            this.CreateArchiveButton.Click += new System.EventHandler(this.CreateArchiveButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 378);
+            this.Controls.Add(this.CreateArchiveButton);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -129,6 +140,7 @@
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton CreateArchiveButton;
     }
 }
 
