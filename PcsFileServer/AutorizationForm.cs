@@ -82,23 +82,32 @@ namespace PcsFileServer
         {
             this.components.SetStyleDark(this);
             RememberToggle.Checked = Properties.Settings.Default.IsRemember;
-            try
-            {
-                SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
-                Core.Server = @"ROMANUS";
-                Core.Database = @"PcsFileServer";
-                Core.Login = @"sa";
-                Core.Password = @"1";
-                Core.ResetConnection();
-                Core.Context.Database.Connection.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            //try
+            //{
+            //    SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
+            //    Core.Server = @"ROMANUS";
+            //    Core.Database = @"PcsFileServer";
+            //    Core.Login = @"sa";
+            //    Core.Password = @"1";
+            //    Core.ResetConnection();
+            //    Core.Context.Database.Connection.Open();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //Переделать инттро
+            //var introForm = new IntroForm();
+            //introForm.DoWork += LongRunningOperation;
+            //introForm.OnWorkCompleted = (o, args) => MessageBox.Show("Finished!");
+            //introForm.Show();
+            //introForm.Run(); // should execute LongRunningOperation, method below.
         }
-
+        //private void LongRunningOperation(object sender, DoWorkEventArgs e)
+        //{
+        //    var introForm = new IntroForm();
+        //    introForm.Close();
+        //}
         private void RememberToggle_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.IsRemember = RememberToggle.Checked;

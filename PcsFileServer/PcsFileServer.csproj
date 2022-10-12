@@ -76,6 +76,12 @@
     <Compile Include="CapthaHandler.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="IntroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntroForm.Designer.cs">
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IonicZipHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -102,6 +108,11 @@
     <Compile Include="Profiler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RecoverForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,19 +131,17 @@
     <EmbeddedResource Include="AutorizationForm.resx">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IntroForm.resx">
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="RecoverForm.resx">
       <DependentUpon>RecoverForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +184,7 @@
       <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
       <LastGenOutput>PcsFileServerModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\intro_pcs.gif" />
     <None Include="Resources\kisspng-computer-icons-colter-stevens-encapsulated-postscr-change-it-5b491b9bdaf3f5.5842827615315178518968.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

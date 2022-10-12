@@ -153,31 +153,31 @@ namespace PcsFileServer
 
         private void CreateArchiveButton_Click(object sender, EventArgs e)
         {
-            var directory = CreateEmptyDirectory();
-            var zipHelper = new IonicZipHelper();
-            var resultFile = Path.Combine(Directory.GetCurrentDirectory(), "result.txt");
-            if (File.Exists(resultFile))
-                File.Delete(resultFile);
+            //var directory = CreateEmptyDirectory();
+            //var zipHelper = new IonicZipHelper();
+            //var resultFile = Path.Combine(Directory.GetCurrentDirectory(), "result.txt");
+            //if (File.Exists(resultFile))
+            //    File.Delete(resultFile);
 
-            var sourceDirectory = @"C:\Users\Roman\Documents\Case";
-            var size = GetDirectorySize(sourceDirectory);
-            File.AppendAllText(resultFile, string.Format("Directory size {0} bytes {1}", size, Environment.NewLine));
+            //var sourceDirectory = @"C:\Users\Roman\Documents\Case";
+            //var size = GetDirectorySize(sourceDirectory);
+            //File.AppendAllText(resultFile, string.Format("Directory size {0} bytes {1}", size, Environment.NewLine));
 
-            var ionicZlibPacking = "IonicZlibPacking.zip";
+            //var ionicZlibPacking = "IonicZlibPacking.zip";
 
-            string fileName = Path.Combine(directory, ionicZlibPacking);
-            var result = Profiler.MeasureAction(() => zipHelper.CompressionDirectory(fileName,sourceDirectory));
-            File.AppendAllText(resultFile, string.Format("Zip directory with ZipFile {0} msec, Size: {1}{2}",
-                result,
-                new FileInfo(fileName).Length,
-                Environment.NewLine));
-            ///////////////////////////////////
-            var tempFileOne = Path.Combine(directory, Guid.NewGuid().ToString());
-            var tempFileTwo = Path.Combine(directory, Guid.NewGuid().ToString());
-            File.AppendAllText(tempFileOne, "test1");
-            File.AppendAllText(tempFileTwo, "test2");
-            zipHelper.AppendFilesToZip(fileName,
-                new List<string>(new[] { tempFileOne, tempFileTwo }));
+            //string fileName = Path.Combine(directory, ionicZlibPacking);
+            //var result = Profiler.MeasureAction(() => zipHelper.CompressionDirectory(fileName,sourceDirectory));
+            //File.AppendAllText(resultFile, string.Format("Zip directory with ZipFile {0} msec, Size: {1}{2}",
+            //    result,
+            //    new FileInfo(fileName).Length,
+            //    Environment.NewLine));
+            /////////////////////////////////////
+            //var tempFileOne = Path.Combine(directory, Guid.NewGuid().ToString());
+            //var tempFileTwo = Path.Combine(directory, Guid.NewGuid().ToString());
+            //File.AppendAllText(tempFileOne, "test1");
+            //File.AppendAllText(tempFileTwo, "test2");
+            //zipHelper.AppendFilesToZip(fileName,
+            //    new List<string>(new[] { tempFileOne, tempFileTwo }));
         }
     }
 }

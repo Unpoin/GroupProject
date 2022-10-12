@@ -59,16 +59,5 @@ namespace PcsFileServer.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap kisspng_computer_icons_colter_stevens_encapsulated_postscr_change_it_5b491b9bdaf3f5_5842827615315178518968 {
-            get {
-                object obj = ResourceManager.GetObject("kisspng-computer-icons-colter-stevens-encapsulated-postscr-change-it-5b491b9bdaf3" +
-                        "f5.5842827615315178518968", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
