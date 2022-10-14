@@ -145,8 +145,8 @@ namespace PcsFileServer
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PcsUser.CurrentUser = null;
-            AutorizationForm autorization = new AutorizationForm();
             this.Hide();
+            AutorizationForm autorization = new AutorizationForm();
             autorization.ShowDialog();
             this.Close();
         }

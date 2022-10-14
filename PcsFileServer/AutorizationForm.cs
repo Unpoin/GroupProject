@@ -1,27 +1,47 @@
 ﻿using MetroFramework.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
+
 namespace PcsFileServer
 {
-    public partial class AutorizationForm : MetroForm
+    public partial class AutorizationForm : MetroForm 
     {
+        public void Intro()
+        {
+            try
+            {
+                IntroForm frm = new IntroForm();
+                Application.Run(frm);
+            }
+            catch (ThreadAbortException)
+            {
+                Thread.ResetAbort();
+            }
+        }
         public AutorizationForm()
         {
-            InitializeComponent();
-            LoginTextBox.Text = Properties.Settings.Default.Login;
-            PasswordTextBox.Text = Properties.Settings.Default.Password;
+            try
+            {//2 Варианта использовать цикл или трид слип ..
+                Thread t = new Thread(Intro);
+                t.Start();
+                //Thread.Sleep(2500);
+                InitializeComponent();
+                string str = string.Empty;
+                for (int i = 0; i < 49000; i++)
+                {
+                    str += i.ToString();
+                }
+                t.Abort();
+                LoginTextBox.Text = Properties.Settings.Default.Login;
+                PasswordTextBox.Text = Properties.Settings.Default.Password;
+            }
+            catch { }
         }
-
+        
         private void SignUpButton_Click(object sender, EventArgs e)
         {
             RegistrationForm form = new RegistrationForm();
