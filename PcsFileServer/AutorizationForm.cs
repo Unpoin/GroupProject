@@ -28,16 +28,16 @@ namespace PcsFileServer
             {//2 Варианта использовать цикл или трид слип ..
                 Thread t = new Thread(Intro);
                 t.Start();
-                //Thread.Sleep(2500);
+                Thread.Sleep(5000);
                 InitializeComponent();
-                string str = string.Empty;
-                for (int i = 0; i < 49000; i++)
-                {
-                    str += i.ToString();
-                }
-                t.Abort();
+                //string str = string.Empty;
+                //for (int i = 0; i < 49000; i++)
+                //{
+                //    str += i.ToString();
+                //}
                 LoginTextBox.Text = Properties.Settings.Default.Login;
                 PasswordTextBox.Text = Properties.Settings.Default.Password;
+                t.Abort();
             }
             catch { }
         }

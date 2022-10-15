@@ -43,6 +43,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.SettingsToolStripMenuItem});
@@ -55,10 +56,12 @@
             // 
             // FileToolStripMenuItem
             // 
+            this.FileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SaveFileToolStripMenuItem,
             this.UploadFileToolStripMenuItem,
             this.ExitToolStripMenuItem});
+            this.FileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.FileToolStripMenuItem.Text = "Файл";
@@ -66,37 +69,47 @@
             // SaveFileToolStripMenuItem
             // 
             this.SaveFileToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.SaveFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SaveFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SaveFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
-            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveFileToolStripMenuItem.Text = "Сохранить";
             this.SaveFileToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // UploadFileToolStripMenuItem
             // 
             this.UploadFileToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.UploadFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.UploadFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.UploadFileToolStripMenuItem.Text = "Выгрузить";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.ExitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ExitToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // SettingsToolStripMenuItem
             // 
+            this.SettingsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InfoToolStripMenuItem});
+            this.SettingsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
             this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.SettingsToolStripMenuItem.Text = "Настройки";
             // 
             // InfoToolStripMenuItem
             // 
+            this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
             this.InfoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.InfoToolStripMenuItem.Text = "О программе";

@@ -28,56 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MailLabel = new System.Windows.Forms.Label();
-            this.MailTextBox = new System.Windows.Forms.TextBox();
-            this.RecoverButton = new System.Windows.Forms.Button();
+            this.MailLabel = new MetroFramework.Controls.MetroLabel();
+            this.MailTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.RecoverButton = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // MailLabel
             // 
             this.MailLabel.AutoSize = true;
-            this.MailLabel.Location = new System.Drawing.Point(73, 38);
-            this.MailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.MailLabel.Location = new System.Drawing.Point(47, 79);
             this.MailLabel.Name = "MailLabel";
-            this.MailLabel.Size = new System.Drawing.Size(126, 16);
-            this.MailLabel.TabIndex = 0;
+            this.MailLabel.Size = new System.Drawing.Size(123, 19);
+            this.MailLabel.TabIndex = 3;
             this.MailLabel.Text = "Введите ваш Email";
             // 
             // MailTextBox
             // 
-            this.MailTextBox.Location = new System.Drawing.Point(34, 80);
-            this.MailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MailTextBox.Location = new System.Drawing.Point(27, 112);
             this.MailTextBox.Name = "MailTextBox";
-            this.MailTextBox.Size = new System.Drawing.Size(214, 23);
-            this.MailTextBox.TabIndex = 1;
+            this.MailTextBox.Size = new System.Drawing.Size(170, 23);
+            this.MailTextBox.TabIndex = 4;
             this.MailTextBox.Text = "dirofeev220@mail.ru";
             // 
             // RecoverButton
             // 
-            this.RecoverButton.Location = new System.Drawing.Point(76, 126);
-            this.RecoverButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RecoverButton.Location = new System.Drawing.Point(57, 167);
             this.RecoverButton.Name = "RecoverButton";
-            this.RecoverButton.Size = new System.Drawing.Size(123, 28);
-            this.RecoverButton.TabIndex = 2;
+            this.RecoverButton.Size = new System.Drawing.Size(101, 23);
+            this.RecoverButton.TabIndex = 5;
             this.RecoverButton.Text = "Восстановить";
-            this.RecoverButton.UseVisualStyleBackColor = true;
             this.RecoverButton.Click += new System.EventHandler(this.RecoverButton_Click);
             // 
             // RecoverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(279, 228);
+            this.ClientSize = new System.Drawing.Size(229, 228);
             this.Controls.Add(this.RecoverButton);
             this.Controls.Add(this.MailTextBox);
             this.Controls.Add(this.MailLabel);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RecoverForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Восстановление";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -85,11 +80,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label MailLabel;
-        private System.Windows.Forms.TextBox MailTextBox;
-        private System.Windows.Forms.Button RecoverButton;
-
-
+        private MetroFramework.Controls.MetroLabel MailLabel;
+        private MetroFramework.Controls.MetroTextBox MailTextBox;
+        private MetroFramework.Controls.MetroButton RecoverButton;
     }
 }

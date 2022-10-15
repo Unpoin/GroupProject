@@ -9,16 +9,18 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace PcsFileServer
 {
-    public partial class RecoverForm : Form
+    public partial class RecoverForm : MetroForm
     {
         //icqbqthqpmhvidqb ya pass
 
         public RecoverForm()
         {
             InitializeComponent();
+            this.components.SetStyleDark(this);
         }
 
         private void RecoverButton_Click(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace PcsFileServer
                 // тема письма
                 m.Subject = "Тест";
                 // текст письма
-                m.Body = "<h2>Коля лох цветочный</h2>";
+                m.Body = "<h2>Ваш код для восстановления пароля:</h2>";
                 // письмо представляет код html
                 m.IsBodyHtml = true;
                 // адрес smtp-сервера и порт, с которого будем отправлять письмо
@@ -50,7 +52,6 @@ namespace PcsFileServer
             {
                 MessageBox.Show(ex.Message);
             }
-           
         }
     }
 }
