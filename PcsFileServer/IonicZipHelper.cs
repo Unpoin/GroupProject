@@ -2,6 +2,7 @@
 using Ionic.Zlib;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace PcsFileServer
 {
@@ -23,7 +24,9 @@ namespace PcsFileServer
             List<string> appendFiles,
             CompressionLevel compressionLevel = CompressionLevel.Default)
         {
-            using (var zipFile = ZipFile.Read(fileName))
+            var options = new ReadOptions();
+            options.Encoding = Encoding.UTF8;
+            using (var zipFile = ZipFile.Read(fileName, options))
             {
                 zipFile.CompressionLevel = compressionLevel;
                 zipFile.AddFiles(appendFiles, "\\");

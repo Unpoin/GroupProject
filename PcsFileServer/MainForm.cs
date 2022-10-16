@@ -1,4 +1,5 @@
-﻿using MetroFramework.Forms;
+﻿using Ionic.Zip;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PcsFileServer
 {
@@ -93,10 +95,11 @@ namespace PcsFileServer
                 get { return mainColor; }
             }
         }
+        string directoryPath = @"E:\FileTemp";
         public MainForm()
         {
             InitializeComponent();
-            menuStrip1.ForeColor
+            mainMenuStrip.ForeColor
                 = FileToolStripMenuItem.ForeColor
                 = UploadFileToolStripMenuItem.ForeColor
                 = ExitToolStripMenuItem.ForeColor
@@ -104,7 +107,7 @@ namespace PcsFileServer
                 = SettingsToolStripMenuItem.ForeColor
                 = InfoToolStripMenuItem.ForeColor
                 = Color.Silver;
-            menuStrip1.BackColor = Color.Transparent;
+            mainMenuStrip.BackColor = Color.Transparent;
            
         }
         private static void DeleteTempDirectory()
@@ -116,7 +119,7 @@ namespace PcsFileServer
 
         private static string CreateEmptyDirectory()
         {
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "TestArchives");
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
             else
@@ -136,10 +139,42 @@ namespace PcsFileServer
 
             return a.Select(name => new FileInfo(name)).Select(info => info.Length).Sum();
         }
+        void ViewDirectiryList()
+        {
+            LocalListView.Items.Clear();
+            ImageList imageList = new ImageList();
+            imageList.ImageSize = new Size(30, 30);
+            imageList.Images.Add(new Bitmap(@"C:\Users\Roman\Downloads\file.png"));
+            LocalListView.SmallImageList = imageList;
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            var ionicZlibPacking = "PcsFileServer.zip";
+            string fileName = Path.Combine(directory, ionicZlibPacking);
+            var options = new ReadOptions();
+            options.Encoding = Encoding.UTF8;
+            using (ZipFile zip = ZipFile.Read(fileName, options))
+            {
+                foreach (ZipEntry zipEntry in zip)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = zipEntry.FileName.Split('/')[0];
+                    lvi.ImageIndex = 0;
+                    LocalListView.Items.Add(lvi);
+                }
+            }
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.components.SetStyleDark(this);
-            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new TestColorTable());
+            mainMenuStrip.Renderer = new ToolStripProfessionalRenderer(new TestColorTable());
+            //на форме авторизации добавлять архив для пользователя если архива для него еще не существует
+            //var directory = CreateEmptyDirectory();
+            //var zipHelper = new IonicZipHelper();
+            //var sourceDirecory = directoryPath;
+            //var size = GetDirectorySize(sourceDirecory);
+            //var ionicZlibPacking = "PcsFileServer.zip";
+            //string fileName = Path.Combine(directory, ionicZlibPacking);
+            //var result = Profiler.MeasureAction(() => zipHelper.CompressionDirectory(fileName, sourceDirecory));
+            ViewDirectiryList();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -151,33 +186,19 @@ namespace PcsFileServer
             this.Close();
         }
 
-        private void CreateArchiveButton_Click(object sender, EventArgs e)
+        private void LoadButton_Click(object sender, EventArgs e)
         {
-            //var directory = CreateEmptyDirectory();
-            //var zipHelper = new IonicZipHelper();
-            //var resultFile = Path.Combine(Directory.GetCurrentDirectory(), "result.txt");
-            //if (File.Exists(resultFile))
-            //    File.Delete(resultFile);
-
-            //var sourceDirectory = @"C:\Users\Roman\Documents\Case";
-            //var size = GetDirectorySize(sourceDirectory);
-            //File.AppendAllText(resultFile, string.Format("Directory size {0} bytes {1}", size, Environment.NewLine));
-
-            //var ionicZlibPacking = "IonicZlibPacking.zip";
-
-            //string fileName = Path.Combine(directory, ionicZlibPacking);
-            //var result = Profiler.MeasureAction(() => zipHelper.CompressionDirectory(fileName,sourceDirectory));
-            //File.AppendAllText(resultFile, string.Format("Zip directory with ZipFile {0} msec, Size: {1}{2}",
-            //    result,
-            //    new FileInfo(fileName).Length,
-            //    Environment.NewLine));
-            /////////////////////////////////////
-            //var tempFileOne = Path.Combine(directory, Guid.NewGuid().ToString());
-            //var tempFileTwo = Path.Combine(directory, Guid.NewGuid().ToString());
-            //File.AppendAllText(tempFileOne, "test1");
-            //File.AppendAllText(tempFileTwo, "test2");
-            //zipHelper.AppendFilesToZip(fileName,
-            //    new List<string>(new[] { tempFileOne, tempFileTwo }));
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            var zipHelper = new IonicZipHelper();
+            var ionicZlibPacking = "PcsFileServer.zip";
+            string fileName = Path.Combine(directory, ionicZlibPacking);
+            OpenFileDialog dialog = new OpenFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                zipHelper.AppendFilesToZip(fileName,
+                new List<string>(new[] { dialog.FileName }));
+            }
+            ViewDirectiryList();
         }
     }
 }

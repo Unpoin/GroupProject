@@ -1,5 +1,6 @@
 ﻿using MetroFramework.Forms;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -10,36 +11,16 @@ namespace PcsFileServer
 {
     public partial class AutorizationForm : MetroForm 
     {
-        public void Intro()
-        {
-            try
-            {
-                IntroForm frm = new IntroForm();
-                Application.Run(frm);
-            }
-            catch (ThreadAbortException)
-            {
-                Thread.ResetAbort();
-            }
-        }
         public AutorizationForm()
         {
             try
-            {//2 Варианта использовать цикл или трид слип ..
-                Thread t = new Thread(Intro);
-                t.Start();
-                Thread.Sleep(5000);
+            {
                 InitializeComponent();
-                //string str = string.Empty;
-                //for (int i = 0; i < 49000; i++)
-                //{
-                //    str += i.ToString();
-                //}
                 LoginTextBox.Text = Properties.Settings.Default.Login;
                 PasswordTextBox.Text = Properties.Settings.Default.Password;
-                t.Abort();
+                
             }
-            catch { }
+            catch(Exception) { }
         }
         
         private void SignUpButton_Click(object sender, EventArgs e)
@@ -100,22 +81,39 @@ namespace PcsFileServer
 
         private void AutorizationForm_Load(object sender, EventArgs e)
         {
+            Hide();
+            bool done = false;
+            ThreadPool.QueueUserWorkItem((x) =>
+            {
+                using (var introForm = new IntroForm())
+                {
+                    introForm.Show();
+                    while (!done)
+                        Application.DoEvents();
+                    introForm.Close();
+                }
+            });
+
+            Thread.Sleep(5000); 
+            done = true;
+            Show();
+
             this.components.SetStyleDark(this);
             RememberToggle.Checked = Properties.Settings.Default.IsRemember;
-            //try
-            //{
-            //    SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
-            //    Core.Server = @"ROMANUS";
-            //    Core.Database = @"PcsFileServer";
-            //    Core.Login = @"sa";
-            //    Core.Password = @"1";
-            //    Core.ResetConnection();
-            //    Core.Context.Database.Connection.Open();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            try
+            {
+                SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
+                Core.Server = @"ROMANUS";
+                Core.Database = @"PcsFileServer";
+                Core.Login = @"sa";
+                Core.Password = @"1";
+                Core.ResetConnection();
+                Core.Context.Database.Connection.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             //Переделать инттро
             //var introForm = new IntroForm();
             //introForm.DoWork += LongRunningOperation;
