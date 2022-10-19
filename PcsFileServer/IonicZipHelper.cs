@@ -24,14 +24,18 @@ namespace PcsFileServer
             List<string> appendFiles,
             CompressionLevel compressionLevel = CompressionLevel.Default)
         {
-            var options = new ReadOptions();
-            options.Encoding = Encoding.UTF8;
-            using (var zipFile = ZipFile.Read(fileName, options))
+            try
             {
-                zipFile.CompressionLevel = compressionLevel;
-                zipFile.AddFiles(appendFiles, "\\");
-                zipFile.Save();
+                var options = new ReadOptions();
+                options.Encoding = Encoding.UTF8;
+                using (var zipFile = ZipFile.Read(fileName, options))
+                {
+                    zipFile.CompressionLevel = compressionLevel;
+                    zipFile.AddFiles(appendFiles, "\\");
+                    zipFile.Save();
+                }
             }
+            catch (Exception){ }
         }
 
         public void AppendFilesToZipFromArray(string fileName,

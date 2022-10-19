@@ -1,6 +1,8 @@
 ﻿using Ionic.Zip;
 using MetroFramework.Forms;
+using PcsFileServer.Properties;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PcsFileServer
@@ -95,7 +98,6 @@ namespace PcsFileServer
                 get { return mainColor; }
             }
         }
-        string directoryPath = @"E:\FileTemp";
         public MainForm()
         {
             InitializeComponent();
@@ -116,50 +118,77 @@ namespace PcsFileServer
             if (Directory.Exists(directory))
                 Directory.Delete(directory, true);
         }
-
-        private static string CreateEmptyDirectory()
+        //Path.GetExtension(file)
+        int GetImageIndex(string filename)
         {
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            if (!Directory.Exists(directory))
-                Directory.CreateDirectory(directory);
-            else
+            switch(Path.GetExtension(filename))
             {
-                var files = Directory.GetFiles(directory);
-                foreach (var file in files)
-                {
-                    File.Delete(file);
-                }
+                case ".txt":
+                case ".docx":
+                case ".pdf":
+                case ".doc":
+                case ".rtf":
+                    return 0;
+                case ".png":
+                case ".jpeg":
+                case ".bmp":
+                case ".gif":
+                case ".psd":
+                case ".tiff":
+                    return 1;
+                case ".mp3":
+                case ".aac":
+                case ".wma":
+                case ".wav":
+                case ".flac":
+                case ".mp4":
+                case ".avi":
+                case ".mkv":
+                case ".wmv":
+                case ".flv":
+                case ".mpeg":
+                case ".svf":
+                    return 2;
+                case ".exe":
+                    return 3;
+                default:
+                    return 4;
+
             }
-            return directory;
+
         }
 
-        static long GetDirectorySize(string path)
-        {
-            var a = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
-
-            return a.Select(name => new FileInfo(name)).Select(info => info.Length).Sum();
-        }
         void ViewDirectiryList()
         {
             LocalListView.Items.Clear();
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(30, 30);
-            imageList.Images.Add(new Bitmap(@"C:\Users\Roman\Downloads\file.png"));
+            imageList.Images.Add(Properties.Resources.text);
+            imageList.Images.Add(Properties.Resources.picturefileicon);
+            imageList.Images.Add(Properties.Resources.mediafile);
+            imageList.Images.Add(Properties.Resources.fileexeicon);
+            imageList.Images.Add(Properties.Resources.emptyfileicon);
             LocalListView.SmallImageList = imageList;
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            var ionicZlibPacking = "PcsFileServer.zip";
-            string fileName = Path.Combine(directory, ionicZlibPacking);
+            string directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
             var options = new ReadOptions();
             options.Encoding = Encoding.UTF8;
-            using (ZipFile zip = ZipFile.Read(fileName, options))
+            try
             {
-                foreach (ZipEntry zipEntry in zip)
+                using (ZipFile zip = ZipFile.Read(fileName, options))
                 {
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = zipEntry.FileName.Split('/')[0];
-                    lvi.ImageIndex = 0;
-                    LocalListView.Items.Add(lvi);
+                    foreach (ZipEntry zipEntry in zip)
+                    {
+                        ListViewItem lvi = new ListViewItem();
+                        lvi.Text = zipEntry.FileName.Split('/')[0];
+                        lvi.ImageIndex = GetImageIndex(zipEntry.FileName);
+                        LocalListView.Items.Add(lvi);
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         private void MainForm_Load(object sender, EventArgs e)
@@ -188,15 +217,24 @@ namespace PcsFileServer
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            List<string> fileList = new List<string>();
+            //var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
             var zipHelper = new IonicZipHelper();
-            var ionicZlibPacking = "PcsFileServer.zip";
-            string fileName = Path.Combine(directory, ionicZlibPacking);
+            //var ionicZlibPacking = "PcsFileServer.zip";
+            //string fileName = Path.Combine(directory, ionicZlibPacking);
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = true;
+            var opt = new ReadOptions();
+            opt.Encoding = Encoding.UTF8;
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                zipHelper.AppendFilesToZip(fileName,
-                new List<string>(new[] { dialog.FileName }));
+                foreach (string file in dialog.FileNames)
+                {
+                    fileList.Add(file);
+                }
+                zipHelper.AppendFilesToZip(fileName, fileList);
             }
             ViewDirectiryList();
         }

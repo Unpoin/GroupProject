@@ -1,6 +1,7 @@
 ﻿using MetroFramework.Forms;
 using System;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -28,7 +29,27 @@ namespace PcsFileServer
             RegistrationForm form = new RegistrationForm();
             form.ShowDialog();
         }
+        private static string CreateEmptyDirectory()
+        {
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+            //else
+            //{
+            //    var files = Directory.GetFiles(directory);
+            //    foreach (var file in files)
+            //    {
+            //        File.Delete(file);
+            //    }
+            //}
+            return directory;
+        }
+        static long GetDirectorySize(string path)
+        {
+            var a = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
 
+            return a.Select(name => new FileInfo(name)).Select(info => info.Length).Sum();
+        }
         private void LoginButton_Click(object sender, EventArgs e)
         {
             try
@@ -43,6 +64,22 @@ namespace PcsFileServer
                 }
                 MessageBox.Show("Добро пожаловать!");
                 PcsUser.CurrentUser = user;
+                try
+                {
+
+                    Properties.Settings.Default.ionicZlibPackingName = Convert.ToString(user.Login + ".zip");
+                    //string directoryPath = @"C:\FileTemp";
+                    var directory = CreateEmptyDirectory();
+                    var zipHelper = new IonicZipHelper();
+                    var sourceDirecory = @"C:\FileTemp";
+                    var size = GetDirectorySize(sourceDirecory);
+                    string fileName = Path.Combine(directory, Properties.Settings.Default.ionicZlibPackingName);
+                    var result = Profiler.MeasureAction(() => zipHelper.CompressionDirectory(fileName, sourceDirecory));
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось создать архив");
+                }
                 if (Properties.Settings.Default.IsRemember == true)
                 {
                     Properties.Settings.Default.Login = LoginTextBox.Text;
@@ -100,32 +137,21 @@ namespace PcsFileServer
 
             this.components.SetStyleDark(this);
             RememberToggle.Checked = Properties.Settings.Default.IsRemember;
-            try
-            {
-                SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
-                Core.Server = @"ROMANUS";
-                Core.Database = @"PcsFileServer";
-                Core.Login = @"sa";
-                Core.Password = @"1";
-                Core.ResetConnection();
-                Core.Context.Database.Connection.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            //Переделать инттро
-            //var introForm = new IntroForm();
-            //introForm.DoWork += LongRunningOperation;
-            //introForm.OnWorkCompleted = (o, args) => MessageBox.Show("Finished!");
-            //introForm.Show();
-            //introForm.Run(); // should execute LongRunningOperation, method below.
+            //try
+            //{
+            //    SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
+            //    Core.Server = @"ROMANUS";
+            //    Core.Database = @"PcsFileServer";
+            //    Core.Login = @"sa";
+            //    Core.Password = @"1";
+            //    Core.ResetConnection();
+            //    Core.Context.Database.Connection.Open();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
-        //private void LongRunningOperation(object sender, DoWorkEventArgs e)
-        //{
-        //    var introForm = new IntroForm();
-        //    introForm.Close();
-        //}
         private void RememberToggle_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.IsRemember = RememberToggle.Checked;

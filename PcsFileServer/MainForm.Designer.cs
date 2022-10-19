@@ -114,7 +114,7 @@
             this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
             // 
             // LocalListView
@@ -128,7 +128,7 @@
             this.LocalListView.Size = new System.Drawing.Size(363, 452);
             this.LocalListView.TabIndex = 4;
             this.LocalListView.UseCompatibleStateImageBehavior = false;
-            this.LocalListView.View = System.Windows.Forms.View.SmallIcon;
+            this.LocalListView.View = System.Windows.Forms.View.List;
             // 
             // LoadButton
             // 

@@ -129,6 +129,7 @@
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(217, 23);
             this.LoginTextBox.TabIndex = 29;
+            this.LoginTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LoginTextBox_KeyPress);
             // 
             // PasswordTextBox
             // 
@@ -171,16 +172,16 @@
             // 
             // RegistrationButton
             // 
-            this.RegistrationButton.Location = new System.Drawing.Point(225, 349);
+            this.RegistrationButton.Location = new System.Drawing.Point(127, 354);
             this.RegistrationButton.Name = "RegistrationButton";
             this.RegistrationButton.Size = new System.Drawing.Size(270, 48);
             this.RegistrationButton.TabIndex = 35;
             this.RegistrationButton.Text = "Зарегистрироваться";
-            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click_1);
+            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // CapthaTextBox
             // 
-            this.CapthaTextBox.Location = new System.Drawing.Point(13, 374);
+            this.CapthaTextBox.Location = new System.Drawing.Point(326, 300);
             this.CapthaTextBox.Name = "CapthaTextBox";
             this.CapthaTextBox.Size = new System.Drawing.Size(83, 23);
             this.CapthaTextBox.TabIndex = 36;
@@ -188,7 +189,7 @@
             // w
             // 
             this.w.AutoSize = true;
-            this.w.Location = new System.Drawing.Point(13, 349);
+            this.w.Location = new System.Drawing.Point(326, 275);
             this.w.Name = "w";
             this.w.Size = new System.Drawing.Size(50, 19);
             this.w.TabIndex = 37;
@@ -220,7 +221,9 @@
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(519, 425);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(519, 425);
             this.Name = "RegistrationForm";
             this.Text = "Регистрация";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);

@@ -40,8 +40,7 @@ namespace PcsFileServer
         {
             CaptchaPictureBox.Image = CapthaHandler.CreateImage(200, 70);
         }
-
-        private void RegistrationButton_Click_1(object sender, EventArgs e)
+        private void RegistrationButton_Click(object sender, EventArgs e)
         {
             if (CapthaTextBox.Text == CapthaHandler.Text)
             {
@@ -82,6 +81,8 @@ namespace PcsFileServer
                     }
                     else
                     {
+                        CaptchaPictureBox.Image = CapthaHandler.CreateImage(200, 70);
+                        CapthaTextBox.Text = "";
                         MessageBox.Show("Неккоректно введены данные");
                     }
                 }
@@ -89,7 +90,6 @@ namespace PcsFileServer
                 {
                     MessageBox.Show(ex.Message);
                 }
-
             }
             else
             {

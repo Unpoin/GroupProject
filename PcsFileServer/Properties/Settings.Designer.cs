@@ -106,5 +106,17 @@ namespace PcsFileServer.Properties {
                 this["passwordDB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ionicZlibPackingName {
+            get {
+                return ((string)(this["ionicZlibPackingName"]));
+            }
+            set {
+                this["ionicZlibPackingName"] = value;
+            }
+        }
     }
 }

@@ -188,6 +188,12 @@
       <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
       <LastGenOutput>PcsFileServerModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\mediafile.png" />
+    <None Include="Resources\picturefileicon.png" />
+    <None Include="Resources\text.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\fileexeicon.png" />
+    <None Include="Resources\emptyfileicon.png" />
     <None Include="Resources\intro_pcs.gif" />
     <None Include="Resources\kisspng-computer-icons-colter-stevens-encapsulated-postscr-change-it-5b491b9bdaf3f5.5842827615315178518968.jpg" />
   </ItemGroup>

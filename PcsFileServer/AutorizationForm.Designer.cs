@@ -159,6 +159,7 @@
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(220, 419);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(220, 400);
             this.Name = "AutorizationForm";
