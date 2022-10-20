@@ -132,7 +132,7 @@
             // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(23, 109);
+            this.LoadButton.Location = new System.Drawing.Point(20, 109);
             this.LoadButton.Name = "LoadButton";
             this.LoadButton.Size = new System.Drawing.Size(99, 23);
             this.LoadButton.TabIndex = 6;
@@ -141,7 +141,7 @@
             // 
             // DownloadButton
             // 
-            this.DownloadButton.Location = new System.Drawing.Point(156, 109);
+            this.DownloadButton.Location = new System.Drawing.Point(119, 109);
             this.DownloadButton.Name = "DownloadButton";
             this.DownloadButton.Size = new System.Drawing.Size(99, 23);
             this.DownloadButton.TabIndex = 7;
@@ -149,11 +149,12 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(287, 109);
+            this.DeleteButton.Location = new System.Drawing.Point(218, 109);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(99, 23);
             this.DeleteButton.TabIndex = 8;
             this.DeleteButton.Text = "Удалить";
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // MainForm
             // 

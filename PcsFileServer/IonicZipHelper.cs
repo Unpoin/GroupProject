@@ -15,6 +15,7 @@ namespace PcsFileServer
             using (var zipFile = new ZipFile(fileName))
             {
                 zipFile.CompressionLevel = compressionLevel;
+                zipFile.Password = "a1sda42kld31sa987e2";
                 zipFile.AddDirectory(sourceDirectory, "\\");
                 zipFile.Save();
             }
@@ -31,6 +32,7 @@ namespace PcsFileServer
                 using (var zipFile = ZipFile.Read(fileName, options))
                 {
                     zipFile.CompressionLevel = compressionLevel;
+                    zipFile.Password = "a1sda42kld31sa987e2";
                     zipFile.AddFiles(appendFiles, "\\");
                     zipFile.Save();
                 }
@@ -62,6 +64,16 @@ namespace PcsFileServer
                 foreach (var e in zip)
                 {
                     e.Extract(outFolder, ExtractExistingFileAction.OverwriteSilently);
+                }
+            }
+        }
+        public void ExtractZipWithPassword(string fileName, string outFolder)
+        {
+            using (var zip = ZipFile.Read(fileName))
+            {
+                foreach (var e in zip)
+                {
+                    e.ExtractWithPassword("a1sda42kld31sa987e2", outFolder);
                 }
             }
         }
