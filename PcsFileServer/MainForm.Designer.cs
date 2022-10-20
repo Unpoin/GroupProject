@@ -53,7 +53,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(20, 60);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.mainMenuStrip.Size = new System.Drawing.Size(905, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(753, 24);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -76,7 +76,7 @@
             this.SaveFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SaveFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
-            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveFileToolStripMenuItem.Text = "Сохранить";
             this.SaveFileToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
@@ -86,7 +86,7 @@
             this.UploadFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.UploadFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.UploadFileToolStripMenuItem.Text = "Выгрузить";
             // 
             // ExitToolStripMenuItem
@@ -95,7 +95,7 @@
             this.ExitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.ExitToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -160,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 597);
+            this.ClientSize = new System.Drawing.Size(793, 597);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.DownloadButton);
             this.Controls.Add(this.LoadButton);
@@ -169,7 +169,7 @@
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.MainForm_Load);

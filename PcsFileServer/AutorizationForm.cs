@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using MetroFramework;
 using System;
 using System.Data.SqlClient;
 using System.IO;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-
 
 namespace PcsFileServer
 {
@@ -70,15 +70,14 @@ namespace PcsFileServer
                     Properties.Settings.Default.ionicZlibPackingName = Convert.ToString(user.Login + ".zip");
                     //string directoryPath = @"C:\FileTemp";
                     var directory = CreateEmptyDirectory();
-                    var zipHelper = new IonicZipHelper();
                     var sourceDirecory = @"C:\FileTemp";
                     var size = GetDirectorySize(sourceDirecory);
                     string fileName = Path.Combine(directory, Properties.Settings.Default.ionicZlibPackingName);
-                    var result = Profiler.MeasureAction(() => zipHelper.CompressionDirectory(fileName, sourceDirecory));
+                    var result = Profiler.MeasureAction(() => IonicZipHelper.CompressionDirectory(fileName, sourceDirecory));
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не удалось создать архив");
+                    MessageBox.Show(ex.Message, "Не удалось создать архив") ;
                 }
                 if (Properties.Settings.Default.IsRemember == true)
                 {

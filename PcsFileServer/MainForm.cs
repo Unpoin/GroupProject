@@ -112,12 +112,12 @@ namespace PcsFileServer
             mainMenuStrip.BackColor = Color.Transparent;
            
         }
-        private static void DeleteTempDirectory()
-        {
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "TestArchives");
-            if (Directory.Exists(directory))
-                Directory.Delete(directory, true);
-        }
+        //private static void DeleteTempDirectory()
+        //{
+        //    var directory = Path.Combine(Directory.GetCurrentDirectory(), "TestArchives");
+        //    if (Directory.Exists(directory))
+        //        Directory.Delete(directory, true);
+        //}
         //Path.GetExtension(file)
         int GetImageIndex(string filename)
         {
@@ -153,9 +153,7 @@ namespace PcsFileServer
                     return 3;
                 default:
                     return 4;
-
             }
-
         }
 
         void ViewDirectiryList()
@@ -163,11 +161,11 @@ namespace PcsFileServer
             LocalListView.Items.Clear();
             ImageList imageList = new ImageList();
             imageList.ImageSize = new Size(30, 30);
-            imageList.Images.Add(Properties.Resources.text);
-            imageList.Images.Add(Properties.Resources.picturefileicon);
-            imageList.Images.Add(Properties.Resources.mediafile);
-            imageList.Images.Add(Properties.Resources.fileexeicon);
-            imageList.Images.Add(Properties.Resources.emptyfileicon);
+            imageList.Images.Add(Resources.text);
+            imageList.Images.Add(Resources.picturefileicon);
+            imageList.Images.Add(Resources.mediafile);
+            imageList.Images.Add(Resources.fileexeicon);
+            imageList.Images.Add(Resources.emptyfileicon);
             LocalListView.SmallImageList = imageList;
             string directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
             string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
@@ -195,14 +193,6 @@ namespace PcsFileServer
         {
             this.components.SetStyleDark(this);
             mainMenuStrip.Renderer = new ToolStripProfessionalRenderer(new TestColorTable());
-            //на форме авторизации добавлять архив для пользователя если архива для него еще не существует
-            //var directory = CreateEmptyDirectory();
-            //var zipHelper = new IonicZipHelper();
-            //var sourceDirecory = directoryPath;
-            //var size = GetDirectorySize(sourceDirecory);
-            //var ionicZlibPacking = "PcsFileServer.zip";
-            //string fileName = Path.Combine(directory, ionicZlibPacking);
-            //var result = Profiler.MeasureAction(() => zipHelper.CompressionDirectory(fileName, sourceDirecory));
             ViewDirectiryList();
         }
 
@@ -219,7 +209,6 @@ namespace PcsFileServer
         {
             List<string> fileList = new List<string>();
             //var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            var zipHelper = new IonicZipHelper();
             //var ionicZlibPacking = "PcsFileServer.zip";
             //string fileName = Path.Combine(directory, ionicZlibPacking);
             OpenFileDialog dialog = new OpenFileDialog();
@@ -234,14 +223,26 @@ namespace PcsFileServer
                 {
                     fileList.Add(file);
                 }
-                zipHelper.AppendFilesToZip(fileName, fileList);
+                IonicZipHelper.AppendFilesToZip(fileName, fileList);
             }
             ViewDirectiryList();
         }
+            ////LocalListView.SelectedItems[1].Text;
 
+            //foreach (var item in LocalListView.SelectedItems[0].Text)
+            //{
+            //    fileListToDelete.Add(Convert.ToString(item));
+            //}
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            
+            List<string> fileListToDelete = new List<string>();
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
+            for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+            {
+                fileListToDelete.Add(LocalListView.SelectedItems[i].Text);
+            }
+            IonicZipHelper.DeleteFilesFromZip(directory, fileName, fileListToDelete, "a1sda42kld31sa987e2");
         }
     }
 }
