@@ -25,23 +25,39 @@ namespace PcsFileServer
             }
         }
 
-        public static void AppendFilesToZip(string fileName,
-            List<string> appendFiles,
-            CompressionLevel compressionLevel = CompressionLevel.Default)
+        //public static void AppendFilesToArchive(string fileName,
+        //    List<string> appendFiles,
+        //    CompressionLevel compressionLevel = CompressionLevel.Default)
+        //{
+        //    try
+        //    {
+        //        var options = new ReadOptions();
+        //        options.Encoding = Encoding.UTF8;
+        //        using (var zipFile = ZipFile.Read(fileName, options))
+        //        {
+        //            zipFile.CompressionLevel = compressionLevel;
+        //            zipFile.Password = "a1sda42kld31sa987e2";
+        //            zipFile.AddFiles(appendFiles, "\\");
+        //            zipFile.Save();
+        //        }
+        //    }
+        //    catch (Exception) { }
+        //}
+        public static void AppendFilesToArchive(string archiveName,
+    List<string> appendFiles, string password,
+    CompressionLevel compressionLevel = CompressionLevel.Default)
         {
-            try
+            var options = new ReadOptions();
+            options.Encoding = Encoding.UTF8;
+            using (var zipFile = ZipFile.Read(archiveName, options))
             {
-                var options = new ReadOptions();
-                options.Encoding = Encoding.UTF8;
-                using (var zipFile = ZipFile.Read(fileName, options))
-                {
-                    zipFile.CompressionLevel = compressionLevel;
-                    zipFile.Password = "a1sda42kld31sa987e2";
-                    zipFile.AddFiles(appendFiles, "\\");
-                    zipFile.Save();
-                }
+                zipFile.AlternateEncodingUsage = ZipOption.Always;
+                zipFile.AlternateEncoding = Encoding.UTF8;
+                zipFile.Password = password;
+                zipFile.CompressionLevel = compressionLevel;
+                zipFile.AddFiles(appendFiles, "\\");
+                zipFile.Save();
             }
-            catch (Exception) { }
         }
         public static ZipFile ReadZip(string fileName)
         {
@@ -130,35 +146,18 @@ namespace PcsFileServer
             }
         }
 
+        public static string CreateArchive(string archiveName,
+        CompressionLevel compressionLevel = CompressionLevel.Default)
+        {
+            using (var zipFile = new ZipFile())
+            {
+                zipFile.CompressionLevel = compressionLevel;
+                zipFile.Save(archiveName);
+                return archiveName;
+            }
+        }
 
 
-        //public static string CreateZip(string archiveName,
-        //CompressionLevel compressionLevel = CompressionLevel.Default)
-        //{
-        //    using (var zipFile = new ZipFile())
-        //    {
-        //        zipFile.CompressionLevel = compressionLevel;
-        //        zipFile.Save(archiveName);
-        //        return archiveName;
-        //    }
-        //}
-
-        //public static void AppendFilesToArchive(string archiveName,
-        //    List<string> appendFiles, string password,
-        //    CompressionLevel compressionLevel = CompressionLevel.Default)
-        //{
-        //    var options = new ReadOptions();
-        //    options.Encoding = Encoding.UTF8;
-        //    using (var zipFile = ZipFile.Read(archiveName, options))
-        //    {
-        //        zipFile.AlternateEncodingUsage = ZipOption.Always;
-        //        zipFile.AlternateEncoding = Encoding.UTF8;
-        //        zipFile.Password = password;
-        //        zipFile.CompressionLevel = compressionLevel;
-        //        zipFile.AddFiles(appendFiles, "\\");
-        //        zipFile.Save();
-        //    }
-        //}
 
         //public static void ExtractZip(string archiveName, string outFolder)
         //{
@@ -251,27 +250,27 @@ namespace PcsFileServer
         //    return mstream;
         //}
 
-        //public static void AppendFilesToZip(string archiveName, string subArchive, List<string> filesName, string password)
-        //{
-        //    using (ZipFile zip = ReadSubZipWithPassword(archiveName, subArchive, password))
-        //    {
-        //        zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Default;
-        //        zip.Password = password;
-        //        foreach (var item in filesName)
-        //        {
-        //            zip.AddFile(item, "");
-        //        }
-        //        using (MemoryStream memoryStream = new MemoryStream())
-        //        {
-        //            zip.Save(memoryStream);
-        //            memoryStream.Position = 0;
-        //            using (var outerZip = ReadZip(archiveName))
-        //            {
-        //                outerZip.UpdateEntry(subArchive, memoryStream);
-        //                outerZip.Save();
-        //            }
-        //        }
-        //    }
-        //}
+        public static void AppendFilesToZip(string archiveName, string subArchive, List<string> filesName, string password)
+        {
+            using (ZipFile zip = ReadSubZipWithPassword(archiveName, subArchive, password))
+            {
+                zip.CompressionLevel = CompressionLevel.Default;
+                zip.Password = password;
+                foreach (var item in filesName)
+                {
+                    zip.AddFile(item, "");
+                }
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    zip.Save(memoryStream);
+                    memoryStream.Position = 0;
+                    using (var outerZip = ReadZip(archiveName))
+                    {
+                        outerZip.UpdateEntry(subArchive, memoryStream);
+                        outerZip.Save();
+                    }
+                }
+            }
+        }
     }
 }

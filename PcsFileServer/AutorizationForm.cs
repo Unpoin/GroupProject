@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Collections.Generic;
+using Ionic.Zip;
 
 namespace PcsFileServer
 {
@@ -66,14 +68,19 @@ namespace PcsFileServer
                 PcsUser.CurrentUser = user;
                 try
                 {
-
                     Properties.Settings.Default.ionicZlibPackingName = Convert.ToString(user.Login + ".zip");
-                    //string directoryPath = @"C:\FileTemp";
-                    var directory = CreateEmptyDirectory();
-                    var sourceDirecory = @"C:\FileTemp";
-                    var size = GetDirectorySize(sourceDirecory);
-                    string fileName = Path.Combine(directory, Properties.Settings.Default.ionicZlibPackingName);
-                    var result = Profiler.MeasureAction(() => IonicZipHelper.CompressionDirectory(fileName, sourceDirecory));
+                    bool isArchiveExist = false;
+                    using (var zipFile = ZipFile.Read(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
+                    {
+                        isArchiveExist = zipFile.ContainsEntry($"{PcsUser.CurrentUser.Login}.zip");
+                    }
+                    if (!isArchiveExist)
+                    {
+                        string fileName = Path.Combine(Path.GetTempPath(), Properties.Settings.Default.ionicZlibPackingName);
+                        var archive = IonicZipHelper.CreateArchive("C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip");
+                        IonicZipHelper.AppendFilesToArchive(archive, new List<string> { IonicZipHelper.CreateArchive(fileName) }, "a1sda42kld31sa987e2");
+                        File.Delete(fileName);
+                    }
                 }
                 catch (Exception ex)
                 {

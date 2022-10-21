@@ -167,21 +167,26 @@ namespace PcsFileServer
             imageList.Images.Add(Resources.fileexeicon);
             imageList.Images.Add(Resources.emptyfileicon);
             LocalListView.SmallImageList = imageList;
-            string directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
+            string archiveName = "C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip";
+            //string fileName = Path.Combine(archiveName, Settings.Default.ionicZlibPackingName);
             var options = new ReadOptions();
             options.Encoding = Encoding.UTF8;
             try
             {
-                using (ZipFile zip = ZipFile.Read(fileName, options))
+                using (var subZip =
+                     IonicZipHelper.ReadSubZipWithPassword(archiveName, Settings.Default.ionicZlibPackingName, "a1sda42kld31sa987e2"))
                 {
-                    foreach (ZipEntry zipEntry in zip)
+
+                    //using (ZipFile zip = ZipFile.Read(directory, options))
+                    //{
+                    foreach (ZipEntry zipEntry in subZip)
                     {
                         ListViewItem lvi = new ListViewItem();
                         lvi.Text = zipEntry.FileName.Split('/')[0];
                         lvi.ImageIndex = GetImageIndex(zipEntry.FileName);
                         LocalListView.Items.Add(lvi);
                     }
+                    //}
                 }
             }
             catch(Exception ex)
@@ -211,19 +216,22 @@ namespace PcsFileServer
             //var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
             //var ionicZlibPacking = "PcsFileServer.zip";
             //string fileName = Path.Combine(directory, ionicZlibPacking);
+
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = true;
             var opt = new ReadOptions();
             opt.Encoding = Encoding.UTF8;
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
+            string archiveName = "C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip";
+
+            //var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            //string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 foreach (string file in dialog.FileNames)
                 {
                     fileList.Add(file);
                 }
-                IonicZipHelper.AppendFilesToZip(fileName, fileList);
+                IonicZipHelper.AppendFilesToZip(archiveName, Settings.Default.ionicZlibPackingName, fileList, "a1sda42kld31sa987e2");
             }
             ViewDirectiryList();
         }
@@ -236,13 +244,13 @@ namespace PcsFileServer
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             List<string> fileListToDelete = new List<string>();
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
+            string archiveName = "C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip";
             for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
             {
                 fileListToDelete.Add(LocalListView.SelectedItems[i].Text);
             }
-            IonicZipHelper.DeleteFilesFromZip(directory, fileName, fileListToDelete, "a1sda42kld31sa987e2");
+            IonicZipHelper.DeleteFilesFromZip(archiveName, Settings.Default.ionicZlibPackingName, fileListToDelete, "a1sda42kld31sa987e2");
+            ViewDirectiryList();
         }
     }
 }
