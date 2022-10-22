@@ -40,6 +40,7 @@
             this.LoadButton = new MetroFramework.Controls.MetroButton();
             this.DownloadButton = new MetroFramework.Controls.MetroButton();
             this.DeleteButton = new MetroFramework.Controls.MetroButton();
+            this.SavePathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +104,7 @@
             // 
             this.SettingsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SavePathToolStripMenuItem,
             this.InfoToolStripMenuItem});
             this.SettingsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
@@ -114,7 +116,7 @@
             this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
             // 
             // LocalListView
@@ -156,6 +158,14 @@
             this.DeleteButton.Text = "Удалить";
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
+            // SavePathToolStripMenuItem
+            // 
+            this.SavePathToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
+            this.SavePathToolStripMenuItem.Name = "SavePathToolStripMenuItem";
+            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SavePathToolStripMenuItem.Text = "Изменить путь";
+            this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -169,7 +179,7 @@
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -193,6 +203,7 @@
         private MetroFramework.Controls.MetroButton LoadButton;
         private MetroFramework.Controls.MetroButton DownloadButton;
         private MetroFramework.Controls.MetroButton DeleteButton;
+        private System.Windows.Forms.ToolStripMenuItem SavePathToolStripMenuItem;
     }
 }
 

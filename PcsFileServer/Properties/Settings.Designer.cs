@@ -118,5 +118,17 @@ namespace PcsFileServer.Properties {
                 this["ionicZlibPackingName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string pathToSave {
+            get {
+                return ((string)(this["pathToSave"]));
+            }
+            set {
+                this["pathToSave"] = value;
+            }
+        }
     }
 }

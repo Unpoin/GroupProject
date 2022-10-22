@@ -69,22 +69,23 @@ namespace PcsFileServer
                 try
                 {
                     Properties.Settings.Default.ionicZlibPackingName = Convert.ToString(user.Login + ".zip");
-                    bool isArchiveExist = false;
-                    using (var zipFile = ZipFile.Read(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
+                    if (!File.Exists(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
                     {
-                        isArchiveExist = zipFile.ContainsEntry($"{PcsUser.CurrentUser.Login}.zip");
+                        IonicZipHelper.CreateArchive(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip"));
                     }
-                    if (!isArchiveExist)
-                    {
-                        string fileName = Path.Combine(Path.GetTempPath(), Properties.Settings.Default.ionicZlibPackingName);
-                        var archive = IonicZipHelper.CreateArchive("C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip");
-                        IonicZipHelper.AppendFilesToArchive(archive, new List<string> { IonicZipHelper.CreateArchive(fileName) }, "a1sda42kld31sa987e2");
-                        File.Delete(fileName);
-                    }
+                    //bool isArchiveExist = false;
+                    //using (var zipFile = ZipFile.Read(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
+                    //{
+                    //    isArchiveExist = zipFile.ContainsEntry("PcsFileServer.zip");
+                    //}
+                    //if (!isArchiveExist)
+                    //{
+                    //    IonicZipHelper.CreateArchive(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip"));
+                    //}
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Не удалось создать архив") ;
+                    MessageBox.Show(ex.Message, "Не удалось создать архив");
                 }
                 if (Properties.Settings.Default.IsRemember == true)
                 {

@@ -98,9 +98,32 @@ namespace PcsFileServer
                 get { return mainColor; }
             }
         }
+        public void CreateArchive()
+        {
+            try
+            {
+                bool isZipExist = false;
+                using (var zipFile = ZipFile.Read(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
+                {
+                    isZipExist = zipFile.ContainsEntry($"{PcsUser.CurrentUser.Login}.zip");
+                }
+                if (!isZipExist)
+                {
+                    string fileName = Path.Combine(Path.GetTempPath(), Settings.Default.ionicZlibPackingName);
+                    IonicZipHelper.AppendFilesToArchive($"{Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")}"
+                        , new List<string> { IonicZipHelper.CreateArchive(fileName) }, "a1sda42kld31sa987e2");
+                    File.Delete(fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Не удалось создать архив");
+            }
+        }
         public MainForm()
         {
             InitializeComponent();
+            CreateArchive();
             mainMenuStrip.ForeColor
                 = FileToolStripMenuItem.ForeColor
                 = UploadFileToolStripMenuItem.ForeColor
@@ -251,6 +274,12 @@ namespace PcsFileServer
             }
             IonicZipHelper.DeleteFilesFromZip(archiveName, Settings.Default.ionicZlibPackingName, fileListToDelete, "a1sda42kld31sa987e2");
             ViewDirectiryList();
+        }
+
+        private void SavePathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm form = new SettingsForm();
+            form.ShowDialog();
         }
     }
 }
