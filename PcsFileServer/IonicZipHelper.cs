@@ -157,41 +157,6 @@ namespace PcsFileServer
             }
         }
 
-
-
-        //public static void ExtractZip(string archiveName, string outFolder)
-        //{
-        //    using (var zip = ZipFile.Read(archiveName))
-        //    {
-        //        foreach (var e in zip)
-        //        {
-        //            e.Extract(outFolder, ExtractExistingFileAction.OverwriteSilently);
-        //        }
-        //    }
-        //}
-
-        //public static void DeleteFilesFromZip(string archiveName, string subArchive, List<string> filesToDelete, string password)
-        //{
-        //    using (var zipFile = ReadSubZipWithPassword(archiveName, subArchive, password))
-        //    {
-        //        zipFile.Password = password;
-        //        foreach (var e in filesToDelete)
-        //        {
-        //            zipFile.RemoveEntry(e);
-        //        }
-        //        using (MemoryStream memoryStream = new MemoryStream())
-        //        {
-        //            zipFile.Save(memoryStream);
-        //            memoryStream.Position = 0;
-        //            using (var outerZip = ReadZip(archiveName))
-        //            {
-        //                outerZip.UpdateEntry(subArchive, memoryStream);
-        //                outerZip.Save();
-        //            }
-        //        }
-        //    }
-        //}
-
         //public static void RefreshPassword(string archiveName, string password)
         //{
         //    using (var zipFile = ZipFile.Read(archiveName))
@@ -218,37 +183,7 @@ namespace PcsFileServer
         //}
 
 
-        //public static ZipFile ReadSubZipWithPassword(string fileName, string subFileName, string password)
-        //{
-        //    using (var zip = ZipFile.Read(fileName))
-        //    {
-        //        zip.AlternateEncodingUsage = ZipOption.Always;
-        //        zip.AlternateEncoding = Encoding.UTF8;
-        //        ZipEntry entry = zip[subFileName];
-        //        using (var subZip = ZipFile.Read(entry.ExtractToMemoryStreamWithPassword(password)))
-        //        {
-        //            subZip.AlternateEncodingUsage = ZipOption.Always;
-        //            subZip.AlternateEncoding = Encoding.UTF8;
-        //            return subZip;
-        //        }
-        //    }
-        //}
 
-        //public static ZipFile ReadZip(string fileName)
-        //{
-        //    using (var zip = ZipFile.Read(fileName))
-        //    {
-        //        return zip;
-        //    }
-        //}
-
-        //public static MemoryStream ExtractToMemoryStreamWithPassword(this ZipEntry zipEntry, string password)
-        //{
-        //    var mstream = new MemoryStream();
-        //    zipEntry.ExtractWithPassword(mstream, password);
-        //    mstream.Position = 0;
-        //    return mstream;
-        //}
 
         public static void AppendFilesToZip(string archiveName, string subArchive, List<string> filesName, string password)
         {

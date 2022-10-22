@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutorizationForm));
             this.LoginMailLabel = new MetroFramework.Controls.MetroLabel();
             this.LoginTextBox = new MetroFramework.Controls.MetroTextBox();
             this.PasswordTextBox = new MetroFramework.Controls.MetroTextBox();
@@ -157,6 +158,7 @@
             this.Controls.Add(this.LoginTextBox);
             this.Controls.Add(this.LoginMailLabel);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(220, 419);

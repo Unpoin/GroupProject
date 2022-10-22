@@ -35,19 +35,19 @@
             this.UploadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SavePathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LocalListView = new System.Windows.Forms.ListView();
-            this.LoadButton = new MetroFramework.Controls.MetroButton();
-            this.DownloadButton = new MetroFramework.Controls.MetroButton();
-            this.DeleteButton = new MetroFramework.Controls.MetroButton();
-            this.SavePathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadTile = new MetroFramework.Controls.MetroTile();
+            this.DownLoadTile = new MetroFramework.Controls.MetroTile();
+            this.DeleteTile = new MetroFramework.Controls.MetroTile();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenuStrip
             // 
             this.mainMenuStrip.BackColor = System.Drawing.Color.Transparent;
-            this.mainMenuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.SettingsToolStripMenuItem});
@@ -77,7 +77,7 @@
             this.SaveFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SaveFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
-            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.SaveFileToolStripMenuItem.Text = "Сохранить";
             this.SaveFileToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
@@ -87,7 +87,7 @@
             this.UploadFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.UploadFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.UploadFileToolStripMenuItem.Text = "Выгрузить";
             // 
             // ExitToolStripMenuItem
@@ -96,7 +96,7 @@
             this.ExitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.ExitToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -111,69 +111,88 @@
             this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.SettingsToolStripMenuItem.Text = "Настройки";
             // 
+            // SavePathToolStripMenuItem
+            // 
+            this.SavePathToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
+            this.SavePathToolStripMenuItem.Name = "SavePathToolStripMenuItem";
+            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.SavePathToolStripMenuItem.Text = "Изменить путь";
+            this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
+            // 
             // InfoToolStripMenuItem
             // 
             this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
             // 
             // LocalListView
             // 
             this.LocalListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.LocalListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LocalListView.Font = new System.Drawing.Font("Rockwell", 9.75F);
             this.LocalListView.ForeColor = System.Drawing.Color.Silver;
             this.LocalListView.HideSelection = false;
             this.LocalListView.Location = new System.Drawing.Point(20, 138);
             this.LocalListView.Name = "LocalListView";
-            this.LocalListView.Size = new System.Drawing.Size(363, 452);
+            this.LocalListView.Size = new System.Drawing.Size(360, 450);
             this.LocalListView.TabIndex = 4;
             this.LocalListView.UseCompatibleStateImageBehavior = false;
             this.LocalListView.View = System.Windows.Forms.View.List;
             // 
-            // LoadButton
+            // LoadTile
             // 
-            this.LoadButton.Location = new System.Drawing.Point(20, 109);
-            this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(99, 23);
-            this.LoadButton.TabIndex = 6;
-            this.LoadButton.Text = "Загрузить";
-            this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            this.LoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.LoadTile.ForeColor = System.Drawing.Color.Silver;
+            this.LoadTile.Location = new System.Drawing.Point(20, 118);
+            this.LoadTile.Name = "LoadTile";
+            this.LoadTile.Size = new System.Drawing.Size(90, 20);
+            this.LoadTile.TabIndex = 9;
+            this.LoadTile.Text = "Добавить";
+            this.LoadTile.Click += new System.EventHandler(this.LoadTile_Click);
             // 
-            // DownloadButton
+            // DownLoadTile
             // 
-            this.DownloadButton.Location = new System.Drawing.Point(119, 109);
-            this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(99, 23);
-            this.DownloadButton.TabIndex = 7;
-            this.DownloadButton.Text = "Скачать";
+            this.DownLoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.DownLoadTile.ForeColor = System.Drawing.Color.Silver;
+            this.DownLoadTile.Location = new System.Drawing.Point(110, 118);
+            this.DownLoadTile.Name = "DownLoadTile";
+            this.DownLoadTile.Size = new System.Drawing.Size(90, 20);
+            this.DownLoadTile.TabIndex = 10;
+            this.DownLoadTile.Text = "Скачать";
+            this.DownLoadTile.Click += new System.EventHandler(this.DownLoadTile_Click);
             // 
-            // DeleteButton
+            // DeleteTile
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(218, 109);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(99, 23);
-            this.DeleteButton.TabIndex = 8;
-            this.DeleteButton.Text = "Удалить";
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.DeleteTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.DeleteTile.ForeColor = System.Drawing.Color.Silver;
+            this.DeleteTile.Location = new System.Drawing.Point(200, 118);
+            this.DeleteTile.Name = "DeleteTile";
+            this.DeleteTile.Size = new System.Drawing.Size(90, 20);
+            this.DeleteTile.TabIndex = 11;
+            this.DeleteTile.Text = "Удалить";
+            this.DeleteTile.Click += new System.EventHandler(this.DeleteTile_Click);
             // 
-            // SavePathToolStripMenuItem
+            // metroTile4
             // 
-            this.SavePathToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
-            this.SavePathToolStripMenuItem.Name = "SavePathToolStripMenuItem";
-            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.SavePathToolStripMenuItem.Text = "Изменить путь";
-            this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
+            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.metroTile4.ForeColor = System.Drawing.Color.Silver;
+            this.metroTile4.Location = new System.Drawing.Point(290, 118);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(90, 20);
+            this.metroTile4.TabIndex = 12;
+            this.metroTile4.Text = "Инфо";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 597);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.DownloadButton);
-            this.Controls.Add(this.LoadButton);
+            this.Controls.Add(this.metroTile4);
+            this.Controls.Add(this.DeleteTile);
+            this.Controls.Add(this.DownLoadTile);
+            this.Controls.Add(this.LoadTile);
             this.Controls.Add(this.LocalListView);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,10 +219,11 @@
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem;
         private System.Windows.Forms.ListView LocalListView;
-        private MetroFramework.Controls.MetroButton LoadButton;
-        private MetroFramework.Controls.MetroButton DownloadButton;
-        private MetroFramework.Controls.MetroButton DeleteButton;
         private System.Windows.Forms.ToolStripMenuItem SavePathToolStripMenuItem;
+        private MetroFramework.Controls.MetroTile LoadTile;
+        private MetroFramework.Controls.MetroTile DownLoadTile;
+        private MetroFramework.Controls.MetroTile DeleteTile;
+        private MetroFramework.Controls.MetroTile metroTile4;
     }
 }
 

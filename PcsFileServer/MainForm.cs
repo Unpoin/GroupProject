@@ -2,31 +2,27 @@
 using MetroFramework.Forms;
 using PcsFileServer.Properties;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PcsFileServer
 {
     public partial class MainForm : MetroForm
     {
-        public class TestColorTable : ProfessionalColorTable
+        private class MyRenderer : ToolStripProfessionalRenderer
+        {
+            public MyRenderer() : base(new MyColorTable()) { }
+        }
+        private class MyColorTable : ProfessionalColorTable
         {
             Color mainColor = Color.Black;
+            Color gradColor = Color.Purple;
             public override Color MenuItemSelected
             {
-                get { return mainColor; }
+                get { return gradColor; }
             }
 
             public override Color ToolStripContentPanelGradientBegin
@@ -41,12 +37,12 @@ namespace PcsFileServer
 
             public override Color MenuItemSelectedGradientBegin
             {
-                get { return mainColor; }
+                get { return gradColor; }
             }
 
             public override Color MenuItemSelectedGradientEnd
             {
-                get { return mainColor; }
+                get { return gradColor; }
             }
 
             public override Color MenuItemPressedGradientBegin
@@ -103,14 +99,14 @@ namespace PcsFileServer
             try
             {
                 bool isZipExist = false;
-                using (var zipFile = ZipFile.Read(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
+                using (var zipFile = ZipFile.Read(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip")))
                 {
                     isZipExist = zipFile.ContainsEntry($"{PcsUser.CurrentUser.Login}.zip");
                 }
                 if (!isZipExist)
                 {
                     string fileName = Path.Combine(Path.GetTempPath(), Settings.Default.ionicZlibPackingName);
-                    IonicZipHelper.AppendFilesToArchive($"{Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")}"
+                    IonicZipHelper.AppendFilesToArchive($"{Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip")}"
                         , new List<string> { IonicZipHelper.CreateArchive(fileName) }, "a1sda42kld31sa987e2");
                     File.Delete(fileName);
                 }
@@ -133,7 +129,9 @@ namespace PcsFileServer
                 = InfoToolStripMenuItem.ForeColor
                 = Color.Silver;
             mainMenuStrip.BackColor = Color.Transparent;
-           
+            mainMenuStrip.Renderer = new MyRenderer();
+            foreach (ToolStripMenuItem menuItem in mainMenuStrip.Items)
+                ((ToolStripDropDownMenu)menuItem.DropDown).ShowImageMargin = false;
         }
         //private static void DeleteTempDirectory()
         //{
@@ -190,14 +188,13 @@ namespace PcsFileServer
             imageList.Images.Add(Resources.fileexeicon);
             imageList.Images.Add(Resources.emptyfileicon);
             LocalListView.SmallImageList = imageList;
-            string archiveName = "C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip";
             //string fileName = Path.Combine(archiveName, Settings.Default.ionicZlibPackingName);
             var options = new ReadOptions();
             options.Encoding = Encoding.UTF8;
             try
             {
                 using (var subZip =
-                     IonicZipHelper.ReadSubZipWithPassword(archiveName, Settings.Default.ionicZlibPackingName, "a1sda42kld31sa987e2"))
+                     IonicZipHelper.ReadSubZipWithPassword(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"), Settings.Default.ionicZlibPackingName, "a1sda42kld31sa987e2"))
                 {
 
                     //using (ZipFile zip = ZipFile.Read(directory, options))
@@ -220,7 +217,6 @@ namespace PcsFileServer
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.components.SetStyleDark(this);
-            mainMenuStrip.Renderer = new ToolStripProfessionalRenderer(new TestColorTable());
             ViewDirectiryList();
         }
 
@@ -232,54 +228,62 @@ namespace PcsFileServer
             autorization.ShowDialog();
             this.Close();
         }
-
-        private void LoadButton_Click(object sender, EventArgs e)
-        {
-            List<string> fileList = new List<string>();
-            //var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            //var ionicZlibPacking = "PcsFileServer.zip";
-            //string fileName = Path.Combine(directory, ionicZlibPacking);
-
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Multiselect = true;
-            var opt = new ReadOptions();
-            opt.Encoding = Encoding.UTF8;
-            string archiveName = "C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip";
-
-            //var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
-            //string fileName = Path.Combine(directory, Settings.Default.ionicZlibPackingName);
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                foreach (string file in dialog.FileNames)
-                {
-                    fileList.Add(file);
-                }
-                IonicZipHelper.AppendFilesToZip(archiveName, Settings.Default.ionicZlibPackingName, fileList, "a1sda42kld31sa987e2");
-            }
-            ViewDirectiryList();
-        }
-            ////LocalListView.SelectedItems[1].Text;
-
-            //foreach (var item in LocalListView.SelectedItems[0].Text)
-            //{
-            //    fileListToDelete.Add(Convert.ToString(item));
-            //}
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            List<string> fileListToDelete = new List<string>();
-            string archiveName = "C:\\Users\\Miho\\Documents\\Temp\\PcsFileServer.zip";
-            for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
-            {
-                fileListToDelete.Add(LocalListView.SelectedItems[i].Text);
-            }
-            IonicZipHelper.DeleteFilesFromZip(archiveName, Settings.Default.ionicZlibPackingName, fileListToDelete, "a1sda42kld31sa987e2");
-            ViewDirectiryList();
-        }
-
         private void SavePathToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingsForm form = new SettingsForm();
             form.ShowDialog();
+        }
+
+        private void LoadTile_Click(object sender, EventArgs e)
+        {
+            List<string> fileList = new List<string>();
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = true;
+            var opt = new ReadOptions();
+            opt.Encoding = Encoding.UTF8;
+            string archiveName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip");
+            try
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (string file in dialog.FileNames)
+                    {
+                        fileList.Add(file);
+                    }
+                    IonicZipHelper.AppendFilesToZip(archiveName, Settings.Default.ionicZlibPackingName, fileList, "a1sda42kld31sa987e2");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Данный файл уже добавлен в архив!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            ViewDirectiryList();
+        }
+
+        private void DeleteTile_Click(object sender, EventArgs e)
+        {
+            List<string> fileListToDelete = new List<string>();
+            for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+            {
+                fileListToDelete.Add(LocalListView.SelectedItems[i].Text);
+            }
+            IonicZipHelper.DeleteFilesFromZip(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"), Settings.Default.ionicZlibPackingName, fileListToDelete, "a1sda42kld31sa987e2");
+            ViewDirectiryList();
+        }
+
+        private void DownLoadTile_Click(object sender, EventArgs e)
+        {
+            //доделать скачивание(не робит *_*)
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var fileName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip", Settings.Default.ionicZlibPackingName);
+                for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+                {
+                    IonicZipHelper.ExtractZip(Path.Combine(fileName, LocalListView.SelectedItems[i].Text), dialog.SelectedPath);
+                }
+            }
+            ViewDirectiryList();
         }
     }
 }

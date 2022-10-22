@@ -21,7 +21,6 @@ namespace PcsFileServer
                 InitializeComponent();
                 LoginTextBox.Text = Properties.Settings.Default.Login;
                 PasswordTextBox.Text = Properties.Settings.Default.Password;
-                
             }
             catch(Exception) { }
         }
@@ -33,7 +32,7 @@ namespace PcsFileServer
         }
         private static string CreateEmptyDirectory()
         {
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "FileTemp");
+            var directory = Path.Combine(Directory.GetCurrentDirectory(), "YourArchive");
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
             //else
@@ -69,9 +68,10 @@ namespace PcsFileServer
                 try
                 {
                     Properties.Settings.Default.ionicZlibPackingName = Convert.ToString(user.Login + ".zip");
-                    if (!File.Exists(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
+                    Properties.Settings.Default.Save();
+                    if (!File.Exists(Path.Combine(Properties.Settings.Default.pathToSave, "PcsFileServer.zip")))
                     {
-                        IonicZipHelper.CreateArchive(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip"));
+                        IonicZipHelper.CreateArchive(Path.Combine(Properties.Settings.Default.pathToSave, "PcsFileServer.zip"));
                     }
                     //bool isArchiveExist = false;
                     //using (var zipFile = ZipFile.Read(Path.Combine("C:\\Users\\Miho\\Documents\\Temp", "PcsFileServer.zip")))
@@ -108,7 +108,6 @@ namespace PcsFileServer
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void RecoverPasswordButton_Click(object sender, EventArgs e)
@@ -137,7 +136,6 @@ namespace PcsFileServer
                     introForm.Close();
                 }
             });
-
             Thread.Sleep(5000); 
             done = true;
             Show();

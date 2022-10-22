@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             this.CaptchaPictureBox = new System.Windows.Forms.PictureBox();
             this.PhoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.LoginLabel = new MetroFramework.Controls.MetroLabel();
@@ -219,6 +220,7 @@
             this.Controls.Add(this.CaptchaPictureBox);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(519, 425);

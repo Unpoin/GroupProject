@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.PathTextBox = new MetroFramework.Controls.MetroTextBox();
             this.ChangePathButton = new MetroFramework.Controls.MetroButton();
             this.SavePathButton = new MetroFramework.Controls.MetroButton();
@@ -41,7 +42,6 @@
             this.PathTextBox.Name = "PathTextBox";
             this.PathTextBox.Size = new System.Drawing.Size(351, 23);
             this.PathTextBox.TabIndex = 0;
-            this.PathTextBox.Text = "C:\\Users\\Miho\\Documents\\Temp";
             // 
             // ChangePathButton
             // 
@@ -59,6 +59,7 @@
             this.SavePathButton.Size = new System.Drawing.Size(400, 26);
             this.SavePathButton.TabIndex = 2;
             this.SavePathButton.Text = "Сохранить";
+            this.SavePathButton.Click += new System.EventHandler(this.SavePathButton_Click);
             // 
             // PathLabel
             // 
@@ -78,6 +79,7 @@
             this.Controls.Add(this.SavePathButton);
             this.Controls.Add(this.ChangePathButton);
             this.Controls.Add(this.PathTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsForm";
             this.Text = "Настройки";
             this.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecoverForm));
             this.MailLabel = new MetroFramework.Controls.MetroLabel();
             this.MailTextBox = new MetroFramework.Controls.MetroTextBox();
             this.RecoverButton = new MetroFramework.Controls.MetroButton();
@@ -69,6 +70,7 @@
             this.Controls.Add(this.MailLabel);
             this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(229, 228);

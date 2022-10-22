@@ -13,7 +13,7 @@ namespace PcsFileServer
             this.components.SetStyleDark(this);
         }
         string path = Properties.Settings.Default.pathToSave;
-        public void SaveFolder()
+        public void SavePath()
         {
             //Доделать сохранение пути хранения(его выбор "..." )
             //Исправить везде пути к архиву на свойства проекта pathToSave
@@ -22,7 +22,7 @@ namespace PcsFileServer
             {
                 if (Directory.Exists(PathTextBox.Text))
                 {
-                    Properties.Settings.Default.passwordDB = PathTextBox.Text;
+                    Properties.Settings.Default.pathToSave = PathTextBox.Text;
                     Properties.Settings.Default.Save();
                     if (!File.Exists($@"{path}\PcsFileServer.zip"))
                     {
@@ -33,9 +33,6 @@ namespace PcsFileServer
                         File.Move(Path.Combine(path, "PcsFileServer.zip"), Path.Combine(PathTextBox.Text, "PcsFileServer.zip"));
                     }
                     MessageBox.Show("Путь хранения сохранен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    AutorizationForm form = new AutorizationForm();
-                    form.ShowDialog();
                     this.Close();
                 }
                 else
@@ -51,7 +48,16 @@ namespace PcsFileServer
 
         private void ChangePathButton_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                PathTextBox.Text = dialog.SelectedPath;
+            }
+        }
 
+        private void SavePathButton_Click(object sender, EventArgs e)
+        {
+            SavePath();
         }
     }
 }
