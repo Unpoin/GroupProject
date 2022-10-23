@@ -81,8 +81,8 @@ namespace PcsFileServer
                     }
                     else
                     {
-                        CaptchaPictureBox.Image = CapthaHandler.CreateImage(200, 70);
                         CapthaTextBox.Text = "";
+                        CaptchaPictureBox.Image = CapthaHandler.CreateImage(200, 70);
                         MessageBox.Show("Неккоректно введены данные");
                     }
                 }

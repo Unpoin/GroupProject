@@ -41,7 +41,7 @@
             this.LoadTile = new MetroFramework.Controls.MetroTile();
             this.DownLoadTile = new MetroFramework.Controls.MetroTile();
             this.DeleteTile = new MetroFramework.Controls.MetroTile();
-            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.InfoTile = new MetroFramework.Controls.MetroTile();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +129,8 @@
             // 
             // LocalListView
             // 
+            this.LocalListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.LocalListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
             this.LocalListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LocalListView.Font = new System.Drawing.Font("Rockwell", 9.75F);
@@ -174,22 +176,23 @@
             this.DeleteTile.Text = "Удалить";
             this.DeleteTile.Click += new System.EventHandler(this.DeleteTile_Click);
             // 
-            // metroTile4
+            // InfoTile
             // 
-            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.metroTile4.ForeColor = System.Drawing.Color.Silver;
-            this.metroTile4.Location = new System.Drawing.Point(290, 118);
-            this.metroTile4.Name = "metroTile4";
-            this.metroTile4.Size = new System.Drawing.Size(90, 20);
-            this.metroTile4.TabIndex = 12;
-            this.metroTile4.Text = "Инфо";
+            this.InfoTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.InfoTile.ForeColor = System.Drawing.Color.Silver;
+            this.InfoTile.Location = new System.Drawing.Point(290, 118);
+            this.InfoTile.Name = "InfoTile";
+            this.InfoTile.Size = new System.Drawing.Size(90, 20);
+            this.InfoTile.TabIndex = 12;
+            this.InfoTile.Text = "Инфо";
+            this.InfoTile.Click += new System.EventHandler(this.InfoTile_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 597);
-            this.Controls.Add(this.metroTile4);
+            this.Controls.Add(this.InfoTile);
             this.Controls.Add(this.DeleteTile);
             this.Controls.Add(this.DownLoadTile);
             this.Controls.Add(this.LoadTile);
@@ -223,7 +226,7 @@
         private MetroFramework.Controls.MetroTile LoadTile;
         private MetroFramework.Controls.MetroTile DownLoadTile;
         private MetroFramework.Controls.MetroTile DeleteTile;
-        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile InfoTile;
     }
 }
 

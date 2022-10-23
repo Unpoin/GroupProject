@@ -275,15 +275,41 @@ namespace PcsFileServer
         {
             //доделать скачивание(не робит *_*)
             FolderBrowserDialog dialog = new FolderBrowserDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                var fileName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip", Settings.Default.ionicZlibPackingName);
-                for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    IonicZipHelper.ExtractZip(Path.Combine(fileName, LocalListView.SelectedItems[i].Text), dialog.SelectedPath);
+                    List<string> fileListToDownload = new List<string>();
+                    var fileName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip");
+                    for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+                    {
+                        fileListToDownload.Add(LocalListView.SelectedItems[i].Text);
+                    }
+                    IonicZipHelper.DownloadFilesFromZip(fileName, Settings.Default.ionicZlibPackingName,
+                        fileListToDownload, "a1sda42kld31sa987e2", dialog.SelectedPath);
                 }
+                MessageBox.Show("Файл скачан!", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ViewDirectiryList();
+        }
+
+        private void InfoTile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                IonicZipHelper.GetInfoFiles(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"),
+                                            Settings.Default.ionicZlibPackingName,
+                                            LocalListView.SelectedItems[0].Text,
+                                            "a1sda42kld31sa987e2");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите файл, ифнормацию о котором хотите узнать!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

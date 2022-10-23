@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
+using System.Windows.Forms;
 
 namespace PcsFileServer
 {
@@ -165,27 +167,31 @@ namespace PcsFileServer
         //    }
         //}
 
-        //public static void GetInfoFiles(string fileName)
-        //{
-        //    using (var zipFile = ZipFile.Read($@"C:\TestZip\{CurrentUser.User.Login}.zip"))
-        //    {
-        //        ZipEntry zipEntry = zipFile.Entries.FirstOrDefault(z => Path.GetFileName(z.FileName) == fileName);
-        //        string size = "";
-        //        if (zipEntry.CompressedSize < 1024)
-        //            size = $"Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°: {zipEntry.CompressedSize} Р‘";
-        //        if (zipEntry.CompressedSize >= 1024)
-        //            size = $"Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°: {Math.Round(zipEntry.CompressedSize / 1024d)} РљР‘";
-        //        if ((zipEntry.CompressedSize / 1024) > 1024)
-        //            size = $"Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°: {Math.Round(zipEntry.CompressedSize / 1024 / 1024d)} РњР‘";
-        //        MessageBox.Show($"РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°: {Path.GetFileName(zipEntry.FileName)}\n{size}",
-        //                        "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С„Р°Р№Р»Рµ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        //using (var zipFile = ZipFile.Read($@"C:\TestZip\{PcsUser.CurrentUser.Login}.zip"))
 
-
-
-
-        public static void AppendFilesToZip(string archiveName, string subArchive, List<string> filesName, string password)
+        //using (var zipFile = ZipFile.Read(Environment.ExpandEnvironmentVariables(Path.Combine(Properties.Settings.Default.pathToSave,
+        //                                           "PcsFileServer.zip",
+        //                                           Properties.Settings.Default.ionicZlibPackingName))))
+        public static void GetInfoFiles(string archiveName, string subArchive, string fileName, string password)
+        {
+            using (var zipFile = ReadSubZipWithPassword(archiveName, subArchive, password))
+            {
+                zipFile.Password = password;
+                {
+                    ZipEntry zipEntry = zipFile.Entries.FirstOrDefault(z => Path.GetFileName(z.FileName) == fileName);
+                    string size = "";
+                    if (zipEntry.CompressedSize < 1024)
+                        size = $"Размер файла: {zipEntry.CompressedSize} Б";
+                    if (zipEntry.CompressedSize >= 1024)
+                        size = $"Размер файла: {Math.Round(zipEntry.CompressedSize / 1024d)} КБ";
+                    if ((zipEntry.CompressedSize / 1024) > 1024)
+                        size = $"Размер файла: {Math.Round(zipEntry.CompressedSize / 1024 / 1024d)} МБ";
+                    MessageBox.Show($"Название файла: {Path.GetFileName(zipEntry.FileName)}\n{size}",
+                                    "Информация о файле", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+            public static void AppendFilesToZip(string archiveName, string subArchive, List<string> filesName, string password)
         {
             using (ZipFile zip = ReadSubZipWithPassword(archiveName, subArchive, password))
             {
@@ -204,6 +210,17 @@ namespace PcsFileServer
                         outerZip.UpdateEntry(subArchive, memoryStream);
                         outerZip.Save();
                     }
+                }
+            }
+        }
+        public static void DownloadFilesFromZip(string archiveName, string subArchive, List<string> filesToDownload, string password, string outerPath)
+        {
+            using (var zipFile = ReadSubZipWithPassword(archiveName, subArchive, password))
+            {
+                zipFile.Password = password;
+                foreach (var e in filesToDownload)
+                {
+                    zipFile.ExtractSelectedEntries($"name = {e}", null, outerPath, ExtractExistingFileAction.DoNotOverwrite);
                 }
             }
         }
