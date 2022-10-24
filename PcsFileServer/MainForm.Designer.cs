@@ -115,7 +115,7 @@
             // 
             this.SavePathToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.SavePathToolStripMenuItem.Name = "SavePathToolStripMenuItem";
-            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SavePathToolStripMenuItem.Text = "Изменить путь";
             this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
             // 
@@ -124,8 +124,9 @@
             this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
+            this.InfoToolStripMenuItem.Click += new System.EventHandler(this.InfoToolStripMenuItem_Click);
             // 
             // LocalListView
             // 

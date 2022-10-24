@@ -79,6 +79,12 @@
     <Compile Include="CapthaHandler.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="InformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformationForm.Designer.cs">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IntroForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     <EmbeddedResource Include="AutorizationForm.resx">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InformationForm.resx">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IntroForm.resx">
       <DependentUpon>IntroForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +206,7 @@
       <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
       <LastGenOutput>PcsFileServerModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo.png" />
     <None Include="Resources\mediafile.png" />
     <None Include="Resources\picturefileicon.png" />
     <None Include="Resources\text.png" />

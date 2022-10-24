@@ -167,11 +167,6 @@ namespace PcsFileServer
         //    }
         //}
 
-        //using (var zipFile = ZipFile.Read($@"C:\TestZip\{PcsUser.CurrentUser.Login}.zip"))
-
-        //using (var zipFile = ZipFile.Read(Environment.ExpandEnvironmentVariables(Path.Combine(Properties.Settings.Default.pathToSave,
-        //                                           "PcsFileServer.zip",
-        //                                           Properties.Settings.Default.ionicZlibPackingName))))
         public static void GetInfoFiles(string archiveName, string subArchive, string fileName, string password)
         {
             using (var zipFile = ReadSubZipWithPassword(archiveName, subArchive, password))
@@ -186,7 +181,9 @@ namespace PcsFileServer
                         size = $"Размер файла: {Math.Round(zipEntry.CompressedSize / 1024d)} КБ";
                     if ((zipEntry.CompressedSize / 1024) > 1024)
                         size = $"Размер файла: {Math.Round(zipEntry.CompressedSize / 1024 / 1024d)} МБ";
-                    MessageBox.Show($"Название файла: {Path.GetFileName(zipEntry.FileName)}\n{size}",
+                    MessageBox.Show($"Название файла: {Path.GetFileName(zipEntry.FileName)}\n{size}" +
+                        $"\nДата и время создания:{zipEntry.CreationTime}" +
+                        $"\nДата и время изменения: {zipEntry.LastModified}",
                                     "Информация о файле", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -220,7 +217,7 @@ namespace PcsFileServer
                 zipFile.Password = password;
                 foreach (var e in filesToDownload)
                 {
-                    zipFile.ExtractSelectedEntries($"name = {e}", null, outerPath, ExtractExistingFileAction.DoNotOverwrite);
+                    zipFile.ExtractSelectedEntries($"name = {e}", null, outerPath, ExtractExistingFileAction.OverwriteSilently);
                 }
             }
         }
