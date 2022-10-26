@@ -26,25 +26,6 @@ namespace PcsFileServer
                 zipFile.Save();
             }
         }
-
-        //public static void AppendFilesToArchive(string fileName,
-        //    List<string> appendFiles,
-        //    CompressionLevel compressionLevel = CompressionLevel.Default)
-        //{
-        //    try
-        //    {
-        //        var options = new ReadOptions();
-        //        options.Encoding = Encoding.UTF8;
-        //        using (var zipFile = ZipFile.Read(fileName, options))
-        //        {
-        //            zipFile.CompressionLevel = compressionLevel;
-        //            zipFile.Password = "a1sda42kld31sa987e2";
-        //            zipFile.AddFiles(appendFiles, "\\");
-        //            zipFile.Save();
-        //        }
-        //    }
-        //    catch (Exception) { }
-        //}
         public static void AppendFilesToArchive(string archiveName,
     List<string> appendFiles, string password,
     CompressionLevel compressionLevel = CompressionLevel.Default)

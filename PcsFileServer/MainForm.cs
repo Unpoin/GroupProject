@@ -1,4 +1,5 @@
 ﻿using Ionic.Zip;
+using MetroFramework.Controls;
 using MetroFramework.Forms;
 using PcsFileServer.Properties;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PcsFileServer
@@ -205,6 +207,8 @@ namespace PcsFileServer
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.components.SetStyleDark(this);
+            LogoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            LogoPictureBox.Image = Resources.logo;
             ViewDirectiryList();
         }
 
@@ -241,9 +245,9 @@ namespace PcsFileServer
                     IonicZipHelper.AppendFilesToZip(archiveName, Settings.Default.ionicZlibPackingName, fileList, "a1sda42kld31sa987e2");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Данный файл уже добавлен в архив!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ViewDirectiryList();
         }

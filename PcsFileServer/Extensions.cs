@@ -39,6 +39,7 @@ namespace PcsFileServer
             manager.Owner = ownerForm;
             container.SetDefaultStyle(ownerForm, FormStyle);
             container.SetDefaultTheme(ownerForm, darkThemeStyle);
+
         }
         public static void SetDefaultStyle(this IContainer contr, MetroForm owner, MetroColorStyle style)
         {
