@@ -15,9 +15,6 @@ namespace PcsFileServer
         string path = Properties.Settings.Default.pathToSave;
         public void SavePath()
         {
-            //Доделать сохранение пути хранения(его выбор "..." )
-            //Исправить везде пути к архиву на свойства проекта pathToSave
-            //на авторизациии при создании архива добавлять путь в переменную свойствах проекта
             try
             {
                 if (Directory.Exists(PathTextBox.Text))

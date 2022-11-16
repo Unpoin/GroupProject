@@ -80,6 +80,10 @@
             this.Controls.Add(this.ChangePathButton);
             this.Controls.Add(this.PathTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(420, 220);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(420, 220);
             this.Name = "SettingsForm";
             this.Text = "Настройки";
             this.ResumeLayout(false);

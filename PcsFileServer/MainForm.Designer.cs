@@ -42,7 +42,9 @@
             this.DownLoadTile = new MetroFramework.Controls.MetroTile();
             this.DeleteTile = new MetroFramework.Controls.MetroTile();
             this.InfoTile = new MetroFramework.Controls.MetroTile();
+            this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.mainMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -51,10 +53,11 @@
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.SettingsToolStripMenuItem});
-            this.mainMenuStrip.Location = new System.Drawing.Point(20, 60);
+            this.mainMenuStrip.Location = new System.Drawing.Point(23, 56);
             this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.mainMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.mainMenuStrip.Size = new System.Drawing.Size(753, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(860, 24);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -126,6 +129,7 @@
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
             this.InfoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
+            this.InfoToolStripMenuItem.Click += new System.EventHandler(this.InfoToolStripMenuItem_Click);
             // 
             // LocalListView
             // 
@@ -136,9 +140,9 @@
             this.LocalListView.Font = new System.Drawing.Font("Rockwell", 9.75F);
             this.LocalListView.ForeColor = System.Drawing.Color.Silver;
             this.LocalListView.HideSelection = false;
-            this.LocalListView.Location = new System.Drawing.Point(20, 138);
+            this.LocalListView.Location = new System.Drawing.Point(23, 129);
             this.LocalListView.Name = "LocalListView";
-            this.LocalListView.Size = new System.Drawing.Size(360, 450);
+            this.LocalListView.Size = new System.Drawing.Size(411, 422);
             this.LocalListView.TabIndex = 4;
             this.LocalListView.UseCompatibleStateImageBehavior = false;
             this.LocalListView.View = System.Windows.Forms.View.List;
@@ -147,9 +151,9 @@
             // 
             this.LoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
             this.LoadTile.ForeColor = System.Drawing.Color.Silver;
-            this.LoadTile.Location = new System.Drawing.Point(20, 118);
+            this.LoadTile.Location = new System.Drawing.Point(23, 111);
             this.LoadTile.Name = "LoadTile";
-            this.LoadTile.Size = new System.Drawing.Size(90, 20);
+            this.LoadTile.Size = new System.Drawing.Size(103, 19);
             this.LoadTile.TabIndex = 9;
             this.LoadTile.Text = "Добавить";
             this.LoadTile.Click += new System.EventHandler(this.LoadTile_Click);
@@ -158,9 +162,9 @@
             // 
             this.DownLoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
             this.DownLoadTile.ForeColor = System.Drawing.Color.Silver;
-            this.DownLoadTile.Location = new System.Drawing.Point(110, 118);
+            this.DownLoadTile.Location = new System.Drawing.Point(126, 111);
             this.DownLoadTile.Name = "DownLoadTile";
-            this.DownLoadTile.Size = new System.Drawing.Size(90, 20);
+            this.DownLoadTile.Size = new System.Drawing.Size(103, 19);
             this.DownLoadTile.TabIndex = 10;
             this.DownLoadTile.Text = "Скачать";
             this.DownLoadTile.Click += new System.EventHandler(this.DownLoadTile_Click);
@@ -169,9 +173,9 @@
             // 
             this.DeleteTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
             this.DeleteTile.ForeColor = System.Drawing.Color.Silver;
-            this.DeleteTile.Location = new System.Drawing.Point(200, 118);
+            this.DeleteTile.Location = new System.Drawing.Point(229, 111);
             this.DeleteTile.Name = "DeleteTile";
-            this.DeleteTile.Size = new System.Drawing.Size(90, 20);
+            this.DeleteTile.Size = new System.Drawing.Size(103, 19);
             this.DeleteTile.TabIndex = 11;
             this.DeleteTile.Text = "Удалить";
             this.DeleteTile.Click += new System.EventHandler(this.DeleteTile_Click);
@@ -180,33 +184,44 @@
             // 
             this.InfoTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
             this.InfoTile.ForeColor = System.Drawing.Color.Silver;
-            this.InfoTile.Location = new System.Drawing.Point(290, 118);
+            this.InfoTile.Location = new System.Drawing.Point(331, 111);
             this.InfoTile.Name = "InfoTile";
-            this.InfoTile.Size = new System.Drawing.Size(90, 20);
+            this.InfoTile.Size = new System.Drawing.Size(103, 19);
             this.InfoTile.TabIndex = 12;
             this.InfoTile.Text = "Инфо";
             this.InfoTile.Click += new System.EventHandler(this.InfoTile_Click);
             // 
+            // LogoPictureBox
+            // 
+            this.LogoPictureBox.Location = new System.Drawing.Point(207, 21);
+            this.LogoPictureBox.Name = "LogoPictureBox";
+            this.LogoPictureBox.Size = new System.Drawing.Size(47, 33);
+            this.LogoPictureBox.TabIndex = 13;
+            this.LogoPictureBox.TabStop = false;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 597);
+            this.ClientSize = new System.Drawing.Size(906, 560);
+            this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.InfoTile);
             this.Controls.Add(this.DeleteTile);
             this.Controls.Add(this.DownLoadTile);
             this.Controls.Add(this.LoadTile);
             this.Controls.Add(this.LocalListView);
             this.Controls.Add(this.mainMenuStrip);
-            this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(23, 56, 23, 19);
             this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +242,7 @@
         private MetroFramework.Controls.MetroTile DownLoadTile;
         private MetroFramework.Controls.MetroTile DeleteTile;
         private MetroFramework.Controls.MetroTile InfoTile;
+        private System.Windows.Forms.PictureBox LogoPictureBox;
     }
 }
 
