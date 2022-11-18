@@ -38,7 +38,7 @@ namespace PcsFileServer
                 // создаем объект сообщения
                 MailMessage m = new MailMessage(from, to);
                 // тема письма
-                m.Subject = "Тест";
+                m.Subject = "PcsFileServer";
                 // текст письма
                 m.Body = $"<h2>Ваш код для восстановления пароля: {emailCode}</h2>";
                 // письмо представляет код html
@@ -52,6 +52,7 @@ namespace PcsFileServer
                 smtp.Send(m);
                 //Console.Read();
                 CodeReviewForm codeReviewForm = new CodeReviewForm(MailTextBox.Text);
+                MessageBox.Show("Код отправлен на указанную почту!");
                 this.Hide();
                 codeReviewForm.ShowDialog();
                 this.Close();

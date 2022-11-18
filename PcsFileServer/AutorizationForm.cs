@@ -114,7 +114,9 @@ namespace PcsFileServer
         private void RecoverPasswordButton_Click(object sender, EventArgs e)
         {
             RecoverForm recoverForm = new RecoverForm();
-            recoverForm.ShowDialog();   
+            this.Hide();
+            recoverForm.ShowDialog();
+            this.Close();
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)

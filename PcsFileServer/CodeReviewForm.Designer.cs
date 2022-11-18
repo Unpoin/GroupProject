@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CodeReviewForm));
             this.CodeLabel = new MetroFramework.Controls.MetroLabel();
             this.CodeTextBox = new MetroFramework.Controls.MetroTextBox();
             this.PasswordTextBox = new MetroFramework.Controls.MetroTextBox();
@@ -59,6 +60,7 @@
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(153, 23);
             this.PasswordTextBox.TabIndex = 3;
+            this.PasswordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PasswordTextBox_KeyPress);
             // 
             // PasswordLabel
             // 
@@ -75,6 +77,7 @@
             this.ConfirmTextBox.Name = "ConfirmTextBox";
             this.ConfirmTextBox.Size = new System.Drawing.Size(153, 23);
             this.ConfirmTextBox.TabIndex = 5;
+            this.ConfirmTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ConfirmTextBox_KeyPress);
             // 
             // metroLabel1
             // 
@@ -106,6 +109,7 @@
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.CodeTextBox);
             this.Controls.Add(this.CodeLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(226, 331);
             this.MinimizeBox = false;

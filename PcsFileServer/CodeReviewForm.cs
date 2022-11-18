@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
@@ -12,8 +13,20 @@ using MetroFramework.Forms;
 
 namespace PcsFileServer
 {
+    
     public partial class CodeReviewForm : MetroForm
     {
+        public static void KeyCharCheck(object obj, KeyPressEventArgs ev)
+        {
+            if ((ev.KeyChar >= 'A' && ev.KeyChar <= 'Z') || (ev.KeyChar >= 'a' && ev.KeyChar <= 'z') || (ev.KeyChar >= '0' && ev.KeyChar <= '9') || ev.KeyChar == '_' || ev.KeyChar == (char)Keys.Back)
+            {
+
+            }
+            else
+            {
+                ev.Handled = true;
+            }
+        }
         private string email;
         public CodeReviewForm(string email)
         {
@@ -24,18 +37,58 @@ namespace PcsFileServer
 
         private void RecoverButton_Click(object sender, EventArgs e)
         {
-            int codeFromEmail;
-            RecoverForm.emailCodes.TryGetValue(email, out codeFromEmail);
-            int codeFromForm = Int32.Parse(CodeTextBox.Text);
-            if (codeFromEmail == codeFromForm)
+            try
             {
-                MessageBox.Show("Вы ввели правильный код");
+                int codeFromEmail;
+                RecoverForm.emailCodes.TryGetValue(email, out codeFromEmail);
+                string regPassword = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
+                int codeFromForm = Int32.Parse(CodeTextBox.Text);
+                if (codeFromEmail == codeFromForm)
+                {
+                    if (String.IsNullOrEmpty(PasswordTextBox.Text) || String.IsNullOrEmpty(ConfirmTextBox.Text))
+                    {
+                        MessageBox.Show("Не все поля заполнены");
+                    }
+                    else if (PasswordTextBox.Text != ConfirmTextBox.Text)
+                    {
+                        MessageBox.Show("Пароли не совпадают");
+                    }
+                    else if (!Regex.IsMatch(PasswordTextBox.Text, regPassword))
+                    {
+                        MessageBox.Show("Пароль минимум 8 символов, должен содержать заглавные буквы и цифры");
+                    }
+                    else
+                    {
+                        var user = Core.Context.Users.FirstOrDefault(u => u.Email == this.email);
+                        user.Password = PasswordTextBox.Text;
+                        Core.Context.SaveChanges();
+                        AutorizationForm form = new AutorizationForm();
+                        MessageBox.Show("Пароль успешно изменен");
+                        this.Hide();
+                        form.ShowDialog();
+                        this.Close();
+                    }
+                }
+                else
+                {
+
+                    MessageBox.Show("Вы ввели неправильный код");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Вы ввели неправильный код");
+                MessageBox.Show(ex.Message);
             }
+        }
+
+        private void PasswordTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyCharCheck(sender, e);
+        }
+
+        private void ConfirmTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyCharCheck(sender, e);
         }
     }
 }
-
