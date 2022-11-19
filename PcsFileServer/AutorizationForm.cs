@@ -165,6 +165,12 @@ namespace PcsFileServer
             Properties.Settings.Default.IsRemember = RememberToggle.Checked;
             Properties.Settings.Default.Save();
         }
+
+        private void AboutTile_Click(object sender, EventArgs e)
+        {
+            InformationForm info = new InformationForm();
+            info.ShowDialog();
+        }
     }
 }
 

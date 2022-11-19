@@ -71,7 +71,6 @@ namespace PcsFileServer
                 }
                 else
                 {
-
                     MessageBox.Show("Вы ввели неправильный код");
                 }
             }

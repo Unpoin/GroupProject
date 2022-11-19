@@ -40,7 +40,7 @@ namespace PcsFileServer
                 // тема письма
                 m.Subject = "PcsFileServer";
                 // текст письма
-                m.Body = $"<h2>Ваш код для восстановления пароля: {emailCode}</h2>";
+                m.Body = $"<img width='20%' height='20%' src='https://sun9-41.userapi.com/impg/jtmZmnRg-pQnNdjo8Ot-1zHKEpxpq7-whyToPg/lGmRpbKJThk.jpg?size=128x128&quality=96&sign=f28a7e82c51a8b7b4bd4ae5785e6013e&type=album'><h1>Ваш код для восстановления пароля: {emailCode}</h1>";
                 // письмо представляет код html
                 m.IsBodyHtml = true;
                 // адрес smtp-сервера и порт, с которого будем отправлять письмо

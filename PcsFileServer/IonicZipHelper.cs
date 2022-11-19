@@ -76,7 +76,7 @@ namespace PcsFileServer
             using (var zipFile = ReadSubZipWithPassword(archiveName, subArchive, password))
             {
                 zipFile.Password = password;
-                foreach(var e in filesToDelete)
+                foreach (var e in filesToDelete)
                 {
                     zipFile.RemoveEntry(e);
                 }
@@ -140,13 +140,13 @@ namespace PcsFileServer
             }
         }
 
-        //public static void RefreshPassword(string archiveName, string password)
-        //{
-        //    using (var zipFile = ZipFile.Read(archiveName))
-        //    {
-        //        zipFile.Password = password;
-        //    }
-        //}
+        public static void Refreshpassword(string archivename, string password)
+        {
+            using (var zipFile = ZipFile.Read(archivename))
+            {
+                zipFile.Password = password;
+            }
+        }
 
         public static void GetInfoFiles(string archiveName, string subArchive, string fileName, string password)
         {
@@ -169,7 +169,7 @@ namespace PcsFileServer
                 }
             }
         }
-            public static void AppendFilesToZip(string archiveName, string subArchive, List<string> filesName, string password)
+        public static void AppendFilesToZip(string archiveName, string subArchive, List<string> filesName, string password)
         {
             using (ZipFile zip = ReadSubZipWithPassword(archiveName, subArchive, password))
             {
