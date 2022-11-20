@@ -46,12 +46,12 @@ namespace PcsFileServer
             //}
             return directory;
         }
-        static long GetDirectorySize(string path)
-        {
-            var a = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+        //static long GetDirectorySize(string path)
+        //{
+        //    var a = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
 
-            return a.Select(name => new FileInfo(name)).Select(info => info.Length).Sum();
-        }
+        //    return a.Select(name => new FileInfo(name)).Select(info => info.Length).Sum();
+        //}
         private void LoginButton_Click(object sender, EventArgs e)
         {
             try
