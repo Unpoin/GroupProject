@@ -43,6 +43,11 @@
             this.DeleteTile = new MetroFramework.Controls.MetroTile();
             this.InfoTile = new MetroFramework.Controls.MetroTile();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +58,7 @@
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.SettingsToolStripMenuItem});
-            this.mainMenuStrip.Location = new System.Drawing.Point(23, 56);
+            this.mainMenuStrip.Location = new System.Drawing.Point(23, 60);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.mainMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -80,7 +85,7 @@
             this.SaveFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SaveFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
-            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveFileToolStripMenuItem.Text = "Сохранить";
             this.SaveFileToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
@@ -90,7 +95,7 @@
             this.UploadFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.UploadFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.UploadFileToolStripMenuItem.Text = "Выгрузить";
             // 
             // ExitToolStripMenuItem
@@ -99,7 +104,7 @@
             this.ExitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.ExitToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -118,7 +123,7 @@
             // 
             this.SavePathToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.SavePathToolStripMenuItem.Name = "SavePathToolStripMenuItem";
-            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SavePathToolStripMenuItem.Text = "Изменить путь";
             this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
             // 
@@ -127,7 +132,7 @@
             this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
             this.InfoToolStripMenuItem.Click += new System.EventHandler(this.InfoToolStripMenuItem_Click);
             // 
@@ -199,11 +204,76 @@
             this.LogoPictureBox.TabIndex = 13;
             this.LogoPictureBox.TabStop = false;
             // 
+            // metroTile1
+            // 
+            this.metroTile1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.metroTile1.ForeColor = System.Drawing.Color.Silver;
+            this.metroTile1.Location = new System.Drawing.Point(798, 111);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(103, 19);
+            this.metroTile1.TabIndex = 18;
+            this.metroTile1.Text = "Инфо";
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.metroTile2.ForeColor = System.Drawing.Color.Silver;
+            this.metroTile2.Location = new System.Drawing.Point(696, 111);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(103, 19);
+            this.metroTile2.TabIndex = 17;
+            this.metroTile2.Text = "Удалить";
+            // 
+            // metroTile3
+            // 
+            this.metroTile3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.metroTile3.ForeColor = System.Drawing.Color.Silver;
+            this.metroTile3.Location = new System.Drawing.Point(593, 111);
+            this.metroTile3.Name = "metroTile3";
+            this.metroTile3.Size = new System.Drawing.Size(103, 19);
+            this.metroTile3.TabIndex = 16;
+            this.metroTile3.Text = "Скачать";
+            // 
+            // metroTile4
+            // 
+            this.metroTile4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.metroTile4.ForeColor = System.Drawing.Color.Silver;
+            this.metroTile4.Location = new System.Drawing.Point(490, 111);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(103, 19);
+            this.metroTile4.TabIndex = 15;
+            this.metroTile4.Text = "Загрузить";
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.listView1.ForeColor = System.Drawing.Color.Silver;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(490, 129);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(411, 422);
+            this.listView1.TabIndex = 14;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 560);
+            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.metroTile3);
+            this.Controls.Add(this.metroTile4);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.InfoTile);
             this.Controls.Add(this.DeleteTile);
@@ -215,8 +285,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(906, 560);
+            this.MinimumSize = new System.Drawing.Size(906, 560);
             this.Name = "MainForm";
-            this.Padding = new System.Windows.Forms.Padding(23, 56, 23, 19);
+            this.Padding = new System.Windows.Forms.Padding(23, 60, 23, 19);
             this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainMenuStrip.ResumeLayout(false);
@@ -243,6 +316,11 @@
         private MetroFramework.Controls.MetroTile DeleteTile;
         private MetroFramework.Controls.MetroTile InfoTile;
         private System.Windows.Forms.PictureBox LogoPictureBox;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroTile metroTile4;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 

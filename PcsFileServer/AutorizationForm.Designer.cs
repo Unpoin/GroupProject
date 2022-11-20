@@ -40,6 +40,9 @@
             this.RememberLabel = new MetroFramework.Controls.MetroLabel();
             this.OfflineLabel = new MetroFramework.Controls.MetroLabel();
             this.OfflineToggle = new MetroFramework.Controls.MetroToggle();
+            this.DownLoadTile = new MetroFramework.Controls.MetroTile();
+            this.AboutTile = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // LoginMailLabel
@@ -141,11 +144,45 @@
             this.OfflineToggle.Text = "Off";
             this.OfflineToggle.UseVisualStyleBackColor = true;
             // 
+            // DownLoadTile
+            // 
+            this.DownLoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.DownLoadTile.ForeColor = System.Drawing.Color.Silver;
+            this.DownLoadTile.Location = new System.Drawing.Point(198, 2);
+            this.DownLoadTile.Name = "DownLoadTile";
+            this.DownLoadTile.Size = new System.Drawing.Size(22, 19);
+            this.DownLoadTile.TabIndex = 23;
+            this.DownLoadTile.Text = "?";
+            // 
+            // AboutTile
+            // 
+            this.AboutTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.AboutTile.ForeColor = System.Drawing.Color.Silver;
+            this.AboutTile.Location = new System.Drawing.Point(0, 2);
+            this.AboutTile.Name = "AboutTile";
+            this.AboutTile.Size = new System.Drawing.Size(103, 19);
+            this.AboutTile.TabIndex = 24;
+            this.AboutTile.Text = "О программе";
+            this.AboutTile.Click += new System.EventHandler(this.AboutTile_Click);
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.metroTile2.Enabled = false;
+            this.metroTile2.ForeColor = System.Drawing.Color.Silver;
+            this.metroTile2.Location = new System.Drawing.Point(103, 2);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(95, 19);
+            this.metroTile2.TabIndex = 25;
+            // 
             // AutorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(220, 419);
+            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.AboutTile);
+            this.Controls.Add(this.DownLoadTile);
             this.Controls.Add(this.OfflineToggle);
             this.Controls.Add(this.OfflineLabel);
             this.Controls.Add(this.RememberLabel);
@@ -184,5 +221,8 @@
         private MetroFramework.Controls.MetroLabel RememberLabel;
         private MetroFramework.Controls.MetroLabel OfflineLabel;
         private MetroFramework.Controls.MetroToggle OfflineToggle;
+        private MetroFramework.Controls.MetroTile DownLoadTile;
+        private MetroFramework.Controls.MetroTile AboutTile;
+        private MetroFramework.Controls.MetroTile metroTile2;
     }
 }
