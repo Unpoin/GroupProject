@@ -148,7 +148,7 @@
             // 
             this.DownLoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
             this.DownLoadTile.ForeColor = System.Drawing.Color.Silver;
-            this.DownLoadTile.Location = new System.Drawing.Point(198, 2);
+            this.DownLoadTile.Location = new System.Drawing.Point(145, 2);
             this.DownLoadTile.Name = "DownLoadTile";
             this.DownLoadTile.Size = new System.Drawing.Size(22, 19);
             this.DownLoadTile.TabIndex = 23;
@@ -172,7 +172,7 @@
             this.metroTile2.ForeColor = System.Drawing.Color.Silver;
             this.metroTile2.Location = new System.Drawing.Point(103, 2);
             this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(95, 19);
+            this.metroTile2.Size = new System.Drawing.Size(42, 19);
             this.metroTile2.TabIndex = 25;
             // 
             // AutorizationForm
