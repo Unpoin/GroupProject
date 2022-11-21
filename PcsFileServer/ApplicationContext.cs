@@ -1,9 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySql.Data.EntityFramework;
+using MySql.Data.MySqlClient;
 using System.Data.Entity;
 using System.Text;
 
 namespace PcsFileServer
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class ApplicationContext:DbContext
     {
         
@@ -24,9 +26,9 @@ namespace PcsFileServer
         //    modelBuilder.Build();
         //    base.OnModelCreating(modelBuilder);
         //}
-        public ApplicationContext() : base()
+        public ApplicationContext(string conStr) : base(new MySqlConnection(conStr), true)
         { }
-        public DbSet<ftpuser> Users { get; set; }
+        public DbSet<ftpuser> ftpuser { get; set; }
 
     }
 }

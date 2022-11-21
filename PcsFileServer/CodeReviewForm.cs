@@ -59,9 +59,10 @@ namespace PcsFileServer
                     }
                     else
                     {
-                        var user = Core.Context.Users.FirstOrDefault(u => u.Email == this.email);
-                        user.Password = PasswordTextBox.Text;
-                        Core.Context.SaveChanges();
+                        ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                        var user = context.ftpuser.FirstOrDefault(u => u.email == this.email);
+                        user.passwd = PasswordTextBox.Text;
+                        context.SaveChanges();
                         AutorizationForm form = new AutorizationForm();
                         MessageBox.Show("Пароль успешно изменен");
                         this.Hide();

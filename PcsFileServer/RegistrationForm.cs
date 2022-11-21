@@ -44,11 +44,12 @@ namespace PcsFileServer
         {
             if (CapthaTextBox.Text == CapthaHandler.Text)
             {
-                try
-                {
+                //try
+                //{
+                    ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
                     string regMail = @"(\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)";
                     string regPassword = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
-                    var user = Core.Context.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTextBox.Text || u.Email == LoginTextBox.Text);
+                    var user = context.ftpuser.AsNoTracking().FirstOrDefault(u => u.userid == LoginTextBox.Text || u.email == LoginTextBox.Text);
                     if (user != null)
                     {
                         MessageBox.Show("Логин занят, введите другой");
@@ -65,17 +66,19 @@ namespace PcsFileServer
                         && Regex.IsMatch(PasswordTextBox.Text, regPassword)
                         )
                     {
-                        User newUser = new User
-                        {
-                            Name = UserNameTextBox.Text,
-                            Login = LoginTextBox.Text,
-                            Password = PasswordTextBox.Text,
-                            Role = "User",
-                            Email = MailTextBox.Text,
-                            Phone = PhoneMaskedTextBox.Text
-                        };
-                        Core.Context.Users.Add(newUser);
-                        Core.Context.SaveChanges();
+                    ftpuser newUser = new ftpuser()
+                    {
+                        name = UserNameTextBox.Text,
+                        userid = LoginTextBox.Text,
+                        passwd = PasswordTextBox.Text,
+                        email = MailTextBox.Text,
+                        role = "user",
+                        phone = PhoneMaskedTextBox.Text
+                    };
+                        context.ftpuser.Add(newUser);
+                        context.SaveChanges();
+                        //Core.Context.Users.Add(newUser);
+                        //Core.Context.SaveChanges();
                         MessageBox.Show("Регистрация успешна");
                         this.Close();
                     }
@@ -85,11 +88,11 @@ namespace PcsFileServer
                         CaptchaPictureBox.Image = CapthaHandler.CreateImage(200, 70);
                         MessageBox.Show("Неккоректно введены данные");
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}
             }
             else
             {

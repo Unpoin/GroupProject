@@ -48,7 +48,7 @@
             // LoginMailLabel
             // 
             this.LoginMailLabel.AutoSize = true;
-            this.LoginMailLabel.Location = new System.Drawing.Point(23, 74);
+            this.LoginMailLabel.Location = new System.Drawing.Point(30, 74);
             this.LoginMailLabel.Name = "LoginMailLabel";
             this.LoginMailLabel.Size = new System.Drawing.Size(84, 19);
             this.LoginMailLabel.TabIndex = 9;
@@ -56,14 +56,14 @@
             // 
             // LoginTextBox
             // 
-            this.LoginTextBox.Location = new System.Drawing.Point(26, 98);
+            this.LoginTextBox.Location = new System.Drawing.Point(33, 98);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(153, 23);
             this.LoginTextBox.TabIndex = 10;
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Location = new System.Drawing.Point(26, 143);
+            this.PasswordTextBox.Location = new System.Drawing.Point(33, 143);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(153, 23);
@@ -71,7 +71,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(23, 191);
+            this.LoginButton.Location = new System.Drawing.Point(30, 191);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(156, 23);
             this.LoginButton.TabIndex = 13;
@@ -80,7 +80,7 @@
             // 
             // RegistrationButton
             // 
-            this.RegistrationButton.Location = new System.Drawing.Point(23, 230);
+            this.RegistrationButton.Location = new System.Drawing.Point(30, 230);
             this.RegistrationButton.Name = "RegistrationButton";
             this.RegistrationButton.Size = new System.Drawing.Size(156, 23);
             this.RegistrationButton.TabIndex = 14;
@@ -90,7 +90,7 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(26, 124);
+            this.PasswordLabel.Location = new System.Drawing.Point(33, 124);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(54, 19);
             this.PasswordLabel.TabIndex = 15;
@@ -98,7 +98,7 @@
             // 
             // RecoverPasswordButton
             // 
-            this.RecoverPasswordButton.Location = new System.Drawing.Point(26, 273);
+            this.RecoverPasswordButton.Location = new System.Drawing.Point(33, 273);
             this.RecoverPasswordButton.Name = "RecoverPasswordButton";
             this.RecoverPasswordButton.Size = new System.Drawing.Size(153, 38);
             this.RecoverPasswordButton.TabIndex = 16;
@@ -108,7 +108,7 @@
             // RememberToggle
             // 
             this.RememberToggle.AutoSize = true;
-            this.RememberToggle.Location = new System.Drawing.Point(23, 336);
+            this.RememberToggle.Location = new System.Drawing.Point(30, 336);
             this.RememberToggle.Name = "RememberToggle";
             this.RememberToggle.Size = new System.Drawing.Size(80, 20);
             this.RememberToggle.TabIndex = 19;
@@ -119,7 +119,7 @@
             // RememberLabel
             // 
             this.RememberLabel.AutoSize = true;
-            this.RememberLabel.Location = new System.Drawing.Point(26, 314);
+            this.RememberLabel.Location = new System.Drawing.Point(33, 314);
             this.RememberLabel.Name = "RememberLabel";
             this.RememberLabel.Size = new System.Drawing.Size(111, 19);
             this.RememberLabel.TabIndex = 20;
@@ -128,7 +128,7 @@
             // OfflineLabel
             // 
             this.OfflineLabel.AutoSize = true;
-            this.OfflineLabel.Location = new System.Drawing.Point(23, 362);
+            this.OfflineLabel.Location = new System.Drawing.Point(30, 362);
             this.OfflineLabel.Name = "OfflineLabel";
             this.OfflineLabel.Size = new System.Drawing.Size(135, 19);
             this.OfflineLabel.TabIndex = 21;
@@ -137,7 +137,7 @@
             // OfflineToggle
             // 
             this.OfflineToggle.AutoSize = true;
-            this.OfflineToggle.Location = new System.Drawing.Point(23, 384);
+            this.OfflineToggle.Location = new System.Drawing.Point(30, 384);
             this.OfflineToggle.Name = "OfflineToggle";
             this.OfflineToggle.Size = new System.Drawing.Size(80, 20);
             this.OfflineToggle.TabIndex = 22;

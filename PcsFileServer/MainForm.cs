@@ -104,7 +104,7 @@ namespace PcsFileServer
                 bool isZipExist = false;
                 using (var zipFile = ZipFile.Read(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip")))
                 {
-                    isZipExist = zipFile.ContainsEntry($"{PcsUser.CurrentUser.Login}.zip");
+                    isZipExist = zipFile.ContainsEntry($"{PcsUser.CurrentUser.userid}.zip");
                 }
                 if (!isZipExist)
                 {
@@ -269,17 +269,25 @@ namespace PcsFileServer
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             try
             {
-                if (dialog.ShowDialog() == DialogResult.OK)
+                List<string> fileListToDownload = new List<string>();
+                var fileName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip");
+                for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
                 {
-                    List<string> fileListToDownload = new List<string>();
-                    var fileName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip");
-                    for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+                    fileListToDownload.Add(LocalListView.SelectedItems[i].Text);
+                }
+                if (fileListToDownload.Count == 0)
+                {
+                    MessageBox.Show("Выберите файлы для скачивания!");
+                }
+                else
+                {
+                    if (dialog.ShowDialog() == DialogResult.OK)
                     {
-                        fileListToDownload.Add(LocalListView.SelectedItems[i].Text);
+
+                        IonicZipHelper.DownloadFilesFromZip(fileName, Settings.Default.ionicZlibPackingName,
+                            fileListToDownload, "a1sda42kld31sa987e2", dialog.SelectedPath);
+                        MessageBox.Show("Файл скачан!", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    IonicZipHelper.DownloadFilesFromZip(fileName, Settings.Default.ionicZlibPackingName,
-                        fileListToDownload, "a1sda42kld31sa987e2", dialog.SelectedPath);
-                    MessageBox.Show("Файл скачан!", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

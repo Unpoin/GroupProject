@@ -202,7 +202,6 @@
     <Compile Include="CodeReviewForm.Designer.cs">
       <DependentUpon>CodeReviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ftpuser.cs" />
     <Compile Include="InformationForm.cs">
@@ -223,21 +222,6 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PcsFileServerModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PcsFileServerModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PcsFileServerModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PcsFileServerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PcsFileServerModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="PcsUser.cs" />
     <Compile Include="Profiler.cs" />
@@ -265,15 +249,6 @@
     </Compile>
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>PcsFileServerModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AutorizationForm.resx">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
@@ -304,17 +279,7 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
-    <EntityDeploy Include="PcsFileServerModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PcsFileServerModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="PcsFileServerModel.edmx.diagram">
-      <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -334,16 +299,6 @@
   <ItemGroup>
     <Content Include="logo.ico" />
     <Content Include="MetroFramework.txt" />
-    <Content Include="PcsFileServerModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
-      <LastGenOutput>PcsFileServerModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="PcsFileServerModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PcsFileServerModel.edmx</DependentUpon>
-      <LastGenOutput>PcsFileServerModel.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\logo.png" />
     <None Include="Resources\mediafile.png" />
     <None Include="Resources\picturefileicon.png" />

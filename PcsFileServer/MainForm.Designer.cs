@@ -85,7 +85,7 @@
             this.SaveFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SaveFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
-            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.SaveFileToolStripMenuItem.Text = "Сохранить";
             this.SaveFileToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
@@ -95,7 +95,7 @@
             this.UploadFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.UploadFileToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.UploadFileToolStripMenuItem.Text = "Выгрузить";
             // 
             // ExitToolStripMenuItem
@@ -104,7 +104,7 @@
             this.ExitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.ExitToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.ExitToolStripMenuItem.Text = "Выход";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -123,7 +123,7 @@
             // 
             this.SavePathToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.SavePathToolStripMenuItem.Name = "SavePathToolStripMenuItem";
-            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.SavePathToolStripMenuItem.Text = "Изменить путь";
             this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
             // 
@@ -132,7 +132,7 @@
             this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.InfoToolStripMenuItem.Text = "О программе";
             this.InfoToolStripMenuItem.Click += new System.EventHandler(this.InfoToolStripMenuItem_Click);
             // 
@@ -198,9 +198,9 @@
             // 
             // LogoPictureBox
             // 
-            this.LogoPictureBox.Location = new System.Drawing.Point(207, 21);
+            this.LogoPictureBox.Location = new System.Drawing.Point(182, 10);
             this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(47, 33);
+            this.LogoPictureBox.Size = new System.Drawing.Size(47, 47);
             this.LogoPictureBox.TabIndex = 13;
             this.LogoPictureBox.TabStop = false;
             // 

@@ -8,9 +8,9 @@ namespace PcsFileServer
 {
     public static class PcsUser
     {
-        private static User currentUser;
+        private static ftpuser currentUser;
 
-        public static User CurrentUser
+        public static ftpuser CurrentUser
         {
             get => currentUser;
             set => currentUser = value;

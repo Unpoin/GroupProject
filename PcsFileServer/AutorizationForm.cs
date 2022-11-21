@@ -31,21 +31,21 @@ namespace PcsFileServer
             RegistrationForm form = new RegistrationForm();
             form.ShowDialog();
         }
-        private static string CreateEmptyDirectory()
-        {
-            var directory = Path.Combine(Directory.GetCurrentDirectory(), "YourArchive");
-            if (!Directory.Exists(directory))
-                Directory.CreateDirectory(directory);
-            //else
-            //{
-            //    var files = Directory.GetFiles(directory);
-            //    foreach (var file in files)
-            //    {
-            //        File.Delete(file);
-            //    }
-            //}
-            return directory;
-        }
+        //private static string CreateEmptyDirectory()
+        //{
+        //    var directory = Path.Combine(Directory.GetCurrentDirectory(), "YourArchive");
+        //    if (!Directory.Exists(directory))
+        //        Directory.CreateDirectory(directory);
+        //    //else
+        //    //{
+        //    //    var files = Directory.GetFiles(directory);
+        //    //    foreach (var file in files)
+        //    //    {
+        //    //        File.Delete(file);
+        //    //    }
+        //    //}
+        //    return directory;
+        //}
         //static long GetDirectorySize(string path)
         //{
         //    var a = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
@@ -56,8 +56,9 @@ namespace PcsFileServer
         {
             try
             {
-                var user = Core.Context.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTextBox.Text || u.Email == LoginTextBox.Text);
-                if (user == null || user.Password != PasswordTextBox.Text)
+                ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                var user = context.ftpuser.AsNoTracking().FirstOrDefault(u => u.userid == LoginTextBox.Text || u.email == LoginTextBox.Text);
+                if (user == null || user.passwd != PasswordTextBox.Text)
                 {
 
                     user = null;
@@ -68,7 +69,7 @@ namespace PcsFileServer
                 PcsUser.CurrentUser = user;
                 try
                 {
-                    Properties.Settings.Default.ionicZlibPackingName = Convert.ToString(user.Login + ".zip");
+                    Properties.Settings.Default.ionicZlibPackingName = Convert.ToString(user.userid + ".zip");
                     Properties.Settings.Default.Save();
                     if (!File.Exists(Path.Combine(Properties.Settings.Default.pathToSave, "PcsFileServer.zip")))
                     {
@@ -145,20 +146,20 @@ namespace PcsFileServer
 
             this.components.SetStyleDark(this);
             RememberToggle.Checked = Properties.Settings.Default.IsRemember;
-            try
-            {
-                SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
-                Core.Server = @"ROMANUS";
-                Core.Database = @"PcsFileServer";
-                Core.Login = @"sa";
-                Core.Password = @"1";
-                Core.ResetConnection();
-                Core.Context.Database.Connection.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
+            //    Core.Server = @"ROMANUS";
+            //    Core.Database = @"PcsFileServer";
+            //    Core.Login = @"sa";
+            //    Core.Password = @"1";
+            //    Core.ResetConnection();
+            //    Core.Context.Database.Connection.Open();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         private void RememberToggle_CheckedChanged(object sender, EventArgs e)
         {
@@ -173,9 +174,3 @@ namespace PcsFileServer
         }
     }
 }
-
-
-
-
-
-
