@@ -36,18 +36,20 @@
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SavePathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.InfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LocalListView = new System.Windows.Forms.ListView();
             this.LoadTile = new MetroFramework.Controls.MetroTile();
             this.DownLoadTile = new MetroFramework.Controls.MetroTile();
             this.DeleteTile = new MetroFramework.Controls.MetroTile();
             this.InfoTile = new MetroFramework.Controls.MetroTile();
-            this.LogoPictureBox = new System.Windows.Forms.PictureBox();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
-            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.CloudInfoTile = new MetroFramework.Controls.MetroTile();
+            this.DeleteCloudTile = new MetroFramework.Controls.MetroTile();
+            this.CloudDownloadTile = new MetroFramework.Controls.MetroTile();
+            this.CloudLoadTile = new MetroFramework.Controls.MetroTile();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.GuideTile = new MetroFramework.Controls.MetroTile();
+            this.AdministrationTile = new MetroFramework.Controls.MetroTile();
+            this.AboutTile = new MetroFramework.Controls.MetroTile();
+            this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -112,8 +114,7 @@
             // 
             this.SettingsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.SettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SavePathToolStripMenuItem,
-            this.InfoToolStripMenuItem});
+            this.SavePathToolStripMenuItem});
             this.SettingsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
             this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
@@ -126,15 +127,6 @@
             this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.SavePathToolStripMenuItem.Text = "Изменить путь";
             this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
-            // 
-            // InfoToolStripMenuItem
-            // 
-            this.InfoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.InfoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.InfoToolStripMenuItem.Name = "InfoToolStripMenuItem";
-            this.InfoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.InfoToolStripMenuItem.Text = "О программе";
-            this.InfoToolStripMenuItem.Click += new System.EventHandler(this.InfoToolStripMenuItem_Click);
             // 
             // LocalListView
             // 
@@ -196,57 +188,50 @@
             this.InfoTile.Text = "Инфо";
             this.InfoTile.Click += new System.EventHandler(this.InfoTile_Click);
             // 
-            // LogoPictureBox
+            // CloudInfoTile
             // 
-            this.LogoPictureBox.Location = new System.Drawing.Point(182, 10);
-            this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(47, 47);
-            this.LogoPictureBox.TabIndex = 13;
-            this.LogoPictureBox.TabStop = false;
+            this.CloudInfoTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloudInfoTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.CloudInfoTile.ForeColor = System.Drawing.Color.Silver;
+            this.CloudInfoTile.Location = new System.Drawing.Point(798, 111);
+            this.CloudInfoTile.Name = "CloudInfoTile";
+            this.CloudInfoTile.Size = new System.Drawing.Size(103, 19);
+            this.CloudInfoTile.TabIndex = 18;
+            this.CloudInfoTile.Text = "Инфо";
             // 
-            // metroTile1
+            // DeleteCloudTile
             // 
-            this.metroTile1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.metroTile1.ForeColor = System.Drawing.Color.Silver;
-            this.metroTile1.Location = new System.Drawing.Point(798, 111);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(103, 19);
-            this.metroTile1.TabIndex = 18;
-            this.metroTile1.Text = "Инфо";
+            this.DeleteCloudTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteCloudTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.DeleteCloudTile.ForeColor = System.Drawing.Color.Silver;
+            this.DeleteCloudTile.Location = new System.Drawing.Point(696, 111);
+            this.DeleteCloudTile.Name = "DeleteCloudTile";
+            this.DeleteCloudTile.Size = new System.Drawing.Size(103, 19);
+            this.DeleteCloudTile.TabIndex = 17;
+            this.DeleteCloudTile.Text = "Удалить";
             // 
-            // metroTile2
+            // CloudDownloadTile
             // 
-            this.metroTile2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.metroTile2.ForeColor = System.Drawing.Color.Silver;
-            this.metroTile2.Location = new System.Drawing.Point(696, 111);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(103, 19);
-            this.metroTile2.TabIndex = 17;
-            this.metroTile2.Text = "Удалить";
+            this.CloudDownloadTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloudDownloadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.CloudDownloadTile.ForeColor = System.Drawing.Color.Silver;
+            this.CloudDownloadTile.Location = new System.Drawing.Point(593, 111);
+            this.CloudDownloadTile.Name = "CloudDownloadTile";
+            this.CloudDownloadTile.Size = new System.Drawing.Size(103, 19);
+            this.CloudDownloadTile.TabIndex = 16;
+            this.CloudDownloadTile.Text = "Скачать";
             // 
-            // metroTile3
+            // CloudLoadTile
             // 
-            this.metroTile3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTile3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.metroTile3.ForeColor = System.Drawing.Color.Silver;
-            this.metroTile3.Location = new System.Drawing.Point(593, 111);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(103, 19);
-            this.metroTile3.TabIndex = 16;
-            this.metroTile3.Text = "Скачать";
-            // 
-            // metroTile4
-            // 
-            this.metroTile4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTile4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.metroTile4.ForeColor = System.Drawing.Color.Silver;
-            this.metroTile4.Location = new System.Drawing.Point(490, 111);
-            this.metroTile4.Name = "metroTile4";
-            this.metroTile4.Size = new System.Drawing.Size(103, 19);
-            this.metroTile4.TabIndex = 15;
-            this.metroTile4.Text = "Загрузить";
+            this.CloudLoadTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloudLoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.CloudLoadTile.ForeColor = System.Drawing.Color.Silver;
+            this.CloudLoadTile.Location = new System.Drawing.Point(490, 111);
+            this.CloudLoadTile.Name = "CloudLoadTile";
+            this.CloudLoadTile.Size = new System.Drawing.Size(103, 19);
+            this.CloudLoadTile.TabIndex = 15;
+            this.CloudLoadTile.Text = "Загрузить";
+            this.CloudLoadTile.Click += new System.EventHandler(this.CloudLoadTile_Click);
             // 
             // listView1
             // 
@@ -264,15 +249,57 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
             // 
+            // GuideTile
+            // 
+            this.GuideTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.GuideTile.ForeColor = System.Drawing.Color.Silver;
+            this.GuideTile.Location = new System.Drawing.Point(103, 5);
+            this.GuideTile.Name = "GuideTile";
+            this.GuideTile.Size = new System.Drawing.Size(22, 19);
+            this.GuideTile.TabIndex = 24;
+            this.GuideTile.Text = "?";
+            // 
+            // AdministrationTile
+            // 
+            this.AdministrationTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.AdministrationTile.ForeColor = System.Drawing.Color.Silver;
+            this.AdministrationTile.Location = new System.Drawing.Point(593, 5);
+            this.AdministrationTile.Name = "AdministrationTile";
+            this.AdministrationTile.Size = new System.Drawing.Size(144, 19);
+            this.AdministrationTile.TabIndex = 25;
+            this.AdministrationTile.Text = "Администрирование";
+            // 
+            // AboutTile
+            // 
+            this.AboutTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.AboutTile.ForeColor = System.Drawing.Color.Silver;
+            this.AboutTile.Location = new System.Drawing.Point(0, 5);
+            this.AboutTile.Name = "AboutTile";
+            this.AboutTile.Size = new System.Drawing.Size(103, 19);
+            this.AboutTile.TabIndex = 26;
+            this.AboutTile.Text = "О программе";
+            this.AboutTile.Click += new System.EventHandler(this.AboutTile_Click);
+            // 
+            // LogoPictureBox
+            // 
+            this.LogoPictureBox.Location = new System.Drawing.Point(182, 10);
+            this.LogoPictureBox.Name = "LogoPictureBox";
+            this.LogoPictureBox.Size = new System.Drawing.Size(47, 47);
+            this.LogoPictureBox.TabIndex = 13;
+            this.LogoPictureBox.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 560);
-            this.Controls.Add(this.metroTile1);
-            this.Controls.Add(this.metroTile2);
-            this.Controls.Add(this.metroTile3);
-            this.Controls.Add(this.metroTile4);
+            this.Controls.Add(this.AboutTile);
+            this.Controls.Add(this.AdministrationTile);
+            this.Controls.Add(this.GuideTile);
+            this.Controls.Add(this.CloudInfoTile);
+            this.Controls.Add(this.DeleteCloudTile);
+            this.Controls.Add(this.CloudDownloadTile);
+            this.Controls.Add(this.CloudLoadTile);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.InfoTile);
@@ -308,7 +335,6 @@
         private System.Windows.Forms.ToolStripMenuItem UploadFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem;
         private System.Windows.Forms.ListView LocalListView;
         private System.Windows.Forms.ToolStripMenuItem SavePathToolStripMenuItem;
         private MetroFramework.Controls.MetroTile LoadTile;
@@ -316,11 +342,14 @@
         private MetroFramework.Controls.MetroTile DeleteTile;
         private MetroFramework.Controls.MetroTile InfoTile;
         private System.Windows.Forms.PictureBox LogoPictureBox;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroTile metroTile3;
-        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile CloudInfoTile;
+        private MetroFramework.Controls.MetroTile DeleteCloudTile;
+        private MetroFramework.Controls.MetroTile CloudDownloadTile;
+        private MetroFramework.Controls.MetroTile CloudLoadTile;
         private System.Windows.Forms.ListView listView1;
+        private MetroFramework.Controls.MetroTile GuideTile;
+        private MetroFramework.Controls.MetroTile AdministrationTile;
+        private MetroFramework.Controls.MetroTile AboutTile;
     }
 }
 

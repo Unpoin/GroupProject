@@ -187,6 +187,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministrationForm.Designer.cs">
+      <DependentUpon>AdministrationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="AutorizationForm.cs">
       <SubType>Form</SubType>
@@ -203,6 +209,7 @@
       <DependentUpon>CodeReviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="FtpHelper.cs" />
     <Compile Include="ftpuser.cs" />
     <Compile Include="InformationForm.cs">
       <SubType>Form</SubType>
@@ -250,6 +257,9 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdministrationForm.resx">
+      <DependentUpon>AdministrationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AutorizationForm.resx">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -299,6 +309,10 @@
   <ItemGroup>
     <Content Include="logo.ico" />
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\eyePurple.png" />
+    <None Include="Resources\eye-crossedPurple.png" />
+    <None Include="Resources\eye-crossed.png" />
+    <None Include="Resources\eye.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\mediafile.png" />
     <None Include="Resources\picturefileicon.png" />

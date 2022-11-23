@@ -73,12 +73,11 @@ namespace PcsFileServer
                         passwd = PasswordTextBox.Text,
                         email = MailTextBox.Text,
                         role = "user",
-                        phone = PhoneMaskedTextBox.Text
+                        phone = PhoneMaskedTextBox.Text,
+                        homedir=$"/srv/{PcsUser.CurrentUser.userid}"
                     };
                         context.ftpuser.Add(newUser);
                         context.SaveChanges();
-                        //Core.Context.Users.Add(newUser);
-                        //Core.Context.SaveChanges();
                         MessageBox.Show("Регистрация успешна");
                         this.Close();
                     }

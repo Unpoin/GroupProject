@@ -40,9 +40,11 @@
             this.RememberLabel = new MetroFramework.Controls.MetroLabel();
             this.OfflineLabel = new MetroFramework.Controls.MetroLabel();
             this.OfflineToggle = new MetroFramework.Controls.MetroToggle();
-            this.DownLoadTile = new MetroFramework.Controls.MetroTile();
+            this.GuideTile = new MetroFramework.Controls.MetroTile();
             this.AboutTile = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.PassPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PassPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // LoginMailLabel
@@ -144,15 +146,15 @@
             this.OfflineToggle.Text = "Off";
             this.OfflineToggle.UseVisualStyleBackColor = true;
             // 
-            // DownLoadTile
+            // GuideTile
             // 
-            this.DownLoadTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.DownLoadTile.ForeColor = System.Drawing.Color.Silver;
-            this.DownLoadTile.Location = new System.Drawing.Point(145, 2);
-            this.DownLoadTile.Name = "DownLoadTile";
-            this.DownLoadTile.Size = new System.Drawing.Size(22, 19);
-            this.DownLoadTile.TabIndex = 23;
-            this.DownLoadTile.Text = "?";
+            this.GuideTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.GuideTile.ForeColor = System.Drawing.Color.Silver;
+            this.GuideTile.Location = new System.Drawing.Point(145, 2);
+            this.GuideTile.Name = "GuideTile";
+            this.GuideTile.Size = new System.Drawing.Size(22, 19);
+            this.GuideTile.TabIndex = 23;
+            this.GuideTile.Text = "?";
             // 
             // AboutTile
             // 
@@ -175,14 +177,25 @@
             this.metroTile2.Size = new System.Drawing.Size(42, 19);
             this.metroTile2.TabIndex = 25;
             // 
+            // PassPictureBox
+            // 
+            this.PassPictureBox.Location = new System.Drawing.Point(192, 143);
+            this.PassPictureBox.Name = "PassPictureBox";
+            this.PassPictureBox.Size = new System.Drawing.Size(23, 23);
+            this.PassPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PassPictureBox.TabIndex = 26;
+            this.PassPictureBox.TabStop = false;
+            this.PassPictureBox.Click += new System.EventHandler(this.PassPictureBox_Click);
+            // 
             // AutorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(220, 419);
+            this.Controls.Add(this.PassPictureBox);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.AboutTile);
-            this.Controls.Add(this.DownLoadTile);
+            this.Controls.Add(this.GuideTile);
             this.Controls.Add(this.OfflineToggle);
             this.Controls.Add(this.OfflineLabel);
             this.Controls.Add(this.RememberLabel);
@@ -204,6 +217,7 @@
             this.Name = "AutorizationForm";
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.AutorizationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PassPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,8 +235,9 @@
         private MetroFramework.Controls.MetroLabel RememberLabel;
         private MetroFramework.Controls.MetroLabel OfflineLabel;
         private MetroFramework.Controls.MetroToggle OfflineToggle;
-        private MetroFramework.Controls.MetroTile DownLoadTile;
+        private MetroFramework.Controls.MetroTile GuideTile;
         private MetroFramework.Controls.MetroTile AboutTile;
         private MetroFramework.Controls.MetroTile metroTile2;
+        private System.Windows.Forms.PictureBox PassPictureBox;
     }
 }

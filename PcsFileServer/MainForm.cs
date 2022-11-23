@@ -129,7 +129,6 @@ namespace PcsFileServer
                 = ExitToolStripMenuItem.ForeColor
                 = SaveFileToolStripMenuItem.ForeColor
                 = SettingsToolStripMenuItem.ForeColor
-                = InfoToolStripMenuItem.ForeColor
                 = Color.Silver;
             mainMenuStrip.BackColor = Color.Transparent;
             mainMenuStrip.Renderer = new MyRenderer();
@@ -210,6 +209,11 @@ namespace PcsFileServer
             this.components.SetStyleDark(this);
             LogoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             LogoPictureBox.Image = Resources.logo;
+            if(PcsUser.CurrentUser.role=="user")
+                AdministrationTile.Visible = false;
+            else
+                AdministrationTile.Visible = true;
+
             ViewDirectiryList();
         }
 
@@ -312,10 +316,20 @@ namespace PcsFileServer
             }
         }
 
-        private void InfoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutTile_Click(object sender, EventArgs e)
         {
-            InformationForm info = new InformationForm();
-            info.ShowDialog();
+            InformationForm form = new InformationForm();
+            form.ShowDialog();
+        }
+
+        private void CloudLoadTile_Click(object sender, EventArgs e)
+        {
+            //                             _ _
+            //ftp helper сделать методы   ('o')
+            //                           \_| |_/
+            //                             | |
+            //                             |_|
+            //                            /   \
         }
     }
 }

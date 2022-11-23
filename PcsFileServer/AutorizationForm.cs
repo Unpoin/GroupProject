@@ -20,6 +20,7 @@ namespace PcsFileServer
             try
             {
                 InitializeComponent();
+                PassPictureBox.Image = Properties.Resources.eyePurple;
                 LoginTextBox.Text = Properties.Settings.Default.Login;
                 PasswordTextBox.Text = Properties.Settings.Default.Password;
             }
@@ -60,7 +61,6 @@ namespace PcsFileServer
                 var user = context.ftpuser.AsNoTracking().FirstOrDefault(u => u.userid == LoginTextBox.Text || u.email == LoginTextBox.Text);
                 if (user == null || user.passwd != PasswordTextBox.Text)
                 {
-
                     user = null;
                     MessageBox.Show("Неправильно введены данные, попробуйте снова!");
                     return;
@@ -143,7 +143,6 @@ namespace PcsFileServer
             Thread.Sleep(5000); 
             done = true;
             Show();
-
             this.components.SetStyleDark(this);
             RememberToggle.Checked = Properties.Settings.Default.IsRemember;
             //try
@@ -171,6 +170,20 @@ namespace PcsFileServer
         {
             InformationForm info = new InformationForm();
             info.ShowDialog();
+        }
+
+        private void PassPictureBox_Click(object sender, EventArgs e)
+        {
+            if(PasswordTextBox.PasswordChar=='*')
+            {
+                PasswordTextBox.PasswordChar = '\0';
+                PassPictureBox.Image = Properties.Resources.eye_crossedPurple;
+            }
+            else
+            {
+                PasswordTextBox.PasswordChar = '*';
+                PassPictureBox.Image = Properties.Resources.eyePurple;
+            }
         }
     }
 }

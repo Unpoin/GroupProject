@@ -1,7 +1,6 @@
 ﻿using MySql.Data.EntityFramework;
 using MySql.Data.MySqlClient;
 using System.Data.Entity;
-using System.Text;
 
 namespace PcsFileServer
 {
