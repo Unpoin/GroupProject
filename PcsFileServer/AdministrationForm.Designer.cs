@@ -28,8 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministrationForm));
             this.AboutTile = new MetroFramework.Controls.MetroTile();
             this.GuideTile = new MetroFramework.Controls.MetroTile();
+            this.UsersDataGrid = new System.Windows.Forms.DataGridView();
+            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SearchTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.SearchButton = new MetroFramework.Controls.MetroButton();
+            this.SearchLabel = new MetroFramework.Controls.MetroLabel();
+            this.SaveButton = new MetroFramework.Controls.MetroButton();
+            this.DeleteButton = new MetroFramework.Controls.MetroButton();
+            this.AddButton = new MetroFramework.Controls.MetroButton();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // AboutTile
@@ -54,19 +69,137 @@
             this.GuideTile.Text = "?";
             this.GuideTile.Click += new System.EventHandler(this.GuideTile_Click);
             // 
+            // UsersDataGrid
+            // 
+            this.UsersDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.UsersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UsersDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userid,
+            this.role,
+            this.passwd,
+            this.name,
+            this.email,
+            this.phone});
+            this.UsersDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.UsersDataGrid.Location = new System.Drawing.Point(23, 133);
+            this.UsersDataGrid.Name = "UsersDataGrid";
+            this.UsersDataGrid.RowHeadersWidth = 90;
+            this.UsersDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.UsersDataGrid.Size = new System.Drawing.Size(692, 326);
+            this.UsersDataGrid.TabIndex = 27;
+            // 
+            // userid
+            // 
+            this.userid.DataPropertyName = "userid";
+            this.userid.HeaderText = "Логин";
+            this.userid.Name = "userid";
+            // 
+            // role
+            // 
+            this.role.DataPropertyName = "role";
+            this.role.HeaderText = "Роль";
+            this.role.Name = "role";
+            // 
+            // passwd
+            // 
+            this.passwd.DataPropertyName = "passwd";
+            this.passwd.HeaderText = "Пароль";
+            this.passwd.Name = "passwd";
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "Имя пользователя";
+            this.name.Name = "name";
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "Почта";
+            this.email.Name = "email";
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "Телефон";
+            this.phone.Name = "phone";
+            // 
+            // SearchTextBox
+            // 
+            this.SearchTextBox.Location = new System.Drawing.Point(23, 104);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(164, 23);
+            this.SearchTextBox.TabIndex = 28;
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Location = new System.Drawing.Point(193, 104);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(75, 23);
+            this.SearchButton.TabIndex = 29;
+            this.SearchButton.Text = "Найти";
+            // 
+            // SearchLabel
+            // 
+            this.SearchLabel.AutoSize = true;
+            this.SearchLabel.Location = new System.Drawing.Point(22, 82);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(47, 19);
+            this.SearchLabel.TabIndex = 30;
+            this.SearchLabel.Text = "Логин";
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(23, 465);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 31;
+            this.SaveButton.Text = "Сохранить";
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(121, 465);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.TabIndex = 32;
+            this.DeleteButton.Text = "Удалить";
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // AddButton
+            // 
+            this.AddButton.Location = new System.Drawing.Point(219, 465);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(75, 23);
+            this.AddButton.TabIndex = 33;
+            this.AddButton.Text = "Добавить";
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 384);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(729, 500);
+            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.SearchLabel);
+            this.Controls.Add(this.SearchButton);
+            this.Controls.Add(this.SearchTextBox);
+            this.Controls.Add(this.UsersDataGrid);
             this.Controls.Add(this.GuideTile);
             this.Controls.Add(this.AboutTile);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(729, 500);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(729, 500);
             this.Name = "AdministrationForm";
             this.Text = "Администрирование";
+            this.Load += new System.EventHandler(this.AdministrationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -74,5 +207,18 @@
 
         private MetroFramework.Controls.MetroTile AboutTile;
         private MetroFramework.Controls.MetroTile GuideTile;
+        private System.Windows.Forms.DataGridView UsersDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn role;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
+        private MetroFramework.Controls.MetroTextBox SearchTextBox;
+        private MetroFramework.Controls.MetroButton SearchButton;
+        private MetroFramework.Controls.MetroLabel SearchLabel;
+        private MetroFramework.Controls.MetroButton SaveButton;
+        private MetroFramework.Controls.MetroButton DeleteButton;
+        private MetroFramework.Controls.MetroButton AddButton;
     }
 }

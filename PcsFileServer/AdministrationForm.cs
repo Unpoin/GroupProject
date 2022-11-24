@@ -17,6 +17,7 @@ namespace PcsFileServer
         public AdministrationForm()
         {
             InitializeComponent();
+            this.components.SetStyleDark(this);
         }
 
         private void AboutTile_Click(object sender, EventArgs e)
@@ -28,6 +29,40 @@ namespace PcsFileServer
         private void GuideTile_Click(object sender, EventArgs e)
         {
             //guideform
+        }
+
+        private void AdministrationForm_Load(object sender, EventArgs e)
+        {
+            ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+            var data = context.ftpuser
+                    .Select(t => new
+                    {
+                        t.userid,
+                        t.passwd,
+                        t.name,
+                        t.email,
+                        t.role,
+                        t.phone
+                    });
+            UsersDataGrid.DataSource = data.ToList();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in UsersDataGrid.SelectedRows)
+            {
+                //удалить пользователя
+            }
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -20,11 +20,6 @@ namespace PcsFileServer
             builder.SslMode = MySqlSslMode.Disabled;
             return builder.ConnectionString;
         }
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Build();
-        //    base.OnModelCreating(modelBuilder);
-        //}
         public ApplicationContext(string conStr) : base(new MySqlConnection(conStr), true)
         { }
         public DbSet<ftpuser> ftpuser { get; set; }

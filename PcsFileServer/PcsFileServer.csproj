@@ -200,7 +200,6 @@
     <Compile Include="AutorizationForm.Designer.cs">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Base.cs" />
     <Compile Include="CapthaHandler.cs" />
     <Compile Include="CodeReviewForm.cs">
       <SubType>Form</SubType>

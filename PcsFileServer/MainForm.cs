@@ -331,5 +331,11 @@ namespace PcsFileServer
             //                             |_|
             //                            /   \
         }
+
+        private void AdministrationTile_Click(object sender, EventArgs e)
+        {
+            var form = new AdministrationForm();
+            form.ShowDialog();
+        }
     }
 }

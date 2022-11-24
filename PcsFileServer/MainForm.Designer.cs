@@ -268,6 +268,7 @@
             this.AdministrationTile.Size = new System.Drawing.Size(144, 19);
             this.AdministrationTile.TabIndex = 25;
             this.AdministrationTile.Text = "Администрирование";
+            this.AdministrationTile.Click += new System.EventHandler(this.AdministrationTile_Click);
             // 
             // AboutTile
             // 
