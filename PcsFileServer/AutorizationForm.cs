@@ -10,6 +10,9 @@ using System.Windows.Forms.VisualStyles;
 using System.Collections.Generic;
 using Ionic.Zip;
 using MetroFramework.Components;
+using System.Threading.Tasks;
+using System.Security.Policy;
+using System.Reflection;
 
 namespace PcsFileServer
 {
@@ -53,7 +56,7 @@ namespace PcsFileServer
 
         //    return a.Select(name => new FileInfo(name)).Select(info => info.Length).Sum();
         //}
-        private void LoginButton_Click(object sender, EventArgs e)
+        void GetUser()
         {
             try
             {
@@ -105,19 +108,34 @@ namespace PcsFileServer
                 this.Hide();
                 main.ShowDialog();
                 this.Close();
-                            }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+        async Task GetUserAsync()
+        {
+            await Task.Run(() => GetUser());
+        }
+        private async void LoginButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            using (var introForm = new IntroForm())
+            {
+                introForm.Show();
+                await GetUserAsync();
+                introForm.Close();
+            }
+            Show();
+        }
 
         private void RecoverPasswordButton_Click(object sender, EventArgs e)
         {
             RecoverForm recoverForm = new RecoverForm();
-            this.Hide();
+            //this.Hide();
             recoverForm.ShowDialog();
-            this.Close();
+            //this.Close();
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)
@@ -140,25 +158,11 @@ namespace PcsFileServer
                     introForm.Close();
                 }
             });
-            Thread.Sleep(5000); 
+            Thread.Sleep(2500); 
             done = true;
             Show();
             this.components.SetStyleDark(this);
             RememberToggle.Checked = Properties.Settings.Default.IsRemember;
-            //try
-            //{
-            //    SqlConnectionStringBuilder sqlConnection = new SqlConnectionStringBuilder();
-            //    Core.Server = @"ROMANUS";
-            //    Core.Database = @"PcsFileServer";
-            //    Core.Login = @"sa";
-            //    Core.Password = @"1";
-            //    Core.ResetConnection();
-            //    Core.Context.Database.Connection.Open();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
         private void RememberToggle_CheckedChanged(object sender, EventArgs e)
         {
