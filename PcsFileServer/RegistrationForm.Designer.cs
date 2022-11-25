@@ -60,15 +60,14 @@
             // 
             // PhoneMaskedTextBox
             // 
-            this.PhoneMaskedTextBox.BackColor = System.Drawing.Color.Black;
-            this.PhoneMaskedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PhoneMaskedTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.PhoneMaskedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PhoneMaskedTextBox.ForeColor = System.Drawing.Color.Silver;
             this.PhoneMaskedTextBox.Location = new System.Drawing.Point(274, 155);
             this.PhoneMaskedTextBox.Mask = "+7-(999) 000-00-00";
             this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
-            this.PhoneMaskedTextBox.Size = new System.Drawing.Size(217, 16);
+            this.PhoneMaskedTextBox.Size = new System.Drawing.Size(217, 23);
             this.PhoneMaskedTextBox.TabIndex = 22;
-            this.PhoneMaskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // LoginLabel
             // 
