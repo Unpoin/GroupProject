@@ -308,6 +308,7 @@
   <ItemGroup>
     <Content Include="logo.ico" />
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\refresh.png" />
     <None Include="Resources\eyePurple.png" />
     <None Include="Resources\eye-crossedPurple.png" />
     <None Include="Resources\eye-crossed.png" />

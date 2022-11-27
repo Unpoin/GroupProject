@@ -213,7 +213,6 @@ namespace PcsFileServer
                 AdministrationTile.Visible = false;
             else
                 AdministrationTile.Visible = true;
-
             ViewDirectiryList();
         }
 

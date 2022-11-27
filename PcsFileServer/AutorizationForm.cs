@@ -114,20 +114,21 @@ namespace PcsFileServer
                 MessageBox.Show(ex.Message);
             }
         }
-        async Task GetUserAsync()
+        //async Task GetUserAsync()
+        //{
+        //    await Task.Run(() => GetUser());
+        //}
+        private void LoginButton_Click(object sender, EventArgs e)
         {
-            await Task.Run(() => GetUser());
-        }
-        private async void LoginButton_Click(object sender, EventArgs e)
-        {
-            Hide();
-            using (var introForm = new IntroForm())
-            {
-                introForm.Show();
-                await GetUserAsync();
-                introForm.Close();
-            }
-            Show();
+            //Hide();
+            //using (var introForm = new IntroForm())
+            //{
+            //    introForm.Show();
+            //    await GetUserAsync();
+            //    introForm.Close();
+            //}
+            //Show();
+            GetUser();
         }
 
         private void RecoverPasswordButton_Click(object sender, EventArgs e)

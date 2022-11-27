@@ -17,7 +17,7 @@ namespace PcsFileServer
         
         public RegistrationForm()
         {
-            InitializeComponent()
+            InitializeComponent();
         }
 
         private void RegistrationForm_Load(object sender, EventArgs e)

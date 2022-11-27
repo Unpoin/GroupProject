@@ -7,7 +7,6 @@ namespace PcsFileServer
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class ApplicationContext:DbContext
     {
-        
         static public string StrConnection()
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -23,6 +22,5 @@ namespace PcsFileServer
         public ApplicationContext(string conStr) : base(new MySqlConnection(conStr), true)
         { }
         public DbSet<ftpuser> ftpuser { get; set; }
-
     }
 }

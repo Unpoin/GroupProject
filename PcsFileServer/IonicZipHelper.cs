@@ -2,11 +2,8 @@
 using Ionic.Zlib;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security;
 using System.Text;
 using System.Windows.Forms;
 

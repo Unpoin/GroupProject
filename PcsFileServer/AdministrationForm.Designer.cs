@@ -44,7 +44,9 @@
             this.SaveButton = new MetroFramework.Controls.MetroButton();
             this.DeleteButton = new MetroFramework.Controls.MetroButton();
             this.AddButton = new MetroFramework.Controls.MetroButton();
+            this.RefreshPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RefreshPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // AboutTile
@@ -71,7 +73,9 @@
             // 
             // UsersDataGrid
             // 
-            this.UsersDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.UsersDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.UsersDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UsersDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.UsersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsersDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.userid,
@@ -80,13 +84,17 @@
             this.name,
             this.email,
             this.phone});
+            this.UsersDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.UsersDataGrid.EnableHeadersVisualStyles = false;
             this.UsersDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.UsersDataGrid.Location = new System.Drawing.Point(23, 133);
+            this.UsersDataGrid.Location = new System.Drawing.Point(23, 132);
             this.UsersDataGrid.Name = "UsersDataGrid";
+            this.UsersDataGrid.RowHeadersVisible = false;
             this.UsersDataGrid.RowHeadersWidth = 90;
             this.UsersDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UsersDataGrid.Size = new System.Drawing.Size(692, 326);
+            this.UsersDataGrid.Size = new System.Drawing.Size(601, 326);
             this.UsersDataGrid.TabIndex = 27;
+            this.UsersDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.UsersDataGrid_CellFormatting);
             // 
             // userid
             // 
@@ -126,23 +134,24 @@
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(23, 104);
+            this.SearchTextBox.Location = new System.Drawing.Point(23, 103);
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(164, 23);
             this.SearchTextBox.TabIndex = 28;
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(193, 104);
+            this.SearchButton.Location = new System.Drawing.Point(193, 103);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
             this.SearchButton.TabIndex = 29;
             this.SearchButton.Text = "Найти";
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // SearchLabel
             // 
             this.SearchLabel.AutoSize = true;
-            this.SearchLabel.Location = new System.Drawing.Point(22, 82);
+            this.SearchLabel.Location = new System.Drawing.Point(22, 81);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(47, 19);
             this.SearchLabel.TabIndex = 30;
@@ -150,7 +159,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(23, 465);
+            this.SaveButton.Location = new System.Drawing.Point(23, 464);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 31;
@@ -159,7 +168,7 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(121, 465);
+            this.DeleteButton.Location = new System.Drawing.Point(121, 464);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 32;
@@ -168,18 +177,28 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(219, 465);
+            this.AddButton.Location = new System.Drawing.Point(219, 464);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
             this.AddButton.TabIndex = 33;
             this.AddButton.Text = "Добавить";
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // RefreshPictureBox
+            // 
+            this.RefreshPictureBox.Location = new System.Drawing.Point(274, 103);
+            this.RefreshPictureBox.Name = "RefreshPictureBox";
+            this.RefreshPictureBox.Size = new System.Drawing.Size(23, 23);
+            this.RefreshPictureBox.TabIndex = 34;
+            this.RefreshPictureBox.TabStop = false;
+            this.RefreshPictureBox.Click += new System.EventHandler(this.RefreshPictureBox_Click);
+            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 500);
+            this.ClientSize = new System.Drawing.Size(650, 500);
+            this.Controls.Add(this.RefreshPictureBox);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.SaveButton);
@@ -191,13 +210,15 @@
             this.Controls.Add(this.AboutTile);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(729, 500);
+            this.MaximumSize = new System.Drawing.Size(650, 500);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(729, 500);
+            this.MinimumSize = new System.Drawing.Size(650, 500);
             this.Name = "AdministrationForm";
+            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Администрирование";
             this.Load += new System.EventHandler(this.AdministrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RefreshPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +241,6 @@
         private MetroFramework.Controls.MetroButton SaveButton;
         private MetroFramework.Controls.MetroButton DeleteButton;
         private MetroFramework.Controls.MetroButton AddButton;
+        private System.Windows.Forms.PictureBox RefreshPictureBox;
     }
 }
