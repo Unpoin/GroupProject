@@ -45,11 +45,13 @@
             this.DeleteCloudTile = new MetroFramework.Controls.MetroTile();
             this.CloudDownloadTile = new MetroFramework.Controls.MetroTile();
             this.CloudLoadTile = new MetroFramework.Controls.MetroTile();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.CloudListView = new System.Windows.Forms.ListView();
             this.GuideTile = new MetroFramework.Controls.MetroTile();
             this.AdministrationTile = new MetroFramework.Controls.MetroTile();
             this.AboutTile = new MetroFramework.Controls.MetroTile();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
+            this.LclTile = new MetroFramework.Controls.MetroTile();
+            this.CldTile = new MetroFramework.Controls.MetroTile();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -220,6 +222,7 @@
             this.CloudDownloadTile.Size = new System.Drawing.Size(103, 19);
             this.CloudDownloadTile.TabIndex = 16;
             this.CloudDownloadTile.Text = "Скачать";
+            this.CloudDownloadTile.Click += new System.EventHandler(this.CloudDownloadTile_Click);
             // 
             // CloudLoadTile
             // 
@@ -233,21 +236,21 @@
             this.CloudLoadTile.Text = "Загрузить";
             this.CloudLoadTile.Click += new System.EventHandler(this.CloudLoadTile_Click);
             // 
-            // listView1
+            // CloudListView
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CloudListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.listView1.ForeColor = System.Drawing.Color.Silver;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(490, 129);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(411, 422);
-            this.listView1.TabIndex = 14;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.CloudListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.CloudListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CloudListView.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.CloudListView.ForeColor = System.Drawing.Color.Silver;
+            this.CloudListView.HideSelection = false;
+            this.CloudListView.Location = new System.Drawing.Point(490, 129);
+            this.CloudListView.Name = "CloudListView";
+            this.CloudListView.Size = new System.Drawing.Size(411, 422);
+            this.CloudListView.TabIndex = 14;
+            this.CloudListView.UseCompatibleStateImageBehavior = false;
+            this.CloudListView.View = System.Windows.Forms.View.List;
             // 
             // GuideTile
             // 
@@ -289,11 +292,37 @@
             this.LogoPictureBox.TabIndex = 13;
             this.LogoPictureBox.TabStop = false;
             // 
+            // LclTile
+            // 
+            this.LclTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.LclTile.Enabled = false;
+            this.LclTile.ForeColor = System.Drawing.Color.Silver;
+            this.LclTile.Location = new System.Drawing.Point(23, 88);
+            this.LclTile.Name = "LclTile";
+            this.LclTile.Size = new System.Drawing.Size(411, 22);
+            this.LclTile.TabIndex = 27;
+            this.LclTile.Text = "Локальное хранилище";
+            this.LclTile.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // CldTile
+            // 
+            this.CldTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
+            this.CldTile.Enabled = false;
+            this.CldTile.ForeColor = System.Drawing.Color.Silver;
+            this.CldTile.Location = new System.Drawing.Point(490, 88);
+            this.CldTile.Name = "CldTile";
+            this.CldTile.Size = new System.Drawing.Size(411, 22);
+            this.CldTile.TabIndex = 28;
+            this.CldTile.Text = "Облачное хранилище";
+            this.CldTile.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 560);
+            this.Controls.Add(this.CldTile);
+            this.Controls.Add(this.LclTile);
             this.Controls.Add(this.AboutTile);
             this.Controls.Add(this.AdministrationTile);
             this.Controls.Add(this.GuideTile);
@@ -301,7 +330,7 @@
             this.Controls.Add(this.DeleteCloudTile);
             this.Controls.Add(this.CloudDownloadTile);
             this.Controls.Add(this.CloudLoadTile);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.CloudListView);
             this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.InfoTile);
             this.Controls.Add(this.DeleteTile);
@@ -347,10 +376,12 @@
         private MetroFramework.Controls.MetroTile DeleteCloudTile;
         private MetroFramework.Controls.MetroTile CloudDownloadTile;
         private MetroFramework.Controls.MetroTile CloudLoadTile;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView CloudListView;
         private MetroFramework.Controls.MetroTile GuideTile;
         private MetroFramework.Controls.MetroTile AdministrationTile;
         private MetroFramework.Controls.MetroTile AboutTile;
+        private MetroFramework.Controls.MetroTile LclTile;
+        private MetroFramework.Controls.MetroTile CldTile;
     }
 }
 

@@ -137,7 +137,7 @@ namespace PcsFileServer
         }
         int GetImageIndex(string filename)
         {
-            switch(Path.GetExtension(filename))
+            switch ("."+filename.Split('.')[1])
             {
                 case ".txt":
                 case ".docx":
@@ -204,6 +204,33 @@ namespace PcsFileServer
                 MessageBox.Show(ex.Message);
             }
         }
+        void ViewCloudList()
+        {
+            CloudListView.Items.Clear();
+            ImageList imageList = new ImageList();
+            imageList.ImageSize = new Size(30, 30);
+            imageList.Images.Add(Resources.text);
+            imageList.Images.Add(Resources.picturefileicon);
+            imageList.Images.Add(Resources.mediafile);
+            imageList.Images.Add(Resources.fileexeicon);
+            imageList.Images.Add(Resources.emptyfileicon);
+            CloudListView.SmallImageList = imageList;
+            try
+            {
+                var lst = FtpHelper.GetFilesList($"ftp://25.56.104.182:21/", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd);
+                    foreach (string item in lst)
+                    {
+                        ListViewItem lvi = new ListViewItem();
+                        lvi.Text = item;
+                        lvi.ImageIndex = GetImageIndex(item);
+                    CloudListView.Items.Add(lvi);
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.components.SetStyleDark(this);
@@ -214,6 +241,7 @@ namespace PcsFileServer
             else
                 AdministrationTile.Visible = true;
             ViewDirectiryList();
+            ViewCloudList();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -323,18 +351,54 @@ namespace PcsFileServer
 
         private void CloudLoadTile_Click(object sender, EventArgs e)
         {
-            //                             _ _
-            //ftp helper сделать методы   ('o')
-            //                           \_| |_/
-            //                             | |
-            //                             |_|
-            //                            /   \
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Multiselect = true;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (string file in dialog.FileNames)
+                    {
+                        FtpHelper.UploadFile(file,
+                      $"ftp://25.56.104.182:21/{Path.GetFileName(file)}", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd);
+
+                    }
+                }
+                ViewCloudList();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void AdministrationTile_Click(object sender, EventArgs e)
         {
             var form = new AdministrationForm();
             form.ShowDialog();
+        }
+
+        private void CloudDownloadTile_Click(object sender, EventArgs e)
+        {
+            //var fileName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip", Settings.Default.ionicZlibPackingName);
+            //for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+            //{
+            //    using (var subZip =
+            //         IonicZipHelper.ReadSubZipWithPassword(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"), Settings.Default.ionicZlibPackingName, "a1sda42kld31sa987e2"))
+            //    {
+            //        foreach (ZipEntry zipEntry in subZip)
+            //        {
+            //            //ListViewItem lvi = new ListViewItem();
+            //            //lvi.Text = zipEntry.FileName.Split('/')[0];
+            //            //lvi.ImageIndex = GetImageIndex(zipEntry.FileName);
+            //            //LocalListView.Items.Add(lvi);
+            //            FtpHelper.UploadFile(zipEntry.FileName.Split('/')[0],
+            //        $"ftp://25.56.104.182:21/{LocalListView.SelectedItems[i].Text}", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd);
+
+            //        }
+            //    }
+            //}
         }
     }
 }

@@ -74,7 +74,7 @@ namespace PcsFileServer
                         email = MailTextBox.Text,
                         role = "user",
                         phone = PhoneMaskedTextBox.Text,
-                        homedir=$"/srv/{PcsUser.CurrentUser.userid}"
+                        homedir=$"/srv/{LoginTextBox.Text}"
                     };
                         context.ftpuser.Add(newUser);
                         context.SaveChanges();
