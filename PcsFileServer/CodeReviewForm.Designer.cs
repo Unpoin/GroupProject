@@ -65,11 +65,11 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(57, 139);
+            this.PasswordLabel.Location = new System.Drawing.Point(35, 139);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(106, 19);
+            this.PasswordLabel.Size = new System.Drawing.Size(150, 19);
             this.PasswordLabel.TabIndex = 2;
-            this.PasswordLabel.Text = "Введите пароль";
+            this.PasswordLabel.Text = "Введите новый пароль";
             // 
             // ConfirmTextBox
             // 

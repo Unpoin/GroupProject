@@ -72,16 +72,11 @@ namespace PcsFileServer
 
         private void AdministrationForm_Load(object sender, EventArgs e)
         {
-           // 124; 65; 153
+            // 124; 65; 153
             UsersDataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(124, 65, 153);
             RefreshPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             RefreshPictureBox.Image = Properties.Resources.refresh;
             RefreshData();
-        }
-
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -102,7 +97,7 @@ namespace PcsFileServer
                         user = null;
                     }
                     context.SaveChanges();
-                    MessageBox.Show("Пользователь успешно удален!");
+                    MessageBox.Show("Пользователь(и) успешно удален!");
                     RefreshData();
                 }
             }
@@ -111,10 +106,46 @@ namespace PcsFileServer
                 MessageBox.Show(ex.Message);
             }
         }
+       
+        private void RedactButton_Click(object sender, EventArgs e)
+        {
+            var lgn = UsersDataGrid.SelectedRows[0].Cells[0].Value.ToString();
+            ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+            var redactedUser = context.ftpuser.Where(u => u.userid == lgn).FirstOrDefault();
+            NameTextBox.Text = redactedUser.name;
+            LoginTextBox.Text = redactedUser.userid;
+            PasswordTextBox.Text = redactedUser.passwd;
+            EmailTextBox.Text = redactedUser.email;
+            PhoneTextBox.Text = redactedUser.phone;
+        }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                if (MessageBox.Show("Вы уверены, что хотите добавить пользователя(ей)?", "Подветверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                    ftpuser newUser = new ftpuser()
+                    {
+                        name = NameTextBox.Text,
+                        userid = LoginTextBox.Text,
+                        passwd = PasswordTextBox.Text,
+                        email = EmailTextBox.Text,
+                        role = "user",
+                        phone = PhoneTextBox.Text,
+                        homedir = $"/srv/{LoginTextBox.Text}"
+                    };
+                    context.ftpuser.Add(newUser);
+                    context.SaveChanges();
+                    MessageBox.Show("Пользователь успешно добавлен!");
+                    RefreshData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -149,6 +180,29 @@ namespace PcsFileServer
         private void UsersDataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             e.CellStyle.BackColor = Color.FromArgb(124, 65, 153);
+        }
+
+        private void SaveUserButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Вы уверены, что хотите сохранить изменения?", "Подветверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                    var redactedUser = context.ftpuser.Where(u => u.userid == LoginTextBox.Text).FirstOrDefault();
+                    redactedUser.name = NameTextBox.Text;
+                    redactedUser.userid = LoginTextBox.Text;
+                    redactedUser.passwd = PasswordTextBox.Text;
+                    redactedUser.email = EmailTextBox.Text;
+                    redactedUser.phone = PhoneTextBox.Text;
+                    context.SaveChanges();
+                    MessageBox.Show("Пользователь успешно изменен!");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Неккоректные данные, попробуйте снова!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

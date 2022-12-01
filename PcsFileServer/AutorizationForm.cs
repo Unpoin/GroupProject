@@ -1,18 +1,11 @@
 ﻿using MetroFramework.Forms;
 using MetroFramework;
 using System;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using System.Collections.Generic;
-using Ionic.Zip;
-using MetroFramework.Components;
-using System.Threading.Tasks;
-using System.Security.Policy;
-using System.Reflection;
+
 
 namespace PcsFileServer
 {
@@ -189,6 +182,11 @@ namespace PcsFileServer
                 PasswordTextBox.PasswordChar = '*';
                 PassPictureBox.Image = Properties.Resources.eyePurple;
             }
+        }
+
+        private void GuideTile_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

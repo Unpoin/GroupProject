@@ -137,7 +137,7 @@ namespace PcsFileServer
         }
         int GetImageIndex(string filename)
         {
-            switch ("."+filename.Split('.')[1])
+            switch ("." + filename.Split('.')[1])
             {
                 case ".txt":
                 case ".docx":
@@ -199,7 +199,7 @@ namespace PcsFileServer
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -218,13 +218,13 @@ namespace PcsFileServer
             try
             {
                 var lst = FtpHelper.GetFilesList($"ftp://25.56.104.182:21/", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd);
-                    foreach (string item in lst)
-                    {
-                        ListViewItem lvi = new ListViewItem();
-                        lvi.Text = item;
-                        lvi.ImageIndex = GetImageIndex(item);
+                foreach (string item in lst)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = item;
+                    lvi.ImageIndex = GetImageIndex(item);
                     CloudListView.Items.Add(lvi);
-                    }
+                }
             }
             catch (Exception ex)
             {
@@ -236,7 +236,7 @@ namespace PcsFileServer
             this.components.SetStyleDark(this);
             LogoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             LogoPictureBox.Image = Resources.logo;
-            if(PcsUser.CurrentUser.role=="user")
+            if (PcsUser.CurrentUser.role == "user")
                 AdministrationTile.Visible = false;
             else
                 AdministrationTile.Visible = true;
@@ -308,7 +308,7 @@ namespace PcsFileServer
                 }
                 if (fileListToDownload.Count == 0)
                 {
-                    MessageBox.Show("Выберите файлы для скачивания!");
+                    MessageBox.Show("Выберите файл(ы) для скачивания!");
                 }
                 else
                 {
@@ -317,7 +317,7 @@ namespace PcsFileServer
 
                         IonicZipHelper.DownloadFilesFromZip(fileName, Settings.Default.ionicZlibPackingName,
                             fileListToDownload, "a1sda42kld31sa987e2", dialog.SelectedPath);
-                        MessageBox.Show("Файл скачан!", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Файл(ы) скачан(ы)!", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -366,11 +366,11 @@ namespace PcsFileServer
                 }
                 ViewCloudList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void AdministrationTile_Click(object sender, EventArgs e)
@@ -381,24 +381,72 @@ namespace PcsFileServer
 
         private void CloudDownloadTile_Click(object sender, EventArgs e)
         {
-            //var fileName = Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip", Settings.Default.ionicZlibPackingName);
-            //for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
-            //{
-            //    using (var subZip =
-            //         IonicZipHelper.ReadSubZipWithPassword(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"), Settings.Default.ionicZlibPackingName, "a1sda42kld31sa987e2"))
-            //    {
-            //        foreach (ZipEntry zipEntry in subZip)
-            //        {
-            //            //ListViewItem lvi = new ListViewItem();
-            //            //lvi.Text = zipEntry.FileName.Split('/')[0];
-            //            //lvi.ImageIndex = GetImageIndex(zipEntry.FileName);
-            //            //LocalListView.Items.Add(lvi);
-            //            FtpHelper.UploadFile(zipEntry.FileName.Split('/')[0],
-            //        $"ftp://25.56.104.182:21/{LocalListView.SelectedItems[i].Text}", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd);
+            try
+            {
+                if (CloudListView.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Выберите файл(ы) для скачивания!");
+                }
+                else
+                {
+                    FolderBrowserDialog dialog = new FolderBrowserDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        for (int i = 0; i < CloudListView.SelectedItems.Count; i++)
+                        {
+                        FtpHelper.DownloadFile(Path.Combine(dialog.SelectedPath, CloudListView.SelectedItems[i].Text),
+                        $"ftp://25.56.104.182:21/{CloudListView.SelectedItems[i].Text}", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd);
+                    }
+                        MessageBox.Show("Файл(ы) скачан(ы)!", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            ViewCloudList();
+        }
 
-            //        }
-            //    }
-            //}
+        private void CloudInfoTile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show($"Название файла: {CloudListView.SelectedItems[0].Text}" +
+                            $"\nРазмер файла: {FtpHelper.GetSizeFile($"ftp://25.56.104.182:21/{CloudListView.SelectedItems[0].Text}", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd)}" +
+                            $"\nДата и время изменения: {FtpHelper.GetDateFile($"ftp://25.56.104.182:21/{CloudListView.SelectedItems[0].Text}", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd)}",
+                                        "Информация о файле", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите файл, ифнормацию о котором хотите узнать!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void DeleteCloudTile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CloudListView.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Выберите файл(ы) для удаления!");
+                }
+                else
+                {
+                        for (int i = 0; i < CloudListView.SelectedItems.Count; i++)
+                        {
+                            FtpHelper.DeleteFile(
+                            $"ftp://25.56.104.182:21/{CloudListView.SelectedItems[i].Text}", PcsUser.CurrentUser.userid, PcsUser.CurrentUser.passwd);
+                        }
+                        MessageBox.Show("Файл(ы) удален(ы)!", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            ViewCloudList();
         }
     }
 }

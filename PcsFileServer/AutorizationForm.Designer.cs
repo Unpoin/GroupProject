@@ -155,6 +155,7 @@
             this.GuideTile.Size = new System.Drawing.Size(22, 19);
             this.GuideTile.TabIndex = 23;
             this.GuideTile.Text = "?";
+            this.GuideTile.Click += new System.EventHandler(this.GuideTile_Click);
             // 
             // AboutTile
             // 

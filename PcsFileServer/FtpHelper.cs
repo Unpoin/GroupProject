@@ -86,6 +86,32 @@ namespace PcsFileServer
                 return response.StatusCode;
             }
         }
+        public static string GetDateFile(string address, string login, string password)
+        {
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(address);
+            request.Method = WebRequestMethods.Ftp.GetDateTimestamp;
+            request.Credentials = new NetworkCredential(login, password);
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            return response.LastModified.ToString();
+        }
+        public static string GetSizeFile(string address, string login, string password)
+        {
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(address);
+            request.Method = WebRequestMethods.Ftp.GetFileSize;
+            request.Credentials = new NetworkCredential(login, password);
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            long sizeValue = response.ContentLength;
+            string sizeShown = sizeValue.ToString();
+            
+            response.Close();
+            if (sizeValue < 1024)
+                sizeShown = $"{sizeShown} Б";
+            if (sizeValue >= 1024)
+                sizeShown = $"{Math.Round(sizeValue / 1024d)} КБ";
+            if ((sizeValue / 1024) > 1024)
+                sizeShown = $"{Math.Round(sizeValue / 1024 / 1024d)} МБ";
+            return sizeShown;
+        }
 
         public static FtpStatusCode UploadFile(string filename, string address, string login, string password)
         {

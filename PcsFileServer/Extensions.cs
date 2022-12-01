@@ -1,13 +1,7 @@
 ﻿using MetroFramework.Components;
 using MetroFramework.Forms;
 using MetroFramework;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace PcsFileServer
 {
@@ -21,9 +15,9 @@ namespace PcsFileServer
         {
             if (container == null)
             {
-                container = new System.ComponentModel.Container();
+                container = new Container();
             }
-            var manager = new MetroFramework.Components.MetroStyleManager(container);
+            var manager = new MetroStyleManager(container);
             manager.Owner = ownerForm;
             container.SetDefaultStyle(ownerForm, FormStyle);
             container.SetDefaultTheme(ownerForm, lightThemeStyle);
@@ -33,9 +27,9 @@ namespace PcsFileServer
         {
             if (container == null)
             {
-                container = new System.ComponentModel.Container();
+                container = new Container();
             }
-            var manager = new MetroFramework.Components.MetroStyleManager(container);
+            var manager = new MetroStyleManager(container);
             manager.Owner = ownerForm;
             container.SetDefaultStyle(ownerForm, FormStyle);
             container.SetDefaultTheme(ownerForm, darkThemeStyle);

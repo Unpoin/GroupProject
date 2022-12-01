@@ -155,6 +155,7 @@
             this.LoadTile.Size = new System.Drawing.Size(103, 19);
             this.LoadTile.TabIndex = 9;
             this.LoadTile.Text = "Добавить";
+            this.LoadTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LoadTile.Click += new System.EventHandler(this.LoadTile_Click);
             // 
             // DownLoadTile
@@ -166,6 +167,7 @@
             this.DownLoadTile.Size = new System.Drawing.Size(103, 19);
             this.DownLoadTile.TabIndex = 10;
             this.DownLoadTile.Text = "Скачать";
+            this.DownLoadTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.DownLoadTile.Click += new System.EventHandler(this.DownLoadTile_Click);
             // 
             // DeleteTile
@@ -177,6 +179,7 @@
             this.DeleteTile.Size = new System.Drawing.Size(103, 19);
             this.DeleteTile.TabIndex = 11;
             this.DeleteTile.Text = "Удалить";
+            this.DeleteTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.DeleteTile.Click += new System.EventHandler(this.DeleteTile_Click);
             // 
             // InfoTile
@@ -188,6 +191,7 @@
             this.InfoTile.Size = new System.Drawing.Size(103, 19);
             this.InfoTile.TabIndex = 12;
             this.InfoTile.Text = "Инфо";
+            this.InfoTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.InfoTile.Click += new System.EventHandler(this.InfoTile_Click);
             // 
             // CloudInfoTile
@@ -200,6 +204,8 @@
             this.CloudInfoTile.Size = new System.Drawing.Size(103, 19);
             this.CloudInfoTile.TabIndex = 18;
             this.CloudInfoTile.Text = "Инфо";
+            this.CloudInfoTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CloudInfoTile.Click += new System.EventHandler(this.CloudInfoTile_Click);
             // 
             // DeleteCloudTile
             // 
@@ -211,6 +217,8 @@
             this.DeleteCloudTile.Size = new System.Drawing.Size(103, 19);
             this.DeleteCloudTile.TabIndex = 17;
             this.DeleteCloudTile.Text = "Удалить";
+            this.DeleteCloudTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DeleteCloudTile.Click += new System.EventHandler(this.DeleteCloudTile_Click);
             // 
             // CloudDownloadTile
             // 
@@ -222,6 +230,7 @@
             this.CloudDownloadTile.Size = new System.Drawing.Size(103, 19);
             this.CloudDownloadTile.TabIndex = 16;
             this.CloudDownloadTile.Text = "Скачать";
+            this.CloudDownloadTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CloudDownloadTile.Click += new System.EventHandler(this.CloudDownloadTile_Click);
             // 
             // CloudLoadTile
@@ -234,6 +243,7 @@
             this.CloudLoadTile.Size = new System.Drawing.Size(103, 19);
             this.CloudLoadTile.TabIndex = 15;
             this.CloudLoadTile.Text = "Загрузить";
+            this.CloudLoadTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CloudLoadTile.Click += new System.EventHandler(this.CloudLoadTile_Click);
             // 
             // CloudListView
