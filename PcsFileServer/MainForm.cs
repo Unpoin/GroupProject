@@ -104,7 +104,7 @@ namespace PcsFileServer
                 bool isZipExist = false;
                 using (var zipFile = ZipFile.Read(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip")))
                 {
-                    isZipExist = zipFile.ContainsEntry($"{PcsUser.CurrentUser.userid}.zip");
+                    isZipExist = zipFile.ContainsEntry(Properties.Settings.Default.ionicZlibPackingName);
                 }
                 if (!isZipExist)
                 {
@@ -236,20 +236,30 @@ namespace PcsFileServer
             this.components.SetStyleDark(this);
             LogoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             LogoPictureBox.Image = Resources.logo;
-            if (PcsUser.CurrentUser.role == "user")
+            if (AutorizationForm.OfflineChecker == true)
+            {
+                CloudDownloadTile.Enabled = false;
+                CloudInfoTile.Enabled = false;
+                CloudLoadTile.Enabled = false;
+                DeleteCloudTile.Enabled = false;
                 AdministrationTile.Visible = false;
+                ViewDirectiryList();
+            }
             else
-                AdministrationTile.Visible = true;
-            ViewDirectiryList();
-            ViewCloudList();
+            {
+                if (PcsUser.CurrentUser.role == "user")
+                    AdministrationTile.Visible = false;
+                else
+                    AdministrationTile.Visible = true;
+                ViewDirectiryList();
+                ViewCloudList();
+            }
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PcsUser.CurrentUser = null;
             this.Hide();
-            AutorizationForm autorization = new AutorizationForm();
-            autorization.ShowDialog();
             this.Close();
         }
         private void SavePathToolStripMenuItem_Click(object sender, EventArgs e)
