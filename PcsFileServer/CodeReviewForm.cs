@@ -60,8 +60,11 @@ namespace PcsFileServer
                     else
                     {
                         ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                        //получение пользователя по email введенному на форме восстановления
                         var user = context.ftpuser.FirstOrDefault(u => u.email == this.email);
+                        //указание нового пароля у пользователя
                         user.passwd = PasswordTextBox.Text;
+                        //сохранение изменений
                         context.SaveChanges();
                         AutorizationForm form = new AutorizationForm();
                         MessageBox.Show("Пароль успешно изменен");

@@ -32,6 +32,9 @@
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.OkTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.VersionLabel = new MetroFramework.Controls.MetroLabel();
+            this.AboutRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.YearLabel = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,11 +66,45 @@
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "PcsFileServer";
             // 
+            // VersionLabel
+            // 
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.Location = new System.Drawing.Point(62, 159);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(72, 19);
+            this.VersionLabel.TabIndex = 3;
+            this.VersionLabel.Text = "Версия 1.0";
+            // 
+            // AboutRichTextBox
+            // 
+            this.AboutRichTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.AboutRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AboutRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AboutRichTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.AboutRichTextBox.Location = new System.Drawing.Point(54, 206);
+            this.AboutRichTextBox.Name = "AboutRichTextBox";
+            this.AboutRichTextBox.ReadOnly = true;
+            this.AboutRichTextBox.Size = new System.Drawing.Size(95, 90);
+            this.AboutRichTextBox.TabIndex = 4;
+            this.AboutRichTextBox.Text = "Разработчики:\nВасильев Р. О.\nДорофеев К. А.\nАндронов Н. А.\n";
+            // 
+            // YearLabel
+            // 
+            this.YearLabel.AutoSize = true;
+            this.YearLabel.Location = new System.Drawing.Point(77, 325);
+            this.YearLabel.Name = "YearLabel";
+            this.YearLabel.Size = new System.Drawing.Size(37, 19);
+            this.YearLabel.TabIndex = 5;
+            this.YearLabel.Text = "2022";
+            // 
             // InformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(200, 400);
+            this.Controls.Add(this.YearLabel);
+            this.Controls.Add(this.AboutRichTextBox);
+            this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.OkTile);
             this.Controls.Add(this.LogoPictureBox);
@@ -87,5 +124,8 @@
         private System.Windows.Forms.PictureBox LogoPictureBox;
         private MetroFramework.Controls.MetroTile OkTile;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel VersionLabel;
+        private System.Windows.Forms.RichTextBox AboutRichTextBox;
+        private MetroFramework.Controls.MetroLabel YearLabel;
     }
 }

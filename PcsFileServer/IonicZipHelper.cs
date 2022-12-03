@@ -48,10 +48,18 @@ namespace PcsFileServer
         }
         public static MemoryStream ExtractToMemoryStreamWithPassword(this ZipEntry zipEntry, string password)
         {
-            var mstream = new MemoryStream();
-            zipEntry.ExtractWithPassword(mstream, password);
-            mstream.Position = 0;
-            return mstream;
+            try
+            {
+                var mstream = new MemoryStream();
+                zipEntry.ExtractWithPassword(mstream, password);
+                mstream.Position = 0;
+                return mstream;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
         }
         public static ZipFile ReadSubZipWithPassword(string fileName, string subFileName, string password)
         {
@@ -115,16 +123,16 @@ namespace PcsFileServer
                 }
             }
         }
-        public static void ExtractZipWithPassword(string fileName, string outFolder)
-        {
-            using (var zip = ZipFile.Read(fileName))
-            {
-                foreach (var e in zip)
-                {
-                    e.ExtractWithPassword("a1sda42kld31sa987e2", outFolder);
-                }
-            }
-        }
+        //public static void ExtractZipWithPassword(string fileName, string outFolder)
+        //{
+        //    using (var zip = ZipFile.Read(fileName))
+        //    {
+        //        foreach (var e in zip)
+        //        {
+        //            e.ExtractWithPassword("a1sda42kld31sa987e2", outFolder);
+        //        }
+        //    }
+        //}
 
         public static string CreateArchive(string archiveName,
         CompressionLevel compressionLevel = CompressionLevel.Default)
@@ -137,13 +145,13 @@ namespace PcsFileServer
             }
         }
 
-        public static void Refreshpassword(string archivename, string password)
-        {
-            using (var zipFile = ZipFile.Read(archivename))
-            {
-                zipFile.Password = password;
-            }
-        }
+        //public static void Refreshpassword(string archivename, string password)
+        //{
+        //    using (var zipFile = ZipFile.Read(archivename))
+        //    {
+        //        zipFile.Password = password;
+        //    }
+        //}
 
         public static void GetInfoFiles(string archiveName, string subArchive, string fileName, string password)
         {

@@ -125,9 +125,8 @@ namespace PcsFileServer
             CreateArchive();
             mainMenuStrip.ForeColor
                 = FileToolStripMenuItem.ForeColor
-                = UploadFileToolStripMenuItem.ForeColor
                 = ExitToolStripMenuItem.ForeColor
-                = SaveFileToolStripMenuItem.ForeColor
+                = CloseFileToolStripMenuItem.ForeColor
                 = SettingsToolStripMenuItem.ForeColor
                 = Color.Silver;
             mainMenuStrip.BackColor = Color.Transparent;
@@ -187,14 +186,19 @@ namespace PcsFileServer
             options.Encoding = Encoding.UTF8;
             try
             {
+                //чтение файлов из архива
                 using (var subZip =
                      IonicZipHelper.ReadSubZipWithPassword(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"), Settings.Default.ionicZlibPackingName, "a1sda42kld31sa987e2"))
                 {
                     foreach (ZipEntry zipEntry in subZip)
                     {
+                        //создание элемента списка
                         ListViewItem lvi = new ListViewItem();
+                        //указание названия архива у элемента 
                         lvi.Text = zipEntry.FileName.Split('/')[0];
+                        //указание изображения в соответствии с типом файла
                         lvi.ImageIndex = GetImageIndex(zipEntry.FileName);
+                        //добавление файла в список для отображения
                         LocalListView.Items.Add(lvi);
                     }
                 }
@@ -457,6 +461,11 @@ namespace PcsFileServer
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ViewCloudList();
+        }
+
+        private void CloseFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

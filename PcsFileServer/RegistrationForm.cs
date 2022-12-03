@@ -66,8 +66,10 @@ namespace PcsFileServer
                         && Regex.IsMatch(PasswordTextBox.Text, regPassword)
                         )
                     {
+                    //создание нового пользователя
                     ftpuser newUser = new ftpuser()
                     {
+                        //указание полей для пользователя из полей ввода на форме
                         name = UserNameTextBox.Text,
                         userid = LoginTextBox.Text,
                         passwd = PasswordTextBox.Text,
@@ -76,7 +78,9 @@ namespace PcsFileServer
                         phone = PhoneMaskedTextBox.Text,
                         homedir=$"/srv/{LoginTextBox.Text}"
                     };
+                    //добавление нового пользователя в контекст
                         context.ftpuser.Add(newUser);
+                    //сохранение изменнений
                         context.SaveChanges();
                         MessageBox.Show("Регистрация успешна");
                         this.Close();

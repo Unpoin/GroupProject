@@ -86,16 +86,23 @@ namespace PcsFileServer
                 if (MessageBox.Show("Вы уверены, что хотите удалить пользователя(ей)?", "Подветверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                    //создание поля для хранения логина
                     string loginGridItem;
+                    //создание нового пользователя
                     ftpuser user = new ftpuser();
+                    //перебор выбранных пользователей из DataGrid
                     for (int rows = 0; rows < UsersDataGrid.SelectedRows.Count; rows++)
                     {
                         loginGridItem = UsersDataGrid.SelectedRows[rows].Cells[0].Value.ToString();
+                        //получение пользователя с логином из DataGrid
                         user = context.ftpuser.Where(u => u.userid == loginGridItem).FirstOrDefault();
+                        //удаление пользователя из БД
                         context.ftpuser.Remove(user);
+                        //отправка уведомления пользователю о том что его аккаунт удален
                         SendNotification(user.email, user.userid);
                         user = null;
                     }
+                    //сохранение изменений
                     context.SaveChanges();
                     MessageBox.Show("Пользователь(и) успешно удален!");
                     RefreshData();
