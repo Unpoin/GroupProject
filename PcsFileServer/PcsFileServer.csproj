@@ -209,6 +209,12 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FtpHelper.cs" />
     <Compile Include="ftpuser.cs" />
+    <Compile Include="GuideForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuideForm.Designer.cs">
+      <DependentUpon>GuideForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
