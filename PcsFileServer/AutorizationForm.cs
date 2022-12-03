@@ -204,7 +204,8 @@ namespace PcsFileServer
 
         private void GuideTile_Click(object sender, EventArgs e)
         {
-
+            GuideForm form = new GuideForm();
+            form.ShowDialog();
         }
     }
 }

@@ -269,6 +269,9 @@
     <EmbeddedResource Include="CodeReviewForm.resx">
       <DependentUpon>CodeReviewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GuideForm.resx">
+      <DependentUpon>GuideForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InformationForm.resx">
       <DependentUpon>InformationForm.cs</DependentUpon>
     </EmbeddedResource>

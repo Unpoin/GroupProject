@@ -247,6 +247,7 @@ namespace PcsFileServer
                 CloudLoadTile.Enabled = false;
                 DeleteCloudTile.Enabled = false;
                 AdministrationTile.Visible = false;
+                ExitToolStripMenuItem.Visible = false;
                 ViewDirectiryList();
             }
             else
@@ -265,6 +266,8 @@ namespace PcsFileServer
             PcsUser.CurrentUser = null;
             this.Hide();
             this.Close();
+            AutorizationForm form = new AutorizationForm();
+            form.Show();
         }
         private void SavePathToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -466,6 +469,12 @@ namespace PcsFileServer
         private void CloseFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void GuideTile_Click(object sender, EventArgs e)
+        {
+            GuideForm form = new GuideForm();
+            form.ShowDialog();
         }
     }
 }

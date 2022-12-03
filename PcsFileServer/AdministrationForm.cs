@@ -30,7 +30,8 @@ namespace PcsFileServer
 
         private void GuideTile_Click(object sender, EventArgs e)
         {
-            //guideform
+            GuideForm form = new GuideForm();
+            form.ShowDialog();
         }
         private void SendNotification(string email, string login)
         {

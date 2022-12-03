@@ -28,12 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GuideForm));
+            this.GuideWebBrowser = new System.Windows.Forms.WebBrowser();
+            this.SuspendLayout();
+            // 
+            // GuideWebBrowser
+            // 
+            this.GuideWebBrowser.Location = new System.Drawing.Point(0, 5);
+            this.GuideWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.GuideWebBrowser.Name = "GuideWebBrowser";
+            this.GuideWebBrowser.Size = new System.Drawing.Size(819, 478);
+            this.GuideWebBrowser.TabIndex = 0;
+            // 
+            // GuideForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "GuideForm";
+            this.ClientSize = new System.Drawing.Size(864, 486);
+            this.Controls.Add(this.GuideWebBrowser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(864, 486);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(864, 486);
+            this.Name = "GuideForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.WebBrowser GuideWebBrowser;
     }
 }

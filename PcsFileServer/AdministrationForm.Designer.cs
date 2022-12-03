@@ -32,6 +32,12 @@
             this.AboutTile = new MetroFramework.Controls.MetroTile();
             this.GuideTile = new MetroFramework.Controls.MetroTile();
             this.UsersDataGrid = new System.Windows.Forms.DataGridView();
+            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SearchTextBox = new MetroFramework.Controls.MetroTextBox();
             this.SearchButton = new MetroFramework.Controls.MetroButton();
             this.SearchLabel = new MetroFramework.Controls.MetroLabel();
@@ -50,12 +56,6 @@
             this.PhoneLabel = new MetroFramework.Controls.MetroLabel();
             this.UserNameLabel = new MetroFramework.Controls.MetroLabel();
             this.SaveUserButton = new MetroFramework.Controls.MetroButton();
-            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RefreshPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -106,6 +106,42 @@
             this.UsersDataGrid.Size = new System.Drawing.Size(601, 326);
             this.UsersDataGrid.TabIndex = 27;
             this.UsersDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.UsersDataGrid_CellFormatting);
+            // 
+            // userid
+            // 
+            this.userid.DataPropertyName = "userid";
+            this.userid.HeaderText = "Логин";
+            this.userid.Name = "userid";
+            // 
+            // passwd
+            // 
+            this.passwd.DataPropertyName = "passwd";
+            this.passwd.HeaderText = "Пароль";
+            this.passwd.Name = "passwd";
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "Имя пользователя";
+            this.name.Name = "name";
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "Почта";
+            this.email.Name = "email";
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "Телефон";
+            this.phone.Name = "phone";
+            // 
+            // role
+            // 
+            this.role.DataPropertyName = "role";
+            this.role.HeaderText = "Роль";
+            this.role.Name = "role";
             // 
             // SearchTextBox
             // 
@@ -256,42 +292,6 @@
             this.SaveUserButton.TabIndex = 46;
             this.SaveUserButton.Text = "Сохранить";
             this.SaveUserButton.Click += new System.EventHandler(this.SaveUserButton_Click);
-            // 
-            // userid
-            // 
-            this.userid.DataPropertyName = "userid";
-            this.userid.HeaderText = "Логин";
-            this.userid.Name = "userid";
-            // 
-            // passwd
-            // 
-            this.passwd.DataPropertyName = "passwd";
-            this.passwd.HeaderText = "Пароль";
-            this.passwd.Name = "passwd";
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "Имя пользователя";
-            this.name.Name = "name";
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "Почта";
-            this.email.Name = "email";
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "Телефон";
-            this.phone.Name = "phone";
-            // 
-            // role
-            // 
-            this.role.DataPropertyName = "role";
-            this.role.HeaderText = "Роль";
-            this.role.Name = "role";
             // 
             // AdministrationForm
             // 

@@ -49,7 +49,6 @@
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.Size = new System.Drawing.Size(170, 23);
             this.MailTextBox.TabIndex = 4;
-            this.MailTextBox.Text = "dirofeev220@mail.ru";
             // 
             // RecoverButton
             // 

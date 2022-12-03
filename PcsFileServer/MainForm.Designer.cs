@@ -116,7 +116,7 @@
             // 
             this.SavePathToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.SavePathToolStripMenuItem.Name = "SavePathToolStripMenuItem";
-            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SavePathToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.SavePathToolStripMenuItem.Text = "Изменить путь";
             this.SavePathToolStripMenuItem.Click += new System.EventHandler(this.SavePathToolStripMenuItem_Click);
             // 
@@ -261,6 +261,7 @@
             this.GuideTile.Size = new System.Drawing.Size(22, 19);
             this.GuideTile.TabIndex = 24;
             this.GuideTile.Text = "?";
+            this.GuideTile.Click += new System.EventHandler(this.GuideTile_Click);
             // 
             // AdministrationTile
             // 
