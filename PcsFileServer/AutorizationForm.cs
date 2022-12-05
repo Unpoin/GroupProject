@@ -42,7 +42,7 @@ namespace PcsFileServer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Не удалось создать архив");
+                MessageBox.Show(ex.Message, "Не удалось создать архив", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (Properties.Settings.Default.IsRemember == true)
             {
@@ -66,7 +66,7 @@ namespace PcsFileServer
                 if (user == null || user.passwd != PasswordTextBox.Text)
                 {
                     user = null;
-                    MessageBox.Show("Неправильно введены данные, попробуйте снова!");
+                    MessageBox.Show("Некорректно введены данные, попробуйте снова!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 else
@@ -78,16 +78,13 @@ namespace PcsFileServer
             }
             catch (Exception)
             {
-                MessageBox.Show("Не подключения к серверу!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show("Нет подключения к серверу!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
         static public bool checkAutorize;
         async Task GetUserAsync()
         {
-            //IntroPictureBox.Dock = DockStyle.Fill;
-            //IntroPictureBox.Visible = true;
             try
             {
                 Hide();
@@ -107,8 +104,6 @@ namespace PcsFileServer
             {
                 Show();
             }
-            //IntroPictureBox.Dock = DockStyle.None;
-            //IntroPictureBox.Visible = false;
         }
         private void GoToMain()
         {
@@ -145,9 +140,7 @@ namespace PcsFileServer
         private void RecoverPasswordButton_Click(object sender, EventArgs e)
         {
             RecoverForm recoverForm = new RecoverForm();
-            //this.Hide();
             recoverForm.ShowDialog();
-            //this.Close();
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)

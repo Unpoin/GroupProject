@@ -1,41 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="PcsFileServer.AdministrationForm">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="1.5" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ggARACIgASAAIAAgAADAAFAGAAEEgKAgAIEAIIAASAA=</HashCode>
+      <HashCode>ggIRASYgASBEIAAgCADAAFAmAAMEoKAgIIEgIIAASAA=</HashCode>
       <FileName>AdministrationForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.ApplicationContext">
-    <Position X="3.75" Y="5" Width="1.5" />
+    <Position X="9" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>ApplicationContext.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.AutorizationForm">
-    <Position X="5.5" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAARAISgCCBAAgEBAACAQAAnAABAAIAAkACBACAAYAI=</HashCode>
+      <HashCode>QAARAISgDCBAAgEBIACAQAAnAABAgIAAkACBASAAYAI=</HashCode>
       <FileName>AutorizationForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.CapthaHandler">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Position X="9" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
       <FileName>CapthaHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.CodeReviewForm">
-    <Position X="9" Y="0.5" Width="1.5" />
+    <Position X="6" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -45,7 +52,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.Extensions">
-    <Position X="2" Y="0.5" Width="1.5" />
+    <Position X="6" Y="3.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -55,31 +62,41 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.FtpHelper">
-    <Position X="2" Y="5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAAAICAAAAQAAAAAAAAAAAEgAAAAACA=</HashCode>
+      <HashCode>ACQAAAAAAAAAAAAAoCAAAAQAAAAAAAAAAAEgAAAAACA=</HashCode>
       <FileName>FtpHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PcsFileServer.ftpuser">
-    <Position X="9" Y="3.5" Width="1.5" />
+  <Class Name="PcsFileServer.ftpuser" Collapsed="true">
+    <Position X="6" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAACAAAAAgAAAAABAAAAAEAAAgAAAAAAEAAgA=</HashCode>
       <FileName>ftpuser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PcsFileServer.InformationForm">
-    <Position X="3.75" Y="7" Width="1.5" />
+  <Class Name="PcsFileServer.GuideForm">
+    <Position X="6" Y="5.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAACCAAAACAAAAAAAAAgCAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GuideForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PcsFileServer.InformationForm">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAACAAABAAACCAAAACAAAAAAAAAgCAAIAAAAA=</HashCode>
       <FileName>InformationForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.IntroForm">
-    <Position X="5.75" Y="7.25" Width="1.5" />
+    <Position X="9" Y="2.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -89,14 +106,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.IonicZipHelper">
-    <Position X="7.25" Y="3.75" Width="1.5" />
+    <Position X="7.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAACAAEAAAAIAAAAAAEAAAACAAAIAKABAAAIgIAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAIAAAAAAEAAAACAAAIAKAAAAAIAIAAA=</HashCode>
       <FileName>IonicZipHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.MainForm">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="3" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -113,33 +130,30 @@
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AIQQIgBwwCgAEAEAABCAFAACICAAEYCGAGCEACUBAAQ=</HashCode>
+      <HashCode>AIQQIghwwCgAEAEAABCAFACCICAAEYIEAGCEACUFQAQ=</HashCode>
       <FileName>MainForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.PcsUser">
-    <Position X="3.75" Y="3.25" Width="1.5" />
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PcsUser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PcsFileServer.Profiler">
-    <Position X="7.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Profiler.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="PcsFileServer.Program">
-    <Position X="2" Y="7.5" Width="1.5" />
+    <Position X="7.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.RecoverForm">
-    <Position X="2" Y="2.75" Width="1.5" />
+    <Position X="3" Y="6.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -149,17 +163,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.RegistrationForm">
-    <Position X="3.75" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAgQwIACBCAAABCCCABAAmBAIIAAAAACggQAEAAAA=</HashCode>
+      <HashCode>AAAAgQwIACBCAAABCCCABAAnBAIIAAAAACgoQAEAAAA=</HashCode>
       <FileName>RegistrationForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PcsFileServer.SettingsForm">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+    <Position X="1.5" Y="6" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>

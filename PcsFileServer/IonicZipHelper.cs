@@ -11,18 +11,6 @@ namespace PcsFileServer
 {
     static public class IonicZipHelper
     {
-        public static void CompressionDirectory(string fileName,
-        string sourceDirectory,
-        CompressionLevel compressionLevel = CompressionLevel.Default)
-        {
-            using (var zipFile = new ZipFile(fileName))
-            {
-                zipFile.CompressionLevel = compressionLevel;
-                zipFile.Password = "a1sda42kld31sa987e2";
-                zipFile.AddDirectory(sourceDirectory, "\\");
-                zipFile.Save();
-            }
-        }
         public static void AppendFilesToArchive(string archiveName,
     List<string> appendFiles, string password,
     CompressionLevel compressionLevel = CompressionLevel.Default)
@@ -97,43 +85,6 @@ namespace PcsFileServer
                 }
             }
         }
-        public static void AppendFilesToZipFromArray(string fileName,
-            List<byte[]> appendFiles,
-            CompressionLevel compressionLevel = CompressionLevel.Default)
-        {
-            using (var zipFile = new ZipFile(fileName))
-            {
-                zipFile.CompressionLevel = compressionLevel;
-                foreach (var file in appendFiles)
-                {
-                    var tempFileName = Guid.NewGuid().ToString();
-                    zipFile.AddEntry(tempFileName, file);
-                }
-                zipFile.Save();
-            }
-        }
-
-        public static void ExtractZip(string fileName, string outFolder)
-        {
-            using (var zip = ZipFile.Read(fileName))
-            {
-                foreach (var e in zip)
-                {
-                    e.Extract(outFolder, ExtractExistingFileAction.OverwriteSilently);
-                }
-            }
-        }
-        //public static void ExtractZipWithPassword(string fileName, string outFolder)
-        //{
-        //    using (var zip = ZipFile.Read(fileName))
-        //    {
-        //        foreach (var e in zip)
-        //        {
-        //            e.ExtractWithPassword("a1sda42kld31sa987e2", outFolder);
-        //        }
-        //    }
-        //}
-
         public static string CreateArchive(string archiveName,
         CompressionLevel compressionLevel = CompressionLevel.Default)
         {
@@ -144,14 +95,6 @@ namespace PcsFileServer
                 return archiveName;
             }
         }
-
-        //public static void Refreshpassword(string archivename, string password)
-        //{
-        //    using (var zipFile = ZipFile.Read(archivename))
-        //    {
-        //        zipFile.Password = password;
-        //    }
-        //}
 
         public static void GetInfoFiles(string archiveName, string subArchive, string fileName, string password)
         {

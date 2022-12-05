@@ -13,25 +13,13 @@ namespace PcsFileServer
 {
     public partial class IntroForm : Form
     {
-        //private BackgroundWorker worker = new BackgroundWorker();
-        //public event DoWorkEventHandler DoWork
-        //{
-        //    add { worker.DoWork += value; }
-        //    remove { worker.DoWork += value; }
-        //}
-        //public RunWorkerCompletedEventHandler OnWorkCompleted { get; set; }
         public IntroForm()
         {
-            //this.worker.RunWorkerCompleted += OnWorkCompleted;
             InitializeComponent();
-            timer1.Interval = 25; // 500 миллисекунд
+            timer1.Interval = 25;
             timer1.Enabled = true;
             timer1.Tick += timer1_Tick;
         }
-        //public void Run()
-        //{
-        //    //this.worker.RunWorkerAsync();
-        //}
 
         private void timer1_Tick(object sender, EventArgs e)
         {

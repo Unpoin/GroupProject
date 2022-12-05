@@ -29,12 +29,13 @@ namespace PcsFileServer
         {
             try
             {
-                int emailCode = new Random().Next(1000,9999);
+
+                int emailCode = new Random().Next(1000, 9999);
                 // отправитель - устанавливаем адрес и отображаемое в письме имя
                 MailAddress from = new MailAddress("pcsfileserver@yandex.ru", "Pcs_file_server");
                 // кому отправляем
                 MailAddress to = new MailAddress(MailTextBox.Text);
-                emailCodes.Add(MailTextBox.Text,emailCode);
+                emailCodes.Add(MailTextBox.Text, emailCode);
                 // создаем объект сообщения
                 MailMessage m = new MailMessage(from, to);
                 // тема письма
@@ -56,10 +57,12 @@ namespace PcsFileServer
                 this.Hide();
                 codeReviewForm.ShowDialog();
                 this.Close();
+
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

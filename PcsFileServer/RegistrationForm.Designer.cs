@@ -138,6 +138,7 @@
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(217, 23);
             this.PasswordTextBox.TabIndex = 30;
+            this.PasswordTextBox.Enter += new System.EventHandler(this.PasswordTextBox_Enter);
             // 
             // ConfirmPasswordTextBox
             // 
@@ -153,6 +154,7 @@
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.Size = new System.Drawing.Size(217, 23);
             this.MailTextBox.TabIndex = 32;
+            this.MailTextBox.Enter += new System.EventHandler(this.MailTextBox_Enter);
             // 
             // UserNameTextBox
             // 
