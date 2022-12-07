@@ -303,13 +303,20 @@ namespace PcsFileServer
 
         private void DeleteTile_Click(object sender, EventArgs e)
         {
-            List<string> fileListToDelete = new List<string>();
-            for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+            if (LocalListView.SelectedItems.Count == 0)
             {
-                fileListToDelete.Add(LocalListView.SelectedItems[i].Text);
+                MessageBox.Show("Выберите файл(ы) для удаления!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            IonicZipHelper.DeleteFilesFromZip(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"), Settings.Default.ionicZlibPackingName, fileListToDelete, "a1sda42kld31sa987e2");
-            ViewDirectiryList();
+            else
+            {
+                List<string> fileListToDelete = new List<string>();
+                for (int i = 0; i < LocalListView.SelectedItems.Count; i++)
+                {
+                    fileListToDelete.Add(LocalListView.SelectedItems[i].Text);
+                }
+                IonicZipHelper.DeleteFilesFromZip(Path.Combine(Settings.Default.pathToSave, "PcsFileServer.zip"), Settings.Default.ionicZlibPackingName, fileListToDelete, "a1sda42kld31sa987e2");
+                ViewDirectiryList();
+            }
         }
 
         private void DownLoadTile_Click(object sender, EventArgs e)
@@ -446,7 +453,7 @@ namespace PcsFileServer
             {
                 if (CloudListView.SelectedItems.Count == 0)
                 {
-                    MessageBox.Show("Выберите файл(ы) для удаления!");
+                    MessageBox.Show("Выберите файл(ы) для удаления!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {

@@ -14,7 +14,7 @@ using MetroFramework.Forms;
 
 namespace PcsFileServer
 {
-    public partial class AdministrationForm:MetroForm 
+    public partial class AdministrationForm : MetroForm
     {
         public AdministrationForm()
         {
@@ -35,40 +35,54 @@ namespace PcsFileServer
         }
         private void SendNotification(string email, string login)
         {
-            // отправитель - устанавливаем адрес и отображаемое в письме имя
-            MailAddress from = new MailAddress("pcsfileserver@yandex.ru", "Pcs_file_server");
-            // кому отправляем
-            MailAddress to = new MailAddress(email);
-            // создаем объект сообщения
-            MailMessage m = new MailMessage(from, to);
-            // тема письма
-            m.Subject = "PcsFileServer";
-            // текст письма
-            m.Body = $"<h1>Уведомление</h1><br>Ваш аккаунт: {login} был удален! Для получения подробной информации обращайтесь к администратору.";
-            // письмо представляет код html
-            m.IsBodyHtml = true;
-            // адрес smtp-сервера и порт, с которого будем отправлять письмо
-            SmtpClient smtp = new SmtpClient("smtp.yandex.com", 587);
+            try
+            {
+                // отправитель - устанавливаем адрес и отображаемое в письме имя
+                MailAddress from = new MailAddress("pcsfileserver@yandex.ru", "Pcs_file_server");
+                // кому отправляем
+                MailAddress to = new MailAddress(email);
+                // создаем объект сообщения
+                MailMessage m = new MailMessage(from, to);
+                // тема письма
+                m.Subject = "PcsFileServer";
+                // текст письма
+                m.Body = $"<h1>Уведомление</h1><br>Ваш аккаунт: {login} был удален! Для получения подробной информации обращайтесь к администратору.";
+                // письмо представляет код html
+                m.IsBodyHtml = true;
+                // адрес smtp-сервера и порт, с которого будем отправлять письмо
+                SmtpClient smtp = new SmtpClient("smtp.yandex.com", 587);
 
-            // логин и пароль
-            smtp.EnableSsl = true;
-            smtp.Credentials = new NetworkCredential("pcsfileserver@yandex.ru", "icqbqthqpmhvidqb");
-            smtp.Send(m);
+                // логин и пароль
+                smtp.EnableSsl = true;
+                smtp.Credentials = new NetworkCredential("pcsfileserver@yandex.ru", "icqbqthqpmhvidqb");
+                smtp.Send(m);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void RefreshData()
         {
-            ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
-            var data = context.ftpuser
-                    .Select(u => new
-                    {
-                        u.userid,
-                        u.passwd,
-                        u.name,
-                        u.email,
-                        u.role,
-                        u.phone
-                    });
-            UsersDataGrid.DataSource = data.ToList();
+            try
+            {
+                ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                var data = context.ftpuser
+                        .Select(u => new
+                        {
+                            u.userid,
+                            u.passwd,
+                            u.name,
+                            u.email,
+                            u.role,
+                            u.phone
+                        });
+                UsersDataGrid.DataSource = data.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AdministrationForm_Load(object sender, EventArgs e)
@@ -114,17 +128,24 @@ namespace PcsFileServer
                 MessageBox.Show(ex.Message);
             }
         }
-       
+
         private void RedactButton_Click(object sender, EventArgs e)
         {
-            var lgn = UsersDataGrid.SelectedRows[0].Cells[0].Value.ToString();
-            ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
-            var redactedUser = context.ftpuser.Where(u => u.userid == lgn).FirstOrDefault();
-            NameTextBox.Text = redactedUser.name;
-            LoginTextBox.Text = redactedUser.userid;
-            PasswordTextBox.Text = redactedUser.passwd;
-            EmailTextBox.Text = redactedUser.email;
-            PhoneTextBox.Text = redactedUser.phone;
+            try
+            {
+                var lgn = UsersDataGrid.SelectedRows[0].Cells[0].Value.ToString();
+                ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                var redactedUser = context.ftpuser.Where(u => u.userid == lgn).FirstOrDefault();
+                NameTextBox.Text = redactedUser.name;
+                LoginTextBox.Text = redactedUser.userid;
+                PasswordTextBox.Text = redactedUser.passwd;
+                EmailTextBox.Text = redactedUser.email;
+                PhoneTextBox.Text = redactedUser.phone;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -133,21 +154,28 @@ namespace PcsFileServer
             {
                 if (MessageBox.Show("Вы уверены, что хотите добавить пользователя(ей)?", "Подветверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
-                    ftpuser newUser = new ftpuser()
+                    if (String.IsNullOrEmpty(LoginTextBox.Text) || String.IsNullOrEmpty(PasswordTextBox.Text) || String.IsNullOrEmpty(EmailTextBox.Text))
                     {
-                        name = NameTextBox.Text,
-                        userid = LoginTextBox.Text,
-                        passwd = PasswordTextBox.Text,
-                        email = EmailTextBox.Text,
-                        role = "user",
-                        phone = PhoneTextBox.Text,
-                        homedir = $"/srv/{LoginTextBox.Text}"
-                    };
-                    context.ftpuser.Add(newUser);
-                    context.SaveChanges();
-                    MessageBox.Show("Пользователь успешно добавлен!");
-                    RefreshData();
+                        MessageBox.Show("Не все обязательные поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        ApplicationContext context = new ApplicationContext(ApplicationContext.StrConnection());
+                        ftpuser newUser = new ftpuser()
+                        {
+                            name = NameTextBox.Text,
+                            userid = LoginTextBox.Text,
+                            passwd = PasswordTextBox.Text,
+                            email = EmailTextBox.Text,
+                            role = "user",
+                            phone = PhoneTextBox.Text,
+                            homedir = $"/srv/{LoginTextBox.Text}"
+                        };
+                        context.ftpuser.Add(newUser);
+                        context.SaveChanges();
+                        MessageBox.Show("Пользователь успешно добавлен!");
+                        RefreshData();
+                    }
                 }
             }
             catch (Exception ex)
