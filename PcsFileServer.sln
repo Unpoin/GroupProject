@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcsFileServer", "PcsFileServer\PcsFileServer.csproj", "{AC521662-CF36-418F-8452-82F724418E0B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupPFS", "SetupPFS\SetupPFS.vdproj", "{3C635CB6-B802-4DA4-B168-BCCAA10246DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,8 +17,13 @@ Global
 		{AC521662-CF36-418F-8452-82F724418E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC521662-CF36-418F-8452-82F724418E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC521662-CF36-418F-8452-82F724418E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C635CB6-B802-4DA4-B168-BCCAA10246DB}.Debug|Any CPU.ActiveCfg = Debug
+		{3C635CB6-B802-4DA4-B168-BCCAA10246DB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5052C816-E362-4080-8416-8DBFC8E859BC}
 	EndGlobalSection
 EndGlobal

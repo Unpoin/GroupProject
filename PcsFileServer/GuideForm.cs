@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,16 @@ namespace PcsFileServer
         {
             InitializeComponent();
             this.components.SetStyleDark(this);
-            GuideWebBrowser.AllowWebBrowserDrop = false;
-            GuideWebBrowser.Url = new Uri(@"C:\Users\Тома\Documents\GitHub\GroupProject\guide.html");
+            try
+            {
+                GuideWebBrowser.AllowWebBrowserDrop = false;
+                string curDir = Directory.GetCurrentDirectory();
+                this.GuideWebBrowser.Url = new Uri(String.Format("file:///{0}/guide.html", curDir));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
