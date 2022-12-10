@@ -217,6 +217,7 @@
             this.MinimumSize = new System.Drawing.Size(220, 400);
             this.Name = "AutorizationForm";
             this.Text = "Авторизация";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AutorizationForm_FormClosing);
             this.Load += new System.EventHandler(this.AutorizationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PassPictureBox)).EndInit();
             this.ResumeLayout(false);

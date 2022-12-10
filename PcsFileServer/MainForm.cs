@@ -232,7 +232,12 @@ namespace PcsFileServer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                CloudDownloadTile.Enabled = false;
+                CloudInfoTile.Enabled = false;
+                CloudLoadTile.Enabled = false;
+                DeleteCloudTile.Enabled = false;
+                CldTile.Text = "Облачное хранилище(offline)";
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void MainForm_Load(object sender, EventArgs e)

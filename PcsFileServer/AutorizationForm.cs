@@ -16,10 +16,10 @@ namespace PcsFileServer
             try
             {
                 InitializeComponent();
-                this.Show();
                 PassPictureBox.Image = Properties.Resources.eyePurple;
                 LoginTextBox.Text = Properties.Settings.Default.Login;
                 PasswordTextBox.Text = Properties.Settings.Default.Password;
+                this.Show();
             }
             catch(Exception) { }
         }
@@ -120,9 +120,9 @@ namespace PcsFileServer
                 OfflineChecker = true;
                 Properties.Settings.Default.ionicZlibPackingName = Convert.ToString("offline.zip");
                 Properties.Settings.Default.Save();
-                if (!File.Exists(Path.Combine(Properties.Settings.Default.pathToSave, "PcsFileServerOffline.zip")))
+                if (!File.Exists(Path.Combine(Properties.Settings.Default.pathToSave, "PcsFileServer.zip")))
                 {
-                    IonicZipHelper.CreateArchive(Path.Combine(Properties.Settings.Default.pathToSave, "PcsFileServerOffline.zip"));
+                    IonicZipHelper.CreateArchive(Path.Combine(Properties.Settings.Default.pathToSave, "PcsFileServer.zip"));
                 }
                 GoToMain();
             }
@@ -199,6 +199,22 @@ namespace PcsFileServer
         {
             GuideForm form = new GuideForm();
             form.ShowDialog();
+        }
+
+        private void AutorizationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Properties.Settings.Default.IsRemember == true)
+            {
+                Properties.Settings.Default.Login = LoginTextBox.Text;
+                Properties.Settings.Default.Password = PasswordTextBox.Text;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Login = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }
