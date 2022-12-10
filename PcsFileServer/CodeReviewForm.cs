@@ -66,10 +66,8 @@ namespace PcsFileServer
                         user.passwd = PasswordTextBox.Text;
                         //сохранение изменений
                         context.SaveChanges();
-                        AutorizationForm form = new AutorizationForm();
                         MessageBox.Show("Пароль успешно изменен");
                         this.Hide();
-                        form.ShowDialog();
                         this.Close();
                     }
                 }
